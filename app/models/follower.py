@@ -8,7 +8,7 @@ class Follower(db.Model):
     followed_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     follower = db.relationship("User", back_populates="followers")
-    followed = db.relationship("User", back_populates="followers")
+    followed = db.relationship("User", back_populates="followeds")
 
     def to_dict(self):
         return {

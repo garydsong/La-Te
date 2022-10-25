@@ -21,6 +21,14 @@ class User(db.Model, UserMixin):
     cover_img = db.Column(db.String(100), nullable=False)
     website = db.Column(db.String(100), nullable=False)
 
+    posts = db.relationship("Post", back_populates="users")
+    comments = db.relationship("Comment", back_populates="users")
+    followers = db.relationship("Follower", back_populates="follower")
+    followeds = db.relationship("Follower", back_populates="followed")
+    sentlattes = db.relationship("Latte", back_populates="donor")
+    receivedlattes = db.relationship("Latte", back_populates="donatee")
+    reactions = db.relationship("Reaction", back_populates="users")
+
     @property
     def password(self):
         return self.hashed_password
