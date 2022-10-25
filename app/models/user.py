@@ -7,9 +7,19 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(40), nullable=False)
+    last_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    address = db.Column(db.String(50), nullable=False)
+    city = db.Column(db.String(20), nullable=False)
+    state = db.Column(db.String(15), nullable=False)
+    zipcode = db.Column(db.Integer, nullable=False)
+    avatar = db.Column(db.String(100), nullable=False)
+    bio = db.Column(db.String(2000), nullable=False)
+    cover_img = db.Column(db.String(100), nullable=False)
+    website = db.Column(db.String(100), nullable=False)
 
     @property
     def password(self):
@@ -25,6 +35,16 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'address': self.address,
+            'city': self.city,
+            'state': self.state,
+            'zipcode': self.zipcode,
+            'avatar': self.avatar,
+            'bio': self.bio,
+            'cover_img': self.cover_img,
+            'website': self.website
         }
