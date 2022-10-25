@@ -10,8 +10,8 @@ class Latte(db.Model):
     donor_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     donatee_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    donor = db.relationship("User", back_populates="lattes")
-    donatee = db.relationship("User", back_populates="lattes")
+    donor = db.relationship("User", back_populates="sentlattes")
+    donatee = db.relationship("User", back_populates="receivedlattes")
 
     def to_dict(self):
         return {
