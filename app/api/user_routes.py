@@ -46,6 +46,7 @@ def edit_a_user(id):
     user.username = form.business_name.data
     user.email = form.email.data
     user.first_name = form.first_name.data
+    user.last_name = form.last_name.data
     user.owner_id = current_user.id
     user.city = form.city.data
     user.state = form.state.data
