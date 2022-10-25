@@ -1,9 +1,11 @@
 from crypt import methods
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from app.models import Post, db, User
+from app.models import Post, db, User, Reaction
 from flask_login import current_user
 from app.forms.post_form import PostForm
+from app.forms.reaction_form import ReactionForm
+from app.forms.comment_form import CommentForm
 
 def validation_form_errors(validation_errors):
   errors = []
@@ -95,3 +97,81 @@ def get_singular_post(id):
   post_dict['Owner'] = owner
 
   return post_dict
+
+
+## ADD AN REACTION TO A POST VIA ID
+@post_routes.route('/<int:id>/reactions', methods=["POST"])
+@login_required
+def add_reaction(id):
+  post = Post.query.get(id)
+
+  ## ERROR HANDLING NON-EXISTENT POST
+  if not post:
+    return {"message": "Post coulnd't be found.", "statusCode": 404}
+
+  form = ReactionForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    reaction = Reaction(
+      post_id = id,
+      reaction = form.url.data
+    )
+
+    db.session.add(reaction)
+    db.session.commit()
+
+    return reaction.to_dict()
+  return {"errors": validation_form_errors(form.errors), "statusCode": 401}
+
+
+## CREATE A COMMENT FOR POST VIA ID
+@post_routes.route('/<int:id>/comments', methods=["POST"])
+@login_required ## must be logged in to leave a review
+def create_review(id):
+
+  post = Post.query.get(id)
+
+  ##ERROR HANDLING NON-EXISTING BUSINESS
+  if not post:
+    return {"message": "post couldn't be found.", "statusCode":404}
+
+  ## CHECK IF current_user.id WORKS
+  if post.owner_id == current_user.id:
+    return {"message": "Post owner cannot write a review for their post", "statusCode":403}
+
+  form = CommentForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+
+    comment = Comment(
+      user_id = current_user.id,
+      post_id = id,
+      nope = form.nope.data,
+      comment = form.comment.data
+    )
+
+    db.session.add(comment)
+    db.session.commit()
+
+    return comment.to_dict()
+  return {"errors": validation_form_errors(form.errors), "statusCode":401}
+
+## CREATE A POST
+@post_routes.route("/", methods=["POST"])
+@login_required
+def create_post():
+  form = PostForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+
+    post = Post(
+      post = form.post.data,
+      post_img = form.post_img.data,
+    )
+    db.session.add(post)
+    db.session.commit()
+
+    new_post = post.to_dict()
+    return new_post
+
+  return {"errors": validation_form_errors(form.errors), "statusCode":401}
