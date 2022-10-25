@@ -1,3 +1,6 @@
+![la-te](https://user-images.githubusercontent.com/105745865/197884351-964fc2f7-9c9a-46bc-8026-1978f7929c97.png)
+
+
 # Flask React Project
 
 This is the starter for the Flask React project.
@@ -83,6 +86,3 @@ each of the following variables:
 | `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
 | `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
 | `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
-
-
-# La-Te2
