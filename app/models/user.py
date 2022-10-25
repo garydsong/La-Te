@@ -12,10 +12,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    address = db.Column(db.String(50), nullable=False)
     city = db.Column(db.String(20), nullable=False)
     state = db.Column(db.String(15), nullable=False)
-    zipcode = db.Column(db.Integer, nullable=False)
     avatar = db.Column(db.String(100), nullable=False)
     bio = db.Column(db.String(2000), nullable=False)
     cover_img = db.Column(db.String(100), nullable=False)
@@ -47,10 +45,8 @@ class User(db.Model, UserMixin):
             'last_name': self.last_name,
             'username': self.username,
             'email': self.email,
-            'address': self.address,
             'city': self.city,
             'state': self.state,
-            'zipcode': self.zipcode,
             'avatar': self.avatar,
             'bio': self.bio,
             'cover_img': self.cover_img,
