@@ -1,9 +1,10 @@
 from crypt import methods
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from app.models import Comment, db, User
+from app.models import Comment, db, User, Reaction
 from flask_login import current_user
 from app.forms.post_form import CommentForm
+from app.forms.reaction_form import ReactionForm
 
 def validation_form_errors(validation_errors):
   errors = []
@@ -95,3 +96,28 @@ def get_singular_comment(id):
   comment_dict['Owner'] = owner
 
   return comment_dict
+
+## ADD AN REACTION TO A COMMENT VIA ID
+@comment_routes.route('/<int:id>/reactions', methods=["POST"])
+@login_required
+def add_reaction(id):
+  comment = Comment.query.get(id)
+
+  ## ERROR HANDLING NON-EXISTENT COMMENT
+  if not comment:
+    return {"message": "Comment coulnd't be found.", "statusCode": 404}
+
+  form = ReactionForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+    reaction = Reaction(
+      comment_id = id,
+      reaction = form.url.data,
+      user_id = current_user.id
+    )
+
+    db.session.add(reaction)
+    db.session.commit()
+
+    return reaction.to_dict()
+  return {"errors": validation_form_errors(form.errors), "statusCode": 401}

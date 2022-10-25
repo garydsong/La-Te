@@ -1,7 +1,8 @@
 from flask import Blueprint, request, jsonify
 from flask_login import current_user, login_required
-from app.models import User, db
+from app.models import User, db, Latte
 from forms.signup_form import SignUpForm
+from forms.latte_form import LatteForm
 
 def validation_form_errors(validation_errors):
   errors = []
@@ -59,4 +60,28 @@ def edit_a_user(id):
     updated_user = user.to_dict()
 
     return updated_user
+  return {"errors": validation_form_errors(form.errors), "statusCode":401}
+
+
+## CREATE A LATTE
+@user_routes.route("/<int:id>", methods=["POST"])
+@login_required
+def create_latte(id):
+  form = LatteForm()
+  form['csrf_token'].data = request.cookies['csrf_token']
+  if form.validate_on_submit():
+
+    latte = Latte(
+        donor_id = current_user.id,
+        donatee_id = id,
+        latte = form.latte.data,
+        comment = form.comment.data
+    )
+
+    db.session.add(latte)
+    db.session.commit()
+
+    new_latte = latte.to_dict()
+    return new_latte
+
   return {"errors": validation_form_errors(form.errors), "statusCode":401}

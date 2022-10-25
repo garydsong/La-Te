@@ -1,7 +1,7 @@
 from crypt import methods
 from flask import Blueprint, request, jsonify
 from flask_login import login_required
-from app.models import Post, db, User, Reaction
+from app.models import Post, db, User, Reaction, Comment
 from flask_login import current_user
 from app.forms.post_form import PostForm
 from app.forms.reaction_form import ReactionForm
@@ -114,7 +114,8 @@ def add_reaction(id):
   if form.validate_on_submit():
     reaction = Reaction(
       post_id = id,
-      reaction = form.url.data
+      reaction = form.url.data,
+      user_id = current_user.id
     )
 
     db.session.add(reaction)
