@@ -1,7 +1,7 @@
 # Start with the python:3.9 image
 FROM python:3.9
 # Set the following enviroment variables
-ENV REACT_APP_BASE_URL=https://nope-yelp.herokuapp.com
+ENV REACT_APP_BASE_URL=https://la-te.herokuapp.com
 ENV FLASK_APP=app
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=true
