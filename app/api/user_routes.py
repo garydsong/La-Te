@@ -36,7 +36,7 @@ def edit_a_user(id):
   if not user:
     return {"message":"User couldn't be found", "statusCode":404}
 
-  if user.owner_id != current_user.id:
+  if user.id != current_user.id:
     return {"message":"Forbidden", "statusCode":403}
 
   form = SignUpForm()
@@ -46,7 +46,7 @@ def edit_a_user(id):
 
     user.first_name = form.first_name.data
     user.last_name = form.last_name.data
-    user.username = form.business_name.data
+    user.username = form.username.data
     user.email = form.email.data
     user.city = form.city.data
     user.state = form.state.data
