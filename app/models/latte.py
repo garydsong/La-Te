@@ -1,6 +1,13 @@
 from .db import db
 from sqlalchemy.sql import func
 
+user_lattes = db.Table(
+    "user_lattes",
+    db.Model.metadata,
+    db.Column("user_id", db.Integer, db.ForeignKey('users.id'), primary_key=True),
+    db.Column("latte_id", db.Integer, db.ForeignKey('lattes.id'), primary_key=True)
+)
+
 class Latte(db.Model):
     __tablename__ = 'lattes'
 
@@ -10,10 +17,9 @@ class Latte(db.Model):
     created_at = db.Column(db.DateTime(timezone=True),
                            server_default=func.current_timestamp())
     donor_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    donatee_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
-    donor = db.relationship("User", back_populates="sentlattes")
-    donatee = db.relationship("User", back_populates="receivedlattes")
+    users = db.relationship("User", secondary=user_lattes, back_populates="lattes")
+
 
     def to_dict(self):
         return {

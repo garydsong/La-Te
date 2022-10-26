@@ -1,10 +1,9 @@
 from crypt import methods
 from flask import Blueprint, request, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import Comment, db, User, Reaction
-from flask_login import current_user
-from app.forms.post_form import CommentForm
-from app.forms.reaction_form import ReactionForm
+from ..forms.comment_form import CommentForm
+from ..forms.reaction_form import ReactionForm
 
 def validation_form_errors(validation_errors):
   errors = []
@@ -13,7 +12,7 @@ def validation_form_errors(validation_errors):
       errors.append(f'{field}:{err}')
   return errors
 
-comment_routes = Blueprint('posts', __name__)
+comment_routes = Blueprint('comments', __name__)
 
 
 ## GET ALL COMMENTS

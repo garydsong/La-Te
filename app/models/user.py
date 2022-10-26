@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from .latte import user_lattes
 
 
 class User(db.Model, UserMixin):
@@ -21,10 +22,10 @@ class User(db.Model, UserMixin):
 
     posts = db.relationship("Post", back_populates="users")
     comments = db.relationship("Comment", back_populates="users")
-    followers = db.relationship("Follower", back_populates="follower")
-    followeds = db.relationship("Follower", back_populates="followed")
-    sentlattes = db.relationship("Latte", back_populates="donor")
-    receivedlattes = db.relationship("Latte", back_populates="donatee")
+    # followers = db.relationship("Follower", back_populates="follower")
+    # followeds = db.relationship("Follower", back_populates="followed")
+
+    lattes = db.relationship("Latte", secondary=user_lattes, back_populates="users")
     reactions = db.relationship("Reaction", back_populates="users")
 
     @property

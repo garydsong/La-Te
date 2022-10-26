@@ -1,8 +1,8 @@
 from flask import Blueprint, request, jsonify
 from flask_login import current_user, login_required
 from app.models import User, db, Latte
-from forms.signup_form import SignUpForm
-from forms.latte_form import LatteForm
+from ..forms.signup_form import SignUpForm
+from ..forms.latte_form import LatteForm
 
 def validation_form_errors(validation_errors):
   errors = []
@@ -44,13 +44,13 @@ def edit_a_user(id):
   print('\n\n\n\n\n\n\n form data', form.data)
   if form.validate_on_submit():
 
-    user.username = form.business_name.data
-    user.email = form.email.data
     user.first_name = form.first_name.data
     user.last_name = form.last_name.data
-    user.owner_id = current_user.id
+    user.username = form.business_name.data
+    user.email = form.email.data
     user.city = form.city.data
     user.state = form.state.data
+    user.avatar = form.avatar.data
     user.bio = form.bio.data
     user.cover_img = form.cover_img.data
     user.website = form.website.data
@@ -73,7 +73,6 @@ def create_latte(id):
 
     latte = Latte(
         donor_id = current_user.id,
-        donatee_id = id,
         latte = form.latte.data,
         comment = form.comment.data
     )

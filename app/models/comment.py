@@ -12,11 +12,11 @@ class Comment(db.Model):
                            onupdate=func.current_timestamp())
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), nullable=False)
-    reaction_id = db.Column(db.Integer, db.ForeignKey("reactions.id"), nullable=False)
+
 
     users = db.relationship("User", back_populates="comments")
-    posts = db.relationship("Post", back_populates="comments")
-    reactions = db.relationship("Reaction", back_populates="comments")
+    post = db.relationship("Post", back_populates="comments")
+    reactions = db.relationship("Reaction", foreign_keys='Reaction.comment_id', back_populates="comments")
 
     def to_dict(self):
         return {
