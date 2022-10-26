@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react'
+import plus from "../../assets/icons/plus-icon.svg"
 import './Collapsible.css'
 
 
@@ -16,7 +17,7 @@ function Collapsible(props) {
   return (
     <div>
       <div className='collapse-button'>
-        <button onClick={toggle}>{props.label}</button>
+        <button onClick={toggle}><img id="plus-icon" src={plus}/>{props.label}</button>
       </div>
       <div className='opened-div'>
         {open &&

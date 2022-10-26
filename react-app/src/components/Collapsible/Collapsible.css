@@ -2,6 +2,7 @@
     font-family: 'Nunito';
     font-weight: 400;
     transition: height 1s;
+    width: 920px;
 }
 
 .toggle {
@@ -11,10 +12,10 @@
 }
 
 .collapse-button {
-    width: 500px;
+    display: flex;
+    align-items: center;
     height: 70px;
     font-family: 'Nunito';
     font-weight: 400;
-    border: black 2px solid;
-    border-radius: 10px;
+    width: 920px;
 }

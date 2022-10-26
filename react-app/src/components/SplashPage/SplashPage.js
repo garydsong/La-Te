@@ -2,6 +2,10 @@ import React from "react";
 import logo from "../../assets/la-te.png"
 import './SplashPage.css'
 import Collapsible from "../Collapsible/Collapsible";
+import pfp from "../../assets/pfp/pfp1.jpg"
+import pfp2 from "../../assets/pfp/pfp2.png"
+import pfp3 from "../../assets/pfp/pfp3.png"
+import plus from "../../assets/icons/plus-icon.svg"
 
 
 function SplashPage() {
@@ -79,10 +83,140 @@ function SplashPage() {
                     </div>
                 </div>
 
+                <div className="bottom-mid-splash-wrapper-1">
+                    <div className="bot-splash-wrapper-1">
+                        <div className="bot-splash-desc-1">
+                            <div className="bot-desc-title-1">
+                                Receive Donations
+                            </div>
+                            <div className="bot-desc-sub-1">
+                                0% Platform Fees
+                            </div>
+                            <div className="bot-desc-para-1">
+                                La-Te is the original, fun and friendly way to receive donations and messages of support from fans of what you do!
+                            </div>
+                            <div className="bot-desc-para-1">
+                                Use it as a tip jar, let fans crowdfund a goal and even get donation alerts while you stream.
+                            </div>
+                            <div></div><div></div>
+                            <div className="bot-desc-button-1">Get Started</div>
+                        </div>
+                        <img src="https://storage.ko-fi.com/cdn/landing_assets/kofi_donation.png" />
+                    </div>
+                </div>
+
+                <div className="bottom-mid-splash-wrapper-2">
+                    <div className="bot-splash-wrapper-2">
+                        <img src="https://storage.ko-fi.com/cdn/landing_assets/kofi_commission.png" />
+                        <div className="bot-splash-desc-2">
+                            <div className="bot-desc-title-2">
+                                Offer Commissions or Requests
+                            </div>
+                            <div className="bot-desc-sub-2">
+                                Start for Free!
+                            </div>
+                            <div className="bot-desc-para-2">
+                                Build a menu of creative commissions or offer personalized services like a custom tutorial or a video chat!
+                            </div>
+                            <div className="bot-desc-para-2">
+                                Control available slots, offer add-ons and get paid directly into your PayPal or Stripe account.
+                            </div>
+
+                            <div className="bot-desc-button-2">
+                                <div className="bot-desc-button-liner">
+                                </div>
+                                <div className="bot-desc-button-2-content">
+                                    <div className="pfp-desc-holder-1">
+                                        <img id="pfp1" src={pfp} />
+                                        <div className="pfp-desc-title-1"><b>XOK3K3Llif3</b> is offering eat your drywall and scavenge for lizards.</div>
+                                    </div>
+                                    <div className="visit-button">
+                                        Visit
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="bottom-mid-splash-wrapper-3">
+                    <div className="bot-splash-wrapper-3">
+                        <div className="bot-splash-desc-2">
+                            <div className="bot-desc-title-2">
+                                Offer Memberships
+
+                            </div>
+                            <div className="bot-desc-sub-2">
+                                Build a Monthly Income
+                            </div>
+                            <div className="bot-desc-para-2">
+                                Let fans become exclusive members, supporting you monthly at different pricing tiers.
+                            </div>
+                            <div className="bot-desc-para-2">
+                                Reward members with unique benefits like Discord roles, exclusive content or physical items.
+                            </div>
+
+                            <div className="bot-desc-button-2">
+                                <div className="bot-desc-button-liner">
+                                </div>
+                                <div className="bot-desc-button-2-content">
+                                    <div className="pfp-desc-holder-1">
+                                        <img id="pfp1" src={pfp2} />
+                                        <div className="pfp-desc-title-1"><b>TASKMAN</b> offers members digital downloads, Discord access and a monthly envelope of goodies!</div>
+                                    </div>
+                                    <div className="visit-button">
+                                        Visit
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="https://storage.ko-fi.com/cdn/landing_assets/kofi_subscription.png" />
+                    </div>
+                </div>
+
+                <div className="bottom-mid-splash-wrapper-4">
+                    <div className="bot-splash-wrapper-4">
+                        <img src="https://storage.ko-fi.com/cdn/landing_assets/kofi_shop.png" />
+                        <div className="bot-splash-desc-2">
+                            <div className="bot-desc-title-2">
+                                Sell Products
+
+
+                            </div>
+                            <div className="bot-desc-sub-2">
+                                Share your gift with the world!
+                            </div>
+                            <div className="bot-desc-para-2">
+                            Open your Ko-fi Shop and add digital or physical items in seconds.
+                            </div>
+                            <div className="bot-desc-para-2">
+                            No listing fees, no site to set up. Just share a link and start making sales!
+                            </div>
+
+                            <div className="bot-desc-button-2">
+                                <div className="bot-desc-button-liner">
+                                </div>
+                                <div className="bot-desc-button-2-content">
+                                    <div className="pfp-desc-holder-1">
+                                        <img id="pfp1" src={pfp3} />
+                                        <div className="pfp-desc-title-1"><b>wittosamywamy</b> offers members digital downloads, Discord access and a monthly envelope of goodies!</div>
+                                    </div>
+                                    <div className="visit-button">
+                                        Visit
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
                 <img className="top-splash-background-img" src="https://storage.ko-fi.com/cdn/landing_assets/kofi_heroimg.png" />
                 <div className="bottom-about-la-te">
-                    <Collapsible label="What is La-Té?">
+                    <Collapsible id="wat-test" label="What is La-Té?">
+
                         <p>
+                        
                             La-Té is the easiest way for you to start making an income directly from your fans. You can accept donations, create membership tiers, open an online shop, and take commissions all with 0-5% platform fees.
                         </p>
                     </Collapsible>
