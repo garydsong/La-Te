@@ -14,3 +14,354 @@
 .bottom-about-la-te {
     width: 500px;
 }
+
+.top-splash-title {
+    font-family: 'Nunito';
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 710px;
+    font-weight: 800;
+    font-size: 45px;
+    background: -webkit-linear-gradient(135deg, #5b8dfe 0%, #ff5f5f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.top-splash-paragraph {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    text-align: center;
+    width: 710px;
+    color: gray;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.whitespace {
+    height: 100px;
+    width: 100%;
+}
+
+.top-splash-background-img {
+    position: absolute;
+    z-index: -1;
+    top: 100px;
+}
+
+.la-te-url-input {
+    font-weight: 800;
+    font-size: 20px;
+    color: #5A5A5A;
+}
+
+.top-splash-input-signup {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    width: 450px;
+    background-color: white;
+    border-radius: 999px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.la-te-url-grouper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.input-claim {
+    padding-left: 5px;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border: none;
+    color: gray;
+}
+
+.input-claim:focus {
+    outline: none !important;
+}
+
+
+.claim-button-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    width: 100px;
+    height: 55px;
+    color: white;
+    background-color: #ff5f5f;
+    border-radius: 999px;
+    transition: .5s;
+}
+
+.claim-button-input:hover {
+    cursor: pointer;
+    background-color: #ff4545;
+}
+
+.top-splash-below-input {
+    color: gray;
+}
+
+
+.under-top-splash-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    width: 100%;
+    height: 400px;
+}
+
+
+.under-splash-title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    width: 700px;
+    height: 100%;
+}
+
+.under-splash-title {
+    font-weight: 700;
+    font-size: 35px;
+}
+
+.under-splash-paragraph {
+    text-align: center;
+    color: gray;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.under-splash-earned {
+    text-align: center;
+    color: gray;
+    font-weight: 300;
+    font-size: 30px;
+}
+
+.under-splash-get-started {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 55px;
+    width: 150px;
+    background-color: #ff5f5f;
+    transition: .5s;
+    border-radius: 999px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.under-splash-get-started:hover {
+    cursor: pointer;
+    background-color: #ff4545;
+}
+
+.mid-splash-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.mid-under-splash-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 230px;
+
+}
+
+.mid-under-splash-title {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 1020px;
+    font-weight: 800;
+    font-size: 35px;
+    background: -webkit-linear-gradient(135deg, #5b8dfe 0%, #ff5f5f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: 20px;
+    margin-bottom: 40px;
+}
+
+.mid-under-splash-paragraph {
+    display: flex;
+    justify-content: space-between;
+    width: 1020px;
+}
+
+.mid-under-splash-buttons-1 {
+    font-weight: 600;
+    background-color: rgb(245, 245, 245);
+    border-radius: 999px;
+    border-top: rgb(245, 245, 245) 16px solid;
+    border-bottom: rgb(245, 245, 245) 16px solid;
+    border-left: rgb(245, 245, 245) 24px solid;
+    border-right: rgb(245, 245, 245) 24px solid;
+}
+
+.mid-under-splash-buttons-2 {
+    font-weight: 600;
+    background-color: rgb(245, 245, 245);
+    border-radius: 999px;
+    border-top: rgb(245, 245, 245) 16px solid;
+    border-bottom: rgb(245, 245, 245) 16px solid;
+    border-left: rgb(245, 245, 245) 24px solid;
+    border-right: rgb(245, 245, 245) 24px solid;
+}
+
+.mid-under-splash-buttons-3 {
+    font-weight: 600;
+    background-color: rgb(245, 245, 245);
+    border-radius: 999px;
+    border-top: rgb(245, 245, 245) 16px solid;
+    border-bottom: rgb(245, 245, 245) 16px solid;
+    border-left: rgb(245, 245, 245) 24px solid;
+    border-right: rgb(245, 245, 245) 24px solid;
+}
+
+.mid-under-splash-buttons-4 {
+    font-weight: 600;
+    background-color: rgb(245, 245, 245);
+    border-radius: 999px;
+    border-top: rgb(245, 245, 245) 16px solid;
+    border-bottom: rgb(245, 245, 245) 16px solid;
+    border-left: rgb(245, 245, 245) 24px solid;
+    border-right: rgb(245, 245, 245) 24px solid;
+}
+
+.mid-under-splash-buttons-5 {
+    font-weight: 600;
+    background-color: rgb(245, 245, 245);
+    border-radius: 999px;
+    border-top: rgb(245, 245, 245) 16px solid;
+    border-bottom: rgb(245, 245, 245) 16px solid;
+    border-left: rgb(245, 245, 245) 24px solid;
+    border-right: rgb(245, 245, 245) 24px solid;
+}
+
+.mid-under-splash-buttons-6 {
+    font-weight: 600;
+    background-color: rgb(245, 245, 245);
+    border-radius: 999px;
+    border-top: rgb(245, 245, 245) 16px solid;
+    border-bottom: rgb(245, 245, 245) 16px solid;
+    border-left: rgb(245, 245, 245) 24px solid;
+    border-right: rgb(245, 245, 245) 24px solid;
+}
+
+.mid-under-splash-buttons-7 {
+    font-weight: 600;
+    background-color: rgb(245, 245, 245);
+    border-radius: 999px;
+    border-top: rgb(245, 245, 245) 16px solid;
+    border-bottom: rgb(245, 245, 245) 16px solid;
+    border-left: rgb(245, 245, 245) 24px solid;
+    border-right: rgb(245, 245, 245) 24px solid;
+}
+
+.mid-under-splash-buttons-1:hover {
+    cursor: default;
+    background-color: #FFEEEE;
+    border-top: #FFEEEE 16px solid;
+    border-bottom: #FFEEEE 16px solid;
+    border-left: #FFEEEE 24px solid;
+    border-right: #FFEEEE 24px solid;
+    color: #FF5F5F;
+}
+
+
+.mid-under-splash-buttons-2:hover {
+    cursor: default;
+    background-color: #FFEEEE;
+    border-top: #FFEEEE 16px solid;
+    border-bottom: #FFEEEE 16px solid;
+    border-left: #FFEEEE 24px solid;
+    border-right: #FFEEEE 24px solid;
+    color: #FF5F5F;
+}
+
+
+.mid-under-splash-buttons-3:hover {
+    cursor: default;
+    background-color: #FFEEEE;
+    border-top: #FFEEEE 16px solid;
+    border-bottom: #FFEEEE 16px solid;
+    border-left: #FFEEEE 24px solid;
+    border-right: #FFEEEE 24px solid;
+    color: #FF5F5F;
+}
+
+
+.mid-under-splash-buttons-4:hover {
+    cursor: default;
+    background-color: #FFEEEE;
+    border-top: #FFEEEE 16px solid;
+    border-bottom: #FFEEEE 16px solid;
+    border-left: #FFEEEE 24px solid;
+    border-right: #FFEEEE 24px solid;
+    color: #FF5F5F;
+}
+
+
+.mid-under-splash-buttons-5:hover {
+    cursor: default;
+    background-color: #FFEEEE;
+    border-top: #FFEEEE 16px solid;
+    border-bottom: #FFEEEE 16px solid;
+    border-left: #FFEEEE 24px solid;
+    border-right: #FFEEEE 24px solid;
+    color: #FF5F5F;
+}
+
+
+.mid-under-splash-buttons-6:hover {
+    cursor: default;
+    background-color: #FFEEEE;
+    border-top: #FFEEEE 16px solid;
+    border-bottom: #FFEEEE 16px solid;
+    border-left: #FFEEEE 24px solid;
+    border-right: #FFEEEE 24px solid;
+    color: #FF5F5F;
+}
+
+
+.mid-under-splash-buttons-7:hover {
+    cursor: default;
+    background-color: #FFEEEE;
+    border-top: #FFEEEE 16px solid;
+    border-bottom: #FFEEEE 16px solid;
+    border-left: #FFEEEE 24px solid;
+    border-right: #FFEEEE 24px solid;
+    color: #FF5F5F;
+}
+
+.testimonial-wrapper {
+    width: 100%;
+    height: 500px;
+    background-color: #f7eee0;
+}
+
+.under-testimonial-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

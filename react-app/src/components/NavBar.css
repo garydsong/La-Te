@@ -1,0 +1,78 @@
+.NavBar {
+    font-family: 'Nunito';
+    position: fixed;
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    z-index: 99;
+}
+
+.nav-bar-wrapper {
+    font-family: 'Nunito';
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1140px;
+    height: 60px;
+}
+
+#nav-bar-logo {
+    height: 40px;
+}
+
+#login-nav-button {
+    font-family: 'Nunito';
+    color: black;
+}
+
+#login-nav-button:hover {
+    cursor: pointer;
+    color: #ff4545;
+}
+
+#login-nav-text {
+    font-weight: 700;
+}
+
+#login-nav-text:link {text-decoration: none;}
+#login-nav-text:active {text-decoration: none;}
+#login-nav-text:visited {text-decoration: none;}
+#login-nav-button:link {text-decoration: none;}
+#login-nav-button:active {text-decoration: none;}
+#login-nav-button:visited {text-decoration: none;}
+
+#signup-nav-button {
+    font-family: 'Nunito';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FF5F5F;
+    width: 125px;
+    height: 45px;
+    border-radius: 999px;
+    transition: .5s;
+}
+
+#signup-nav-button:hover {
+    cursor: pointer;
+    background-color: #ff4545;
+}
+
+#signup-nav-text {
+    color: white;
+    font-weight: 700;
+}
+
+#signup-nav-text:link {text-decoration: none;}
+#signup-nav-text:active {text-decoration: none;}
+#signup-nav-text:visited {text-decoration: none;}
+
+.nav-bar-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+}
