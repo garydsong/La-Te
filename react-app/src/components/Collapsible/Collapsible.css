@@ -1,0 +1,20 @@
+.opened-div {
+    font-family: 'Nunito';
+    font-weight: 400;
+    transition: height 1s;
+}
+
+.toggle {
+    font-family: 'Nunito';
+    font-weight: 400;
+    transition: height 1s;
+}
+
+.collapse-button {
+    width: 500px;
+    height: 70px;
+    font-family: 'Nunito';
+    font-weight: 400;
+    border: black 2px solid;
+    border-radius: 10px;
+}

@@ -4,8 +4,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 #logo {
     width: 800px;
+}
+
+.bottom-about-la-te {
+    width: 500px;
 }
