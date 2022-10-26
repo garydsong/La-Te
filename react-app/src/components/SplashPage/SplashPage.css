@@ -12,7 +12,14 @@
 }
 
 .bottom-about-la-te {
-    width: 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: #eff1f3;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .top-splash-title {
@@ -364,4 +371,242 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.bottom-mid-splash-wrapper-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 1000px;
+    background-image: linear-gradient(to right, transparent, #fff7e8);
+}
+
+
+
+.bottom-mid-splash-wrapper-2 {
+    display: flex;
+    width: 100%;
+    height: 1000px;
+    background-image: white;
+}
+
+.bottom-mid-splash-wrapper-3 {
+    display: flex;
+    width: 100%;
+    height: 1000px;
+    background-image: linear-gradient(to right, transparent, #eff1f3);
+}
+
+.bottom-mid-splash-wrapper-4 {
+    display: flex;
+    width: 100%;
+    height: 1000px;
+    background-image: white;
+}
+
+
+.bot-splash-wrapper-1{
+    display:flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.bot-splash-desc-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 540px;
+    height: 400px;
+
+}
+
+.bot-splash-wrapper-2{
+    display:flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.bot-splash-desc-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 540px;
+    height: 440px;
+}
+
+.bot-splash-wrapper-3{
+    display:flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+.bot-splash-desc-3 {
+    width: 540px;
+    height: 500px;
+    background-color: white;
+}
+
+
+.bot-splash-wrapper-4{
+    display:flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.bot-splash-desc-4 {
+    width: 540px;
+    height: 500px;
+    background-color: white;
+}
+
+.bot-desc-title-1 {
+    font-weight: 800;
+    font-size: 32px;
+}
+
+.bot-desc-sub-1 {
+    color: #434b57;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bot-desc-para-1 {
+    color: #434b57;
+    opacity: .8;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.bot-desc-button-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FF5F5F;
+    color: white;
+    height: 55px;
+    border-radius: 999px;
+    transition: .5s;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.bot-desc-button-1:hover {
+    cursor: pointer;
+    background-color: #ff4545;
+}
+
+.bot-desc-title-2 {
+    font-weight: 800;
+    font-size: 32px;
+}
+
+.bot-desc-sub-2 {
+    color: #434b57;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.bot-desc-para-2 {
+    color: #434b57;
+    opacity: .8;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.bot-desc-button-2 {
+    display: flex;
+    color: white;
+    height: 140px;
+    transition: .5s;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+
+}
+
+.bot-desc-button-liner {
+    background-color: #f2f4f9;
+    height: 100%;
+    width: 5px;
+    margin-right: 20px;
+}
+
+.bot-desc-button-2-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.bot-desc-button-2:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+.pfp-desc-holder-1 {
+    display: flex;
+    color: #434b57;
+    opacity: .8;
+    font-weight: 400;
+}
+
+.pfp-desc-title-1 {
+    margin-left: 20px;
+}
+
+#pfp1 {
+    height: 50px;
+    border-radius: 999px;
+    border: white 5px solid;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.visit-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: #F7F7F7;
+    font-size: 16px;
+    height: 45px;
+    width: 115px;
+    border-radius: 999px;
+}
+
+
+.collapse-button button {
+    display: flex;
+    padding-left: 20px;
+    align-items: center;
+    font-family: 'Nunito';
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    width: 920px;
+    height: 60px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border: transparent;
+    background-color: white;
+    border-radius: 20px;
+    transition: all .2s ease-in-out;
+}
+
+.collapse-button button:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#plus-icon {
+    height: 15px;
+    margin-right: 15px;
+    filter: invert(45%) sepia(86%) saturate(1286%) hue-rotate(325deg) brightness(102%) contrast(97%);
 }
