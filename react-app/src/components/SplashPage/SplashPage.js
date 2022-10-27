@@ -363,6 +363,26 @@ function SplashPage() {
                     </div>
                 </div>
 
+                <div className="top-splash-floating-content-1">
+                    <img id="top-icon" src={coin} />
+                    Donations
+                </div>
+
+                <div className="top-splash-floating-content-2">
+                    <img id="top-icon" src={puzzle} />
+                    Integration
+                </div>
+
+                <div className="top-splash-floating-content-3">
+                    <img id="top-icon" src={pic} />
+                    Daily Posts
+                </div>
+
+                <div className="top-splash-floating-content-4">
+                    <img id="top-icon" src={ok} />
+                    Interactions
+                </div>
+
                 <img className="top-splash-background-img" src="https://storage.ko-fi.com/cdn/landing_assets/kofi_heroimg.png" />
                 <div className="bottom-about-la-te">
                     <Collapsible id="wat-test" label="What is La-Té?">
