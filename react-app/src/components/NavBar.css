@@ -76,3 +76,22 @@
     width: 200px;
     height: 100%;
 }
+
+.logged-in-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    height: 60px;
+}
+
+#nav-bar-avatar {
+    height: 40px;
+    width: 40px;
+    border-radius: 9999px;
+    object-fit: cover;
+}
+
+#nav-bar-dropdown {
+    height: 30px;
+}

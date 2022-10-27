@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import logo from '../assets/la-te.png'
+import menu from '../assets/icons/menu-icon.svg'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
@@ -13,14 +14,19 @@ const NavBar = () => {
   if (sessionUser) {
     sessionLinks = (
       <div className='nav-bar-wrapper'>
+        <NavLink to='/'>
         <img id="nav-bar-logo" src={logo} />
+        </NavLink>
+        <div className="logged-in-buttons">
         <div>
-          <LogoutButton />
+          <NavLink to={`/users/${sessionUser.id}`} exact={true} activeClassName='active'>
+            <img id="nav-bar-avatar" src={sessionUser.avatar}/>
+          </NavLink>
         </div>
         <div>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
-          </NavLink>
+          <img id="nav-bar-dropdown" src={menu} />
+          {/* <LogoutButton /> */}
+        </div>
         </div>
       </div>
     )
