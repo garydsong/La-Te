@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import logo from "../../assets/la-te.png"
 import './SplashPage.css'
 import Collapsible from "../Collapsible/Collapsible";
@@ -23,6 +24,25 @@ import { NavLink } from "react-router-dom";
 
 
 function SplashPage() {
+    const sessionUser = useSelector(state => state.session.user)
+
+    let sessionLinks
+    if (sessionUser) {
+        sessionLinks = (
+            <>
+                <div className="la-te-url-input">la-te.com/</div>
+                <input placeholder={sessionUser.username} className="input-claim"></input>
+            </>
+        )
+    } else {
+        sessionLinks = (
+            <>
+                <div className="la-te-url-input">la-te.com/</div>
+                <input className="input-claim"></input>
+            </>
+        )
+    }
+
     return (
         <>
             <div className='starting-div'>
@@ -33,8 +53,9 @@ function SplashPage() {
                 </div>
                 <div className="top-splash-input-signup">
                     <div className="la-te-url-grouper">
-                        <div className="la-te-url-input">la-te.com/</div>
-                        <input className="input-claim"></input>
+                        {/* <div className="la-te-url-input">la-te.com/</div>
+                        <input className="input-claim"></input> */}
+                        {sessionLinks}
                     </div>
                     <NavLink id="link" to="/sign-up">
                         <div className="claim-button-input">Claim</div>
@@ -183,7 +204,7 @@ function SplashPage() {
                                 <div className="bot-desc-button-2-content">
                                     <div className="pfp-desc-holder-1">
                                         <img id="pfp1" src={pfp2} />
-                                        <div className="pfp-desc-title-1"><b>TASKMAN</b> offers members digital downloads, Discord access and a monthly envelope of goodies!</div>
+                                        <div className="pfp-desc-title-1"><b>TASKMAN</b> offers members task services. You got a task? He's on the case!</div>
                                     </div>
                                     <div className="visit-button">
                                         Visit
@@ -220,7 +241,7 @@ function SplashPage() {
                                 <div className="bot-desc-button-2-content">
                                     <div className="pfp-desc-holder-1">
                                         <img id="pfp1" src={pfp3} />
-                                        <div className="pfp-desc-title-1"><b>wittosamywamy</b> offers members digital downloads, Discord access and a monthly envelope of goodies!</div>
+                                        <div className="pfp-desc-title-1"><b>wittosamywamy</b> offers members eternal love and devotion!</div>
                                     </div>
                                     <div className="visit-button">
                                         Visit
