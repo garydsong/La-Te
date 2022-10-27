@@ -41,7 +41,7 @@ function SplashPage() {
                     </NavLink>
                 </div>
 
-                <div className="top-splash-below-input">$6 million earned on La-Te last month!</div>
+                <div className="top-splash-below-input">$6 million earned on La-Té last month!</div>
 
                 <div className="whitespace"></div>
                 <div className="whitespace"></div>
@@ -52,14 +52,16 @@ function SplashPage() {
                     <div className="under-splash-title-container">
                         <div className="under-splash-title">We Take 0% of Your Donations</div>
                         <div className="under-splash-paragraph">
-                            Unlike other platforms, we don't take a fee on each donation. Keep more of your money with La-Te.
+                            Unlike other platforms, we don't take a fee on each donation. Keep more of your money with La-Té.
                         </div>
                         <div className="under-splash-earned">
                             Over $150 Million earned so far!
                         </div>
-                        <div className="under-splash-get-started">
-                            Get Started
-                        </div>
+                        <NavLink id="link" to="/sign-up">
+                            <div className="under-splash-get-started">
+                                Get Started
+                            </div>
+                        </NavLink>
                     </div>
                 </div>
 
@@ -68,7 +70,7 @@ function SplashPage() {
                 </div>
 
                 <div className="mid-under-splash-wrapper">
-                    <div className="mid-under-splash-title">1,000,000 Creators Love La-Te</div>
+                    <div className="mid-under-splash-title">1,000,000 Creators Love La-Té</div>
                     <div className="mid-under-splash-paragraph">
                         <div className="mid-under-splash-buttons-1">Artists</div>
                         <div className="mid-under-splash-buttons-2">Cosplayers</div>
@@ -89,14 +91,15 @@ function SplashPage() {
                     <div className='top-splash-page-wrapper'>
                         <br></br>
                         <div className='top-splash-title'>Everything in One Place</div>
-                        <div className='top-splash-paragraph'>Start accepting donations in just 60 seconds. Grow your income by opening your La-Te page.</div>
+                        <div className='top-splash-paragraph'>Start accepting donations in just 60 seconds. Grow your income by opening your La-Té page.</div>
                     </div>
                     <div className="top-splash-input-signup">
                         <div className="la-te-url-grouper">
                             <div className="la-te-url-input">la-te.com/</div>
                             <input className="input-claim"></input>
                         </div>
-                        <div className="claim-button-input">Claim</div>
+                        <NavLink id="link" to="/sign-up">
+                            <div className="claim-button-input">Claim</div></NavLink>
                     </div>
                 </div>
 
@@ -110,12 +113,13 @@ function SplashPage() {
                                 0% Platform Fees
                             </div>
                             <div className="bot-desc-para-1">
-                                La-Te is the original, fun and friendly way to receive donations and messages of support from fans of what you do!
+                                La-Té is the original, fun and friendly way to receive donations and messages of support from fans of what you do!
                             </div>
                             <div className="bot-desc-para-1">
                                 Use it as a tip jar, let fans crowdfund a goal and even get donation alerts while you stream.
                             </div>
                             <div></div><div></div>
+
                             <div className="bot-desc-button-1">Get Started</div>
                         </div>
                         <img src="https://storage.ko-fi.com/cdn/landing_assets/kofi_donation.png" />
@@ -204,7 +208,7 @@ function SplashPage() {
                                 Share your gift with the world!
                             </div>
                             <div className="bot-desc-para-2">
-                                Open your La-Te Shop and add digital or physical items in seconds.
+                                Open your La-Té Shop and add digital or physical items in seconds.
                             </div>
                             <div className="bot-desc-para-2">
                                 No listing fees, no site to set up. Just share a link and start making sales!
@@ -230,7 +234,7 @@ function SplashPage() {
 
                 <div className="all-the-feats-wrapper">
                     <div id="feat-title">All the Features You Need</div>
-                    <div id="feat-para">La-Te has everything you need to make an income from your work.</div>
+                    <div id="feat-para">La-Té has everything you need to make an income from your work.</div>
                     <div id="feat-link">Let's Get Started</div>
                 </div>
 
@@ -312,7 +316,7 @@ function SplashPage() {
                                 Membership Tiers
                             </div>
                             <div className="bottom-grid-card-para">
-                                Let fans support you monthly with La-Te Memberships.
+                                Let fans support you monthly with La-Té Memberships.
                             </div>
                         </div>
 
@@ -357,6 +361,26 @@ function SplashPage() {
                         </div>
 
                     </div>
+                </div>
+
+                <div className="top-splash-floating-content-1">
+                    <img id="top-icon" src={coin} />
+                    Donations
+                </div>
+
+                <div className="top-splash-floating-content-2">
+                    <img id="top-icon" src={puzzle} />
+                    Integration
+                </div>
+
+                <div className="top-splash-floating-content-3">
+                    <img id="top-icon" src={pic} />
+                    Daily Posts
+                </div>
+
+                <div className="top-splash-floating-content-4">
+                    <img id="top-icon" src={ok} />
+                    Interactions
                 </div>
 
                 <img className="top-splash-background-img" src="https://storage.ko-fi.com/cdn/landing_assets/kofi_heroimg.png" />

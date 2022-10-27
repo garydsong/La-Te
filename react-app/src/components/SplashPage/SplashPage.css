@@ -7,10 +7,21 @@
     flex-direction: column;
 }
 
-#link:active {text-decoration: none;}
-#link:focus {text-decoration: none;}
-#link:visited {text-decoration: none;}
-#link:link {text-decoration: none;}
+#link:active {
+    text-decoration: none;
+}
+
+#link:focus {
+    text-decoration: none;
+}
+
+#link:visited {
+    text-decoration: none;
+}
+
+#link:link {
+    text-decoration: none;
+}
 
 #logo {
     width: 800px;
@@ -60,6 +71,166 @@
     position: absolute;
     z-index: -1;
     top: 100px;
+}
+
+.top-splash-floating-content-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(000, 000, 000, 0.7);
+    width: 130px;
+    font-weight: 800;
+    font-size: 20px;
+    background-color: #f7eedf;
+    position: absolute;
+    top: 500px;
+    left: 200px;
+    animation-name: floating;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+    border-left: 10px #f7eedf solid;
+    border-right: 10px #f7eedf solid;
+    border-top: 8px #f7eedf solid;
+    border-bottom: 8px white solid;
+    border-radius: 20px;
+}
+
+.top-splash-floating-content-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(000, 000, 000, 0.7);
+    width: 130px;
+    font-weight: 800;
+    font-size: 20px;
+    background-color: #f7eedf;
+    position: absolute;
+    top: 600px;
+    left: 480px;
+    animation-name: floating2;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+    border-left: 10px #f7eedf solid;
+    border-right: 10px #f7eedf solid;
+    border-top: 8px #f7eedf solid;
+    border-bottom: 8px white solid;
+    border-radius: 20px;
+}
+
+.top-splash-floating-content-3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(000, 000, 000, 0.7);
+    width: 130px;
+    font-weight: 800;
+    font-size: 20px;
+    background-color: #f7eedf;
+    position: absolute;
+    top: 600px;
+    right: 480px;
+    animation-name: floating3;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+    border-left: 10px #f7eedf solid;
+    border-right: 10px #f7eedf solid;
+    border-top: 8px #f7eedf solid;
+    border-bottom: 8px white solid;
+    border-radius: 20px;
+}
+
+.top-splash-floating-content-4 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(000, 000, 000, 0.7);
+    width: 130px;
+    font-weight: 800;
+    font-size: 20px;
+    background-color: #f7eedf;
+    position: absolute;
+    top: 460px;
+    right: 280px;
+    animation-name: floating4;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+    border-left: 10px #f7eedf solid;
+    border-right: 10px #f7eedf solid;
+    border-top: 8px #f7eedf solid;
+    border-bottom: 8px white solid;
+    border-radius: 20px;
+}
+
+#top-icon {
+    height: 20px;
+}
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(15px, 15px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
+}
+
+@keyframes floating2 {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(3px, 10px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
+}
+
+@keyframes floating3 {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 17px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
+}
+
+@keyframes floating4 {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(-9px, 9px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
 }
 
 .la-te-url-input {
