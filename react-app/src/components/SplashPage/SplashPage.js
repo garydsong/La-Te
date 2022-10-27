@@ -18,6 +18,7 @@ import star from "../../assets/icons/star-icon.svg"
 import target from "../../assets/icons/target-icon.svg"
 import tier from "../../assets/icons/tier-icon.svg"
 import webpage from "../../assets/icons/webpage-icon.svg"
+import Footer from "../Footer/Footer";
 
 
 function SplashPage() {
@@ -413,6 +414,7 @@ function SplashPage() {
                     </Collapsible>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
