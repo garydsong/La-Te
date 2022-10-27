@@ -18,6 +18,7 @@
     height: 60px;
 }
 
+
 #nav-bar-logo {
     height: 40px;
 }
@@ -81,17 +82,130 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100px;
+    width: 180px;
     height: 60px;
 }
 
 #nav-bar-avatar {
-    height: 40px;
-    width: 40px;
+    height: 24px;
+    width: 24px;
     border-radius: 9999px;
     object-fit: cover;
 }
 
 #nav-bar-dropdown {
     height: 30px;
+    transition: 1s;
 }
+
+#nav-bar-dropdown:hover {
+    cursor: pointer;
+    filter: invert(60%) sepia(33%) saturate(7462%) hue-rotate(326deg) brightness(108%) contrast(109%);
+}
+
+#dropdown-parent-container {
+    position: relative;
+  }
+
+  #dropdown-upper-div {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+    position: absolute;
+    background-color: white;
+    padding: 10px 10px;
+    border-radius: 4px;
+    top: 10px;
+    right: 0px;
+    width: 240px;
+    box-shadow: 0px 2px 15px rgba(51, 51, 51, 0.4);
+  }
+
+  .dropdown-links:hover {
+    background-color: rgb(231, 231, 231);
+    cursor: pointer;
+  }
+
+
+
+  .dropdown-links {
+    padding: 10px 10px 10px 15px;
+    /* display: block; */
+  }
+
+  .dropdown-button {
+    display: block;
+  }
+
+  #dropdown-sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    padding: 5px 10px;
+    border-bottom: 1px lightgray solid;
+  }
+
+  .dropdown-text-rows {
+    padding: 0px 0px 10px 5px;
+    overflow: ellipsis;
+  }
+  .dropdown-top-sections{
+    padding: 5px 5px;
+  }
+  .dropdown-email {
+    padding-top: 10px;
+  }
+
+  .dropdown-about-me{
+    border: none;
+    background-color: white;
+    text-align: left;
+    font-size: 16px;
+
+  }
+
+  .dropdown-about-me:hover{
+    background-color: rgb(231, 231, 231);
+
+  }
+
+  .dropdown-about-me{
+    padding-top: 10px;
+  }
+
+  #dropdown-links-container {
+    padding-top: 10px;
+  }
+
+  #icon-img-business-navbar {
+    height: 15px;
+  }
+
+  .your-page-button {
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100px;
+    height: 35px;
+    font-weight: 700;
+    color: black;
+    background-color: #f7f7f7;
+    border-radius: 999px;
+    transition: .5s;
+  }
+
+  .your-page-button:hover {
+    background-color: #dfdfdf;
+  }
+
+  #your-page-text-dec:active {text-decoration: none;}
+  #your-page-text-dec:link {text-decoration: none;}
+  #your-page-text-dec:focus {text-decoration: none;}
+
+  .your-page {
+    font-size: 14px;
+  }
