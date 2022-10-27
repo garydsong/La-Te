@@ -19,6 +19,7 @@ import target from "../../assets/icons/target-icon.svg"
 import tier from "../../assets/icons/tier-icon.svg"
 import webpage from "../../assets/icons/webpage-icon.svg"
 import Footer from "../Footer/Footer";
+import { NavLink } from "react-router-dom";
 
 
 function SplashPage() {
@@ -35,10 +36,12 @@ function SplashPage() {
                         <div className="la-te-url-input">la-te.com/</div>
                         <input className="input-claim"></input>
                     </div>
-                    <div className="claim-button-input">Claim</div>
+                    <NavLink id="link" to="/sign-up">
+                        <div className="claim-button-input">Claim</div>
+                    </NavLink>
                 </div>
 
-                <div className="top-splash-below-input">$6 million earned on Ko-fi last month!</div>
+                <div className="top-splash-below-input">$6 million earned on La-Te last month!</div>
 
                 <div className="whitespace"></div>
                 <div className="whitespace"></div>
@@ -65,7 +68,7 @@ function SplashPage() {
                 </div>
 
                 <div className="mid-under-splash-wrapper">
-                    <div className="mid-under-splash-title">1,000,000 Creators Love Ko-fi</div>
+                    <div className="mid-under-splash-title">1,000,000 Creators Love La-Te</div>
                     <div className="mid-under-splash-paragraph">
                         <div className="mid-under-splash-buttons-1">Artists</div>
                         <div className="mid-under-splash-buttons-2">Cosplayers</div>
@@ -79,7 +82,8 @@ function SplashPage() {
                 </div>
 
                 <div className="testimonial-wrapper">
-
+                    <img id="testimonial-img" src="https://storage.ko-fi.com/cdn/landing_assets/testimonails_bg-min.png"></img>
+                    {/* <div className="testimonial-content"></div> */}
                 </div>
                 <div className="under-testimonial-wrapper">
                     <div className='top-splash-page-wrapper'>
@@ -200,7 +204,7 @@ function SplashPage() {
                                 Share your gift with the world!
                             </div>
                             <div className="bot-desc-para-2">
-                                Open your Ko-fi Shop and add digital or physical items in seconds.
+                                Open your La-Te Shop and add digital or physical items in seconds.
                             </div>
                             <div className="bot-desc-para-2">
                                 No listing fees, no site to set up. Just share a link and start making sales!
@@ -226,7 +230,7 @@ function SplashPage() {
 
                 <div className="all-the-feats-wrapper">
                     <div id="feat-title">All the Features You Need</div>
-                    <div id="feat-para">Ko-fi has everything you need to make an income from your work.</div>
+                    <div id="feat-para">La-Te has everything you need to make an income from your work.</div>
                     <div id="feat-link">Let's Get Started</div>
                 </div>
 
@@ -308,7 +312,7 @@ function SplashPage() {
                                 Membership Tiers
                             </div>
                             <div className="bottom-grid-card-para">
-                                Let fans support you monthly with Ko-fi Memberships.
+                                Let fans support you monthly with La-Te Memberships.
                             </div>
                         </div>
 

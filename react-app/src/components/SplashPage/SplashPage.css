@@ -7,6 +7,11 @@
     flex-direction: column;
 }
 
+#link:active {text-decoration: none;}
+#link:focus {text-decoration: none;}
+#link:visited {text-decoration: none;}
+#link:link {text-decoration: none;}
+
 #logo {
     width: 800px;
 }
@@ -360,10 +365,22 @@
 }
 
 .testimonial-wrapper {
+    display: flex;
+    justify-content: center;
     width: 100%;
     height: 500px;
     background-color: #f7eee0;
 }
+
+#testimonial-img {
+    height: 500px;
+}
+
+/* .testimonial-content {
+    position: ;
+    width: 400px;
+    height: 200px;
+} */
 
 .under-testimonial-wrapper {
     width: 100%;
