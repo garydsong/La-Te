@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import './User.css'
 import website from "../assets/icons/website-icon.svg"
@@ -7,10 +8,15 @@ import blog from "../assets/icons/blog-icon.svg"
 import video from "../assets/icons/video-icon.svg"
 import photo from "../assets/icons/photo-icon.svg"
 import triangle from "../assets/icons/triangle-icon.svg"
+import { getAllPostsThunk } from '../store/post';
 
 function User() {
   const [user, setUser] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
   const { userId } = useParams();
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.session.user)
+
 
   useEffect(() => {
     if (!userId) {
@@ -23,11 +29,22 @@ function User() {
     })();
   }, [userId]);
 
+
+  useEffect(() => {
+    dispatch(getAllPostsThunk())
+    .then(() => { setIsLoaded(true)})
+  }, [])
+
+  const posts = useSelector(state => state.postReducer.allPosts.undefined)
+  // const userPosts = Object.values(posts).filter(post => post.user_id===currentUser.id)
+
+  console.log('all posts', posts)
+
   if (!user) {
     return null;
   }
 
-  return (
+  return isLoaded && (
     <>
       <div className="user-page-wrapper">
         <div className="gradient-top-user-page"></div>
@@ -81,8 +98,28 @@ function User() {
                     <div className="post-tag">consider posting</div>
                   </div>
                 </div>
-
-
+<>
+                {Object.values(posts).map(post => {
+                  if (post.user_id === currentUser.id) return (
+                <div className="post-wrapper">
+                  <div className="post-ava-username">
+                    <img id="post-user-pfp" src={user.avatar} />
+                    <div className="post-user-username">{user.username}</div>
+                  </div>
+                  <div className="post-container">
+                    <img id="post-bubble-tri" src={triangle} />
+                    <div className="post-content-wrapper">
+                      <img className="post-image" src={post.post_img}/>
+                      <div className="post-text">
+                        {post.post}
+                      </div>
+                      <div className="post-comment-count">5 comments</div>
+                    </div>
+                  </div>
+                </div>
+                  )
+                })}
+                </>
                 <div className="post-wrapper">
                   <div className="post-ava-username">
                     <img id="post-user-pfp" src={user.avatar} />

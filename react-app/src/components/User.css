@@ -79,7 +79,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 700px;
+    /* height: 700px; */
     margin-top: 180px;
 }
 
@@ -99,7 +99,7 @@
     display: flex;
     flex-direction: column;
     width: 400px;
-    height: 1600px;
+    /* height: 1600px; */
 }
 
 .user-page-mid-about {
@@ -119,7 +119,6 @@
     display: flex;
     flex-direction: column;
     width: 530px;
-    height: 1500px;
     border-radius: 20px;
 }
 
@@ -236,7 +235,7 @@
 
 .post-wrapper {
     width: 100%;
-    height: 600px;
+    /* height: 600px; */
     margin-top: 20px;
     margin-bottom: 20px;
 }

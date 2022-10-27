@@ -168,6 +168,7 @@ def create_post():
     post = Post(
       post = form.post.data,
       post_img = form.post_img.data,
+      user_id = current_user.id
     )
     db.session.add(post)
     db.session.commit()

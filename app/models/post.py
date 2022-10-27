@@ -24,7 +24,5 @@ class Post(db.Model):
             'post_img': self.post_img,
             'created_at': self.created_at,
             'update_at': self.updated_at,
-            'user_id': self.user_id,
-            'comment_id': self.comment_id,
-            'reaction_id':  self.reaction_id
+            'user_id': self.user_id
         }
