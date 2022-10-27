@@ -5,7 +5,19 @@ import Collapsible from "../Collapsible/Collapsible";
 import pfp from "../../assets/pfp/pfp1.jpg"
 import pfp2 from "../../assets/pfp/pfp2.png"
 import pfp3 from "../../assets/pfp/pfp3.png"
-import plus from "../../assets/icons/plus-icon.svg"
+import alert from "../../assets/icons/alert-icon.svg"
+import coin from "../../assets/icons/coin-icon.svg"
+import envelope from "../../assets/icons/envelope-icon.svg"
+import goal from "../../assets/icons/goal-icon.svg"
+import lock from "../../assets/icons/lock-icon.svg"
+import ok from "../../assets/icons/ok-icon.svg"
+import pic from "../../assets/icons/pic-icon.svg"
+import puzzle from "../../assets/icons/puzzle-icon.svg"
+import shop from "../../assets/icons/shop-icon.svg"
+import star from "../../assets/icons/star-icon.svg"
+import target from "../../assets/icons/target-icon.svg"
+import tier from "../../assets/icons/tier-icon.svg"
+import webpage from "../../assets/icons/webpage-icon.svg"
 
 
 function SplashPage() {
@@ -187,10 +199,10 @@ function SplashPage() {
                                 Share your gift with the world!
                             </div>
                             <div className="bot-desc-para-2">
-                            Open your Ko-fi Shop and add digital or physical items in seconds.
+                                Open your Ko-fi Shop and add digital or physical items in seconds.
                             </div>
                             <div className="bot-desc-para-2">
-                            No listing fees, no site to set up. Just share a link and start making sales!
+                                No listing fees, no site to set up. Just share a link and start making sales!
                             </div>
 
                             <div className="bot-desc-button-2">
@@ -211,12 +223,143 @@ function SplashPage() {
                     </div>
                 </div>
 
+                <div className="all-the-feats-wrapper">
+                    <div id="feat-title">All the Features You Need</div>
+                    <div id="feat-para">Ko-fi has everything you need to make an income from your work.</div>
+                    <div id="feat-link">Let's Get Started</div>
+                </div>
+
+                <div className="bottom-grid-wrapper">
+                    <div className="bottom-grid">
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={coin} />
+                            <div className="bottom-grid-card-title">
+                                Get Paid Directly
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                0% platform fees. Donations go directly to your PayPal or Stripe account.
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={envelope} />
+                            <div className="bottom-grid-card-title">
+                                Messages of Support
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Receive messages of encouragement from your supporters.
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={alert} />
+                            <div className="bottom-grid-card-title">
+                                Stream Alerts
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Get donation messages while you stream on Twitch, YouTube & Facebook.
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={goal} />
+                            <div className="bottom-grid-card-title">
+                                Goals
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Set a crowdfunding goal and encourage fans to contribute to achieve it!
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={webpage} />
+                            <div className="bottom-grid-card-title">
+                                Posts
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Share your creative journey with blog posts, videos and audio clips.
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={star} />
+                            <div className="bottom-grid-card-title">
+                                Rewards
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Let supporters unlock exclusive posts, Discord roles, Member-only products and more.
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={ok} />
+                            <div className="bottom-grid-card-title">
+                                Commissions & Services
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Let fans buy unique work or pay for direct access to you.
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={tier} />
+                            <div className="bottom-grid-card-title">
+                                Membership Tiers
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Let fans support you monthly with Ko-fi Memberships.
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={lock} />
+                            <div className="bottom-grid-card-title">
+                                Supporter-Only Content
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Make exclusive content available to supporters or members.
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={puzzle} />
+                            <div className="bottom-grid-card-title">
+                                Integrations
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Connect to Discord, Zapier, WordPress and more
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={pic} />
+                            <div className="bottom-grid-card-title">
+                                Gallery
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Create a portfolio of your best work and share your creative process.
+                            </div>
+                        </div>
+
+                        <div className="bottom-grid-card">
+                            <img id="grid-icon" src={shop} />
+                            <div className="bottom-grid-card-title">
+                                Shop
+                            </div>
+                            <div className="bottom-grid-card-para">
+                                Sell digital and physical products with just a link.
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
                 <img className="top-splash-background-img" src="https://storage.ko-fi.com/cdn/landing_assets/kofi_heroimg.png" />
                 <div className="bottom-about-la-te">
                     <Collapsible id="wat-test" label="What is La-Té?">
 
                         <p>
-                        
+
                             La-Té is the easiest way for you to start making an income directly from your fans. You can accept donations, create membership tiers, open an online shop, and take commissions all with 0-5% platform fees.
                         </p>
                     </Collapsible>
