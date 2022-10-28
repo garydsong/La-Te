@@ -55,7 +55,7 @@ def edit_post(id):
   form = PostForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
-    post.nope = form.nope.data
+    post.post_img = form.post_img.data
     post.post = form.post.data
 
     db.session.commit()

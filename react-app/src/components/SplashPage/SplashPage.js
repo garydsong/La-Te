@@ -26,19 +26,30 @@ import { NavLink } from "react-router-dom";
 function SplashPage() {
     const sessionUser = useSelector(state => state.session.user)
 
+
     let sessionLinks
     if (sessionUser) {
         sessionLinks = (
             <>
-                <div className="la-te-url-input">la-te.com/</div>
-                <input placeholder={sessionUser.username} className="input-claim"></input>
+                <div className="la-te-url-grouper">
+                    <div className="la-te-url-input">la-te.com/</div>
+                    <input placeholder={sessionUser.username} className="input-claim-2"></input>
+                </div>
+
+                    <div className="claim-button-input-2">That's you!</div>
+
             </>
         )
     } else {
         sessionLinks = (
             <>
-                <div className="la-te-url-input">la-te.com/</div>
-                <input className="input-claim"></input>
+                <div className="la-te-url-grouper">
+                    <div className="la-te-url-input">la-te.com/</div>
+                    <input className="input-claim"></input>
+                </div>
+                <NavLink id="link" to="/sign-up">
+                    <div className="claim-button-input">Claim</div>
+                </NavLink>
             </>
         )
     }
@@ -52,14 +63,14 @@ function SplashPage() {
                     <div className='top-splash-paragraph'>The all-in-one place to accept donations, memberships and sales from your fans!</div>
                 </div>
                 <div className="top-splash-input-signup">
-                    <div className="la-te-url-grouper">
+                    {/* <div className="la-te-url-grouper"> */}
                         {/* <div className="la-te-url-input">la-te.com/</div>
                         <input className="input-claim"></input> */}
                         {sessionLinks}
-                    </div>
+                    {/* </div>
                     <NavLink id="link" to="/sign-up">
                         <div className="claim-button-input">Claim</div>
-                    </NavLink>
+                    </NavLink> */}
                 </div>
 
                 <div className="top-splash-below-input">$6 million earned on La-Té last month!</div>
