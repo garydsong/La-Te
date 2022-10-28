@@ -76,13 +76,13 @@ export const getAllPostsThunk = () => async (dispatch) => {
     return
   }
 
-  export const createBusinessThunk = (business) => async (dispatch) => {
-    const response = await fetch("/api/businesses/", {
+  export const createPostThunk = (post) => async (dispatch) => {
+    const response = await fetch("/api/posts/", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(business)
+      body: JSON.stringify(post)
     });
 
     if (response.ok) {

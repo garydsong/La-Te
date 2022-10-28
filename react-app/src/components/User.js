@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import './User.css'
 import website from "../assets/icons/website-icon.svg"
 import audio from "../assets/icons/audio-icon.svg"
@@ -8,7 +8,7 @@ import blog from "../assets/icons/blog-icon.svg"
 import video from "../assets/icons/video-icon.svg"
 import photo from "../assets/icons/photo-icon.svg"
 import x from "../assets/icons/x-icon.svg"
-import { getAllPostsThunk } from '../store/post';
+import { createPostThunk, getAllPostsThunk } from '../store/post';
 import { Modal } from './context/Modal';
 
 function User() {
@@ -20,7 +20,32 @@ function User() {
   const [showModal, setShowModal] = useState(false);
   const [postImage, setPostImage] = useState('');
   const [postText, setPostText] = useState('');
+  const history = useHistory();
 
+
+  const posts = useSelector(state => state?.postReducer?.allPosts?.undefined)
+  // const userPosts = Object.values(posts).filter(post => post.user_id===currentUser.id)
+
+
+
+  console.log('all posts', posts)
+  console.log('showmodal', showModal)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const post = {
+      post: postText,
+      post_img: postImage
+    }
+
+    let createdPost = await dispatch(createPostThunk(post))
+
+    if (createdPost) {
+      setShowModal(false)
+      history.push(`/users/${userId}`)
+    }
+  }
 
   useEffect(() => {
     if (!userId) {
@@ -31,19 +56,17 @@ function User() {
       const user = await response.json();
       setUser(user);
     })();
-  }, [userId, showModal]);
+  }, [dispatch, userId, showModal, posts]);
 
 
   useEffect(() => {
     dispatch(getAllPostsThunk())
       .then(() => { setIsLoaded(true) })
-  }, [])
+  }, [dispatch, userId, showModal, posts])
 
-  const posts = useSelector(state => state.postReducer.allPosts.undefined)
-  // const userPosts = Object.values(posts).filter(post => post.user_id===currentUser.id)
 
-  console.log('all posts', posts)
-  console.log('showmodal', showModal)
+
+
 
   if (!user) {
     return null;
@@ -57,32 +80,35 @@ function User() {
           <div id="close-modal" onClick={() => setShowModal(false)}><img id="close-modal-icon" src={x} alt='close icon' />
           </div>
           <div className="post-modal-wrapper">
-            <div className="post-modal-ava-post-container">
-              <img id="modal-avatar" src={user.avatar} />
-              <textarea
-                id="post-text-input"
-                type='text'
-                name='post'
-                placeholder='Keep us posted'
-                onChange={((e) => setPostText(e.target.value))}
-                value={postText}
-              ></textarea>
-            </div>
-            <div className="post-modal-img-url-container">
-              <input
-                id="post-img-input"
-                name='post-img'
-                type='text'
-                placeholder='Image URL'
-                value={postImage}
-                onChange={((e) => setPostImage(e.target.value))}
-              />
-            </div>
-            <div className="post-modal-submit-container">
-              <div className="post-modal-submit-button">
-                Post
+            <form id="post-modal-form" onSubmit={handleSubmit}>
+              <div className="post-modal-ava-post-container">
+                <img id="modal-avatar" src={user.avatar} />
+                <textarea
+                  id="post-text-input"
+                  type='text'
+                  name='post'
+                  placeholder='Keep us posted'
+                  onChange={((e) => setPostText(e.target.value))}
+                  value={postText}
+                ></textarea>
               </div>
-            </div>
+              <div className="post-modal-img-url-container">
+                <input
+                  id="post-img-input"
+                  name='post-img'
+                  type='text'
+                  placeholder='Image URL'
+                  value={postImage}
+                  onChange={((e) => setPostImage(e.target.value))}
+                />
+              </div>
+              <div className="post-modal-submit-container">
+                <button className="post-modal-submit-button"
+                  type='submit'>
+                  Post
+                </button>
+              </div>
+            </form>
           </div>
         </Modal>
       )}

@@ -390,6 +390,7 @@
     font-weight: 700;
     color:#FF5F5F;
     transition: .5s;
+    border: transparent;
 }
 
 .post-modal-submit-button:hover {
