@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import SplashPage from './components/SplashPage/SplashPage';
 import { authenticate } from './store/session';
+import EditPost from './components/EditPost/EditPost';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -37,6 +38,9 @@ function App() {
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/users/posts/:postId'>
+          <EditPost />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

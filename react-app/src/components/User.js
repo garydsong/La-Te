@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
 import './User.css'
 import website from "../assets/icons/website-icon.svg"
 import audio from "../assets/icons/audio-icon.svg"
@@ -176,7 +176,7 @@ function User() {
                   </div>
                 </div>
                 <>
-                  {Object.values(userPosts).map(post => {
+                  {Object.values(userPosts).map((post, i) => {
                     return (
                       <div className="post-wrapper">
                         <div className="post-ava-username">
@@ -204,7 +204,9 @@ function User() {
                                   }}
 
                                   <img id="delete-icons" onClick={deletePostHandler}src={deleted} />
+                                  <NavLink to={`/users/posts/${post.id}`}>
                                   <img id="edit-icons" src={edit} />
+                                  </NavLink>
                                 </div>
                               )}
                             </div>
