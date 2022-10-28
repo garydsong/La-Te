@@ -291,12 +291,17 @@
 }
 
 .post-comment-count {
+    display: flex;
+    justify-content: space-between;
     margin-top: 30px;
-    transition: .5s;
-    width: 120px;
+    width: 100%;
 }
 
-.post-comment-count:hover {
+.comment-counter {
+    transition: .5s;
+}
+
+.comment-counter:hover {
     cursor: pointer;
     color: #E55E5E;
 }
@@ -400,4 +405,20 @@
 
 #post-modal-form {
     height: 100%;
+}
+
+
+#delete-icons {
+    height: 15px;
+    margin-right: 5px;
+    filter: invert(94%) sepia(8%) saturate(20%) hue-rotate(314deg) brightness(95%) contrast(80%);
+}
+
+#edit-icons {
+    height: 15px;
+    filter: invert(94%) sepia(8%) saturate(20%) hue-rotate(314deg) brightness(95%) contrast(80%);
+}
+
+.d-e-align {
+    margin-top: 2px;
 }

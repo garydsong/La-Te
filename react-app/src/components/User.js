@@ -7,6 +7,8 @@ import audio from "../assets/icons/audio-icon.svg"
 import blog from "../assets/icons/blog-icon.svg"
 import video from "../assets/icons/video-icon.svg"
 import photo from "../assets/icons/photo-icon.svg"
+import deleted from "../assets/icons/trash-icon.svg"
+import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
 import { createPostThunk, getAllPostsThunk } from '../store/post';
 import { Modal } from './context/Modal';
@@ -24,13 +26,16 @@ function User() {
 
 
   const posts = useSelector(state => state.postReducer.allPosts)
+  const singlePost = useSelector(state => state.postReducer.singlePost)
 
-  const userPosts = Object.values(posts).filter(post => post.user_id===currentUser.id)
+  const userPosts = Object.values(posts).filter(post => post.user_id===+userId)
 
 
 
-  console.log('all posts', userPosts)
-  console.log('showmodal', showModal)
+  console.log('user posts', userPosts)
+  console.log('all posts', posts)
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -63,7 +68,9 @@ function User() {
     dispatch(getAllPostsThunk())
       .then(() => { setIsLoaded(true) })
 
-  }, [dispatch, userPosts.length]);
+  }, [dispatch, userPosts.length, currentUser, singlePost]);
+
+
 
 
   // useEffect(() => {
@@ -182,7 +189,15 @@ function User() {
                             <div className="post-text">
                               {post.post}
                             </div>
-                            <div className="post-comment-count">5 comments</div>
+                            <div className="post-comment-count">
+                              <div className="comment-counter">5 comments</div>
+                              { +userId === currentUser.id && (
+                              <div className="d-e-align">
+                              <img id="delete-icons" src={deleted}/>
+                              <img id="edit-icons" src={edit}/>
+                              </div>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>
