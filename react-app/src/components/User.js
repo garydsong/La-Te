@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory, NavLink } from 'react-router-dom';
+import { useParams, useHistory, NavLink, Link } from 'react-router-dom';
 import './User.css'
 import website from "../assets/icons/website-icon.svg"
 import audio from "../assets/icons/audio-icon.svg"
@@ -19,10 +19,12 @@ function User() {
   const [showModal, setShowModal] = useState(false);
   const [postImage, setPostImage] = useState('');
   const [postText, setPostText] = useState('');
+  const [showMenu, setShowMenu] = useState(false);
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user)
+  const sessionUser = useSelector(state => state.session.user)
 
 
   const posts = useSelector(state => state.postReducer.allPosts)
@@ -35,7 +37,22 @@ function User() {
   console.log('user posts', userPosts)
   console.log('all posts', posts)
 
+  const openMenu = () => {
+    if (showMenu) return;
+    setShowMenu(true)
+  }
 
+  useEffect(() => {
+    if (!showMenu) return;
+
+    const closeMenu = () => {
+      setShowMenu(false);
+    };
+
+    document.addEventListener('click', closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -70,7 +87,27 @@ function User() {
 
   }, [dispatch, userPosts.length, currentUser, singlePost]);
 
+  const [someThang, setSomeThang] = useState(undefined)
+  const otherThang = (<div id="comment-fixed-container">
+  <div id="comment-fixed-upper-div">
+    <div>
+    <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
+    <div id="comment-fixed-sections">
+      <div className="dropdown-top-sections" id="profile-username">
+        comments go here
+      </div>
+    </div>
+    </div>
+    <div id="dropdown-links-container">
 
+      <div className="dropdown-links" id="comment-business-navbar">
+        <img id="leave-comment-session-user-ava"  src={sessionUser.avatar} />
+        <div>Comment textarea here</div>
+      </div>
+
+    </div>
+  </div>
+</div>)
 
 
   // useEffect(() => {
@@ -190,7 +227,12 @@ function User() {
                               {post.post}
                             </div>
                             <div className="post-comment-count">
-                              <div className="comment-counter">5 comments</div>
+                              <div className="comment-counter" onClick={() => {setSomeThang(post); openMenu()}}>5 comments</div>
+
+                              {showMenu &&
+                                otherThang
+                              }
+
                               {+userId === currentUser.id && (
                                 <div className="d-e-align">
 
@@ -203,9 +245,9 @@ function User() {
                                     }
                                   }}
 
-                                  <img id="delete-icons" onClick={deletePostHandler}src={deleted} />
+                                  <img id="delete-icons" onClick={deletePostHandler} src={deleted} />
                                   <NavLink to={`/users/posts/${post.id}`}>
-                                  <img id="edit-icons" src={edit} />
+                                    <img id="edit-icons" src={edit} />
                                   </NavLink>
                                 </div>
                               )}
