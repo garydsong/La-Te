@@ -273,14 +273,6 @@
     border-radius: 20px;
 }
 
-#post-bubble-tri {
-    position: absolute;
-    height: 20px;
-    margin-top: -253px;
-    margin-left: -210px;
-    filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(43deg) brightness(106%) contrast(101%);
-}
-
 .post-content-wrapper {
     width: 90%;
     height: 90%;
@@ -307,4 +299,100 @@
 .post-comment-count:hover {
     cursor: pointer;
     color: #E55E5E;
+}
+
+
+.post-modal-wrapper {
+    height: 80%;
+    width: 90%;
+}
+
+.post-modal-ava-post-container {
+    display: flex;
+    width: 100%;
+    height: 65%;
+
+}
+
+.post-modal-img-url-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height:17.5%;
+
+}
+
+#modal-avatar {
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 999px;
+}
+
+
+#post-text-input {
+    font-family: 'Nunito';
+    padding-top: 10px;
+    padding-left: 20px;
+    height: 245px;
+    width: 86%;
+    border-radius: 10px;
+    border: transparent;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+}
+
+#post-text-input::placeholder {
+    color: rgb(168, 199, 209);
+}
+
+#post-text-input:focus {
+    border: transparent;
+}
+#post-text-input:active {
+    border: transparent;
+}
+
+#post-img-input {
+    font-family: 'Nunito';
+    padding-left: 20px;
+    height: 45px;
+    width: 95%;
+    border: lightgray 2px solid;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+}
+
+#post-img-input::placeholder {
+    color: rgb(168, 199, 209);
+}
+
+
+.post-modal-submit-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    height:17.5%;
+}
+
+.post-modal-submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 50px;
+    background-color: #ffeeee;
+    border-radius: 10px;
+    font-weight: 700;
+    color:#FF5F5F;
+    transition: .5s;
+}
+
+.post-modal-submit-button:hover {
+    cursor: pointer;
+    background-color: #ffdada;
 }

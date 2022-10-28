@@ -239,6 +239,12 @@
     color: #5A5A5A;
 }
 
+.la-te-url-input:hover {
+    cursor: default;
+}
+
+
+
 .top-splash-input-signup {
     margin-top: 30px;
     margin-bottom: 30px;
@@ -273,6 +279,24 @@
     outline: none !important;
 }
 
+.input-claim-2 {
+    padding-left: 5px;
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    border: none;
+    color: gray;
+    pointer-events:none;
+}
+
+.input-claim-2:focus {
+    outline: none !important;
+}
+
+.input-claim-2:hover {
+    cursor: default;
+}
+
 
 .claim-button-input {
     display: flex;
@@ -291,6 +315,24 @@
 .claim-button-input:hover {
     cursor: pointer;
     background-color: #ff4545;
+}
+
+.claim-button-input-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 700;
+    width: 120px;
+    height: 55px;
+    color: white;
+    background-color: lightgray;
+    border-radius: 999px;
+    transition: .5s;
+}
+
+.claim-button-input-2:hover {
+    cursor: default;
 }
 
 .top-splash-below-input {
