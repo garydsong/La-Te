@@ -1,0 +1,44 @@
+.carousel {
+    width: 740px;
+    height: 400px;
+    background: rgba(201, 165, 118, 0.2);
+    direction: rtl;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .carousel.active {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+
+  .cWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .item {
+    background: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+  }
+
+  .item p {
+    position: relative;
+    top: -5px;
+    font-size: 5rem;
+    font-weight: bold;
+    color: black;
+    user-select: none;
+  }
+
+  .item:first-child { margin-right: 0px !important;}
+  .item:last-child { margin-left: 0px !important;}

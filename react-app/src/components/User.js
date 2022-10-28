@@ -1,37 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, NavLink } from 'react-router-dom';
 import './User.css'
 import website from "../assets/icons/website-icon.svg"
 import audio from "../assets/icons/audio-icon.svg"
 import blog from "../assets/icons/blog-icon.svg"
 import video from "../assets/icons/video-icon.svg"
 import photo from "../assets/icons/photo-icon.svg"
+import deleted from "../assets/icons/trash-icon.svg"
+import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
-import { createPostThunk, getAllPostsThunk } from '../store/post';
+import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
 import { Modal } from './context/Modal';
 
 function User() {
   const [user, setUser] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
-  const { userId } = useParams();
-  const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.session.user)
   const [showModal, setShowModal] = useState(false);
   const [postImage, setPostImage] = useState('');
   const [postText, setPostText] = useState('');
   const history = useHistory();
+  const { userId } = useParams();
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.session.user)
 
 
-  const posts = useSelector(state => state?.postReducer?.allPosts?.undefined)
-  // const userPosts = Object.values(posts).filter(post => post.user_id===currentUser.id)
+  const posts = useSelector(state => state.postReducer.allPosts)
+  const singlePost = useSelector(state => state.postReducer.singlePost)
 
+  const userPosts = Object.values(posts).filter(post => post.user_id === +userId)
 
+  let deletePostHandler;
 
+  console.log('user posts', userPosts)
   console.log('all posts', posts)
-  console.log('showmodal', showModal)
 
-  const handleSubmit = async (e) => {
+
+
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     const post = {
@@ -39,33 +45,37 @@ function User() {
       post_img: postImage
     }
 
-    let createdPost = await dispatch(createPostThunk(post))
+    let createdPost = dispatch(createPostThunk(post))
 
     if (createdPost) {
       setShowModal(false)
       history.push(`/users/${userId}`)
     }
+
   }
 
   useEffect(() => {
     if (!userId) {
       return;
     }
+
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
       setUser(user);
     })();
-  }, [dispatch, userId, showModal, posts]);
 
-
-  useEffect(() => {
     dispatch(getAllPostsThunk())
       .then(() => { setIsLoaded(true) })
-  }, [dispatch, userId, showModal, posts])
+
+  }, [dispatch, userPosts.length, currentUser, singlePost]);
 
 
 
+
+  // useEffect(() => {
+
+  // }, [])
 
 
   if (!user) {
@@ -166,8 +176,8 @@ function User() {
                   </div>
                 </div>
                 <>
-                  {Object.values(posts).map(post => {
-                    if (post.user_id === +userId) return (
+                  {Object.values(userPosts).map((post, i) => {
+                    return (
                       <div className="post-wrapper">
                         <div className="post-ava-username">
                           <img id="post-user-pfp" src={user.avatar} />
@@ -179,7 +189,27 @@ function User() {
                             <div className="post-text">
                               {post.post}
                             </div>
-                            <div className="post-comment-count">5 comments</div>
+                            <div className="post-comment-count">
+                              <div className="comment-counter">5 comments</div>
+                              {+userId === currentUser.id && (
+                                <div className="d-e-align">
+
+                                  {deletePostHandler = async () => {
+                                    if (window.confirm('Are you sure you want to delete your Post?')) {
+                                      await dispatch(deletePostThunk(post.id))
+                                      history.push(`/users/${userId}`)
+                                    } else {
+                                      history.push(`/users/${userId}`)
+                                    }
+                                  }}
+
+                                  <img id="delete-icons" onClick={deletePostHandler}src={deleted} />
+                                  <NavLink to={`/users/posts/${post.id}`}>
+                                  <img id="edit-icons" src={edit} />
+                                  </NavLink>
+                                </div>
+                              )}
+                            </div>
                           </div>
                         </div>
                       </div>

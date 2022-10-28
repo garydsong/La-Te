@@ -15,8 +15,8 @@ function Footer() {
                             </div>
                             <p>Donations</p>
                             <p>Memberships</p>
-                            <p>La-Te Shop</p>
-                            <p>La-Te Commissions</p>
+                            <p>La-Té Shop</p>
+                            <p>La-Té Commissions</p>
                             <p>Discord Integration</p>
                             <p>Gold</p>
                             <p>Patreon Alternative</p>
@@ -24,7 +24,7 @@ function Footer() {
 
                         <div className="top-footer-links">
                             <div className="top-footer-title-link">
-                            Use La-Te With
+                            Use La-Té With
                             </div>
                             <p>Twitter</p>
                             <p>Instagram</p>
@@ -41,7 +41,7 @@ function Footer() {
                             Help & Support
                             </div>
                             <p>Brand Assets</p>
-                            <p>La-Te Blog</p>
+                            <p>La-Té Blog</p>
                             <p>Help</p>
                             <p>WordPress Plugin</p>
                             <p>Creator Academy</p>
@@ -49,9 +49,9 @@ function Footer() {
 
                         <div className="top-footer-links">
                             <div className="top-footer-title-link">
-                            About La-Te
+                            About La-Té
                             </div>
-                            <p>About La-Te</p>
+                            <p>About La-Té</p>
                             <p>Hire Me!</p>
                             <p>Terms</p>
                             <p>Privacy</p>
@@ -60,7 +60,7 @@ function Footer() {
                 </div>
                 <div className="bottom-footer-wrapper">
                     <div className="bottom-footer-content">
-                        <div className="bottom-footer-tagline">La-Te Labs ©2022 Gary Song @4ever</div>
+                        <div className="bottom-footer-tagline">La-Té Labs ©2022 Gary Song @4ever</div>
                         <div className="bottom-footer-icon-container">
                             <a href="https://www.linkedin.com/in/gary-song-96b071246/" target="_blank">
                                 <img src="https://i.imgur.com/2ffGJqj.png" id="bottom-footer-icons"></img>

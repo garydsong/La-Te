@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     avatar = db.Column(db.String(100), nullable=False)
     bio = db.Column(db.String(2000), nullable=False)
     cover_img = db.Column(db.String(100), nullable=False)
-    website = db.Column(db.String(100), nullable=False)
+    website = db.Column(db.String(100), nullable=True)
 
     posts = db.relationship("Post", back_populates="users")
     comments = db.relationship("Comment", back_populates="users")

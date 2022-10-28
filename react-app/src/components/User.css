@@ -291,12 +291,17 @@
 }
 
 .post-comment-count {
+    display: flex;
+    justify-content: space-between;
     margin-top: 30px;
-    transition: .5s;
-    width: 120px;
+    width: 100%;
 }
 
-.post-comment-count:hover {
+.comment-counter {
+    transition: .5s;
+}
+
+.comment-counter:hover {
     cursor: pointer;
     color: #E55E5E;
 }
@@ -396,4 +401,36 @@
 .post-modal-submit-button:hover {
     cursor: pointer;
     background-color: #ffdada;
+}
+
+#post-modal-form {
+    height: 100%;
+}
+
+
+#delete-icons {
+    height: 15px;
+    transition: .5s;
+    margin-right: 5px;
+    filter: invert(94%) sepia(8%) saturate(20%) hue-rotate(314deg) brightness(95%) contrast(80%);
+}
+
+#edit-icons {
+    height: 15px;
+    transition: .5s;
+    filter: invert(94%) sepia(8%) saturate(20%) hue-rotate(314deg) brightness(95%) contrast(80%);
+}
+
+#delete-icons:hover {
+    cursor: pointer;
+    filter: invert(0%) sepia(96%) saturate(4%) hue-rotate(338deg) brightness(104%) contrast(98%);
+}
+
+#edit-icons:hover {
+    cursor: pointer;
+    filter: invert(0%) sepia(96%) saturate(4%) hue-rotate(338deg) brightness(104%) contrast(98%);
+}
+
+.d-e-align {
+    margin-top: 2px;
 }

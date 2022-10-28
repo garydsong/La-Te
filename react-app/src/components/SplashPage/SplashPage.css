@@ -589,11 +589,13 @@
     height: 500px;
 }
 
-/* .testimonial-content {
-    position: ;
+.testimonial-content {
+    position: absolute;
+    margin-top: 50px;
+    margin-right: 300px;
     width: 400px;
     height: 200px;
-} */
+}
 
 .under-testimonial-wrapper {
     width: 100%;
@@ -955,3 +957,7 @@
         transform: rotate(0deg);
     }
 }
+
+#un-style-nav-link:link {text-decoration: none;}
+#un-style-nav-link:visited {text-decoration: none;}
+#un-style-nav-link:focus {text-decoration: none;}

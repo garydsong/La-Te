@@ -134,10 +134,8 @@ export const getAllPostsThunk = () => async (dispatch) => {
     const allPosts = {}
     switch (action.type) {
       case LOAD_ALL:
-        console.log('posts', action.posts)
-        Object.values(action.posts).forEach(post => {
+        action.posts.posts.forEach(post => {
           allPosts[post.id] = post;
-          console.log("post", post)
         })
         return {
           ...state,
