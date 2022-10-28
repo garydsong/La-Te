@@ -30,6 +30,7 @@ const NavBar = () => {
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
+  
 
   const logout = (e) => {
     e.preventDefault();

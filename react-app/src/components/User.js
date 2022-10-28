@@ -14,24 +14,25 @@ import { Modal } from './context/Modal';
 function User() {
   const [user, setUser] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
-  const { userId } = useParams();
-  const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.session.user)
   const [showModal, setShowModal] = useState(false);
   const [postImage, setPostImage] = useState('');
   const [postText, setPostText] = useState('');
   const history = useHistory();
+  const { userId } = useParams();
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.session.user)
 
 
-  const posts = useSelector(state => state?.postReducer?.allPosts?.undefined)
-  // const userPosts = Object.values(posts).filter(post => post.user_id===currentUser.id)
+  const posts = useSelector(state => state.postReducer.allPosts)
+
+  const userPosts = Object.values(posts).filter(post => post.user_id===currentUser.id)
 
 
 
-  console.log('all posts', posts)
+  console.log('all posts', userPosts)
   console.log('showmodal', showModal)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     const post = {
@@ -39,33 +40,35 @@ function User() {
       post_img: postImage
     }
 
-    let createdPost = await dispatch(createPostThunk(post))
+    let createdPost = dispatch(createPostThunk(post))
 
     if (createdPost) {
       setShowModal(false)
       history.push(`/users/${userId}`)
     }
+
   }
 
   useEffect(() => {
     if (!userId) {
       return;
     }
+
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
       setUser(user);
     })();
-  }, [dispatch, userId, showModal, posts]);
 
-
-  useEffect(() => {
     dispatch(getAllPostsThunk())
       .then(() => { setIsLoaded(true) })
-  }, [dispatch, userId, showModal, posts])
+
+  }, [dispatch, userPosts.length]);
 
 
+  // useEffect(() => {
 
+  // }, [])
 
 
   if (!user) {
@@ -166,8 +169,8 @@ function User() {
                   </div>
                 </div>
                 <>
-                  {Object.values(posts).map(post => {
-                    if (post.user_id === +userId) return (
+                  {Object.values(userPosts).map(post => {
+                    return (
                       <div className="post-wrapper">
                         <div className="post-ava-username">
                           <img id="post-user-pfp" src={user.avatar} />

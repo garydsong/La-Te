@@ -397,3 +397,7 @@
     cursor: pointer;
     background-color: #ffdada;
 }
+
+#post-modal-form {
+    height: 100%;
+}

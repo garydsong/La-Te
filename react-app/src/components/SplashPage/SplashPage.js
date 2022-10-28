@@ -22,9 +22,28 @@ import webpage from "../../assets/icons/webpage-icon.svg"
 import Footer from "../Footer/Footer";
 import { NavLink } from "react-router-dom";
 
+import Carousel from "../Carousel/Carousel";
+
 
 function SplashPage() {
     const sessionUser = useSelector(state => state.session.user)
+
+    const items = [
+        'test-one', 'test-two', 'test-three', 'test-four', 'test-five'
+    ]
+
+    const setting = {
+        dragSpeed: 1.25,
+        itemWidth: 500,
+        itemHeight: 300,
+        itemSideOffsets: 15,
+    }
+
+    const itemStyle = {
+        width: `${setting.itemWidth}px`,
+        height: `${setting.itemHeight}px`,
+        margin: `0px ${setting.itemSideOffsets}px`
+    }
 
 
     let sessionLinks
@@ -36,7 +55,7 @@ function SplashPage() {
                     <input placeholder={sessionUser.username} className="input-claim-2"></input>
                 </div>
 
-                    <div className="claim-button-input-2">That's you!</div>
+                <div className="claim-button-input-2">That's you!</div>
 
             </>
         )
@@ -64,9 +83,9 @@ function SplashPage() {
                 </div>
                 <div className="top-splash-input-signup">
                     {/* <div className="la-te-url-grouper"> */}
-                        {/* <div className="la-te-url-input">la-te.com/</div>
+                    {/* <div className="la-te-url-input">la-te.com/</div>
                         <input className="input-claim"></input> */}
-                        {sessionLinks}
+                    {sessionLinks}
                     {/* </div>
                     <NavLink id="link" to="/sign-up">
                         <div className="claim-button-input">Claim</div>
@@ -117,7 +136,26 @@ function SplashPage() {
 
                 <div className="testimonial-wrapper">
                     <img id="testimonial-img" src="https://storage.ko-fi.com/cdn/landing_assets/testimonails_bg-min.png"></img>
-                    {/* <div className="testimonial-content"></div> */}
+
+                    <div className="testimonial-content">
+                        <Carousel _data={items} {...setting}>
+                            {/* {
+                                items.map((i, _i) => (
+                                    <div
+                                        key={_i}
+                                        className='item'
+                                        style={{ ...itemStyle }}>
+                                        <p>{i}</p>
+                                    </div>
+                                ))
+                            } */}
+                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 1</div>
+                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 2</div>
+                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 3</div>
+                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 4</div>
+                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 5</div>
+                        </Carousel>
+                    </div>
                 </div>
                 <div className="under-testimonial-wrapper">
                     <div className='top-splash-page-wrapper'>

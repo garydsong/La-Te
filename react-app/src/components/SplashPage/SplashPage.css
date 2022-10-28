@@ -589,11 +589,13 @@
     height: 500px;
 }
 
-/* .testimonial-content {
-    position: ;
+.testimonial-content {
+    position: absolute;
+    margin-top: 50px;
+    margin-right: 300px;
     width: 400px;
     height: 200px;
-} */
+}
 
 .under-testimonial-wrapper {
     width: 100%;
