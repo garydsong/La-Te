@@ -192,3 +192,17 @@
     height: 800px;
     justify-content: space-between;
 }
+
+#website-input {
+    font-family: 'Nunito';
+    padding-left: 20px;
+    height: 45px;
+    width: 425px;
+    border: lightgray 2px solid;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#website-input::placeholder { /* Microsoft Edge */
+    color: rgb(168, 199, 209);
+}

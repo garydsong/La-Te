@@ -17,17 +17,22 @@ const SignUpForm = () => {
   const [bio, setBio] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [website, setWebsite] = useState('');
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(firstName, lastName, city, state, username, email, avatar, coverImg, bio, website, password));
       if (data) {
         setErrors(data)
       }
     }
+  };
+
+  const updateWebsite = (e) => {
+    setWebsite(e.target.value);
   };
 
   const updateBio = (e) => {
@@ -201,6 +206,16 @@ const SignUpForm = () => {
                 onChange={updateBio}
                 value={bio}
               ></textarea>
+            </div>
+            <div>
+              <input
+                id="website-input"
+                type='text'
+                name='website'
+                placeholder='Website'
+                onChange={updateWebsite}
+                value={website}
+              ></input>
             </div>
             <button id="signup-input" type='submit'>Sign Up</button>
           </form>

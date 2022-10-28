@@ -10,7 +10,7 @@ import photo from "../assets/icons/photo-icon.svg"
 import deleted from "../assets/icons/trash-icon.svg"
 import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
-import { createPostThunk, getAllPostsThunk } from '../store/post';
+import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
 import { Modal } from './context/Modal';
 
 function User() {
@@ -28,9 +28,9 @@ function User() {
   const posts = useSelector(state => state.postReducer.allPosts)
   const singlePost = useSelector(state => state.postReducer.singlePost)
 
-  const userPosts = Object.values(posts).filter(post => post.user_id===+userId)
+  const userPosts = Object.values(posts).filter(post => post.user_id === +userId)
 
-
+  let deletePostHandler;
 
   console.log('user posts', userPosts)
   console.log('all posts', posts)
@@ -191,11 +191,21 @@ function User() {
                             </div>
                             <div className="post-comment-count">
                               <div className="comment-counter">5 comments</div>
-                              { +userId === currentUser.id && (
-                              <div className="d-e-align">
-                              <img id="delete-icons" src={deleted}/>
-                              <img id="edit-icons" src={edit}/>
-                              </div>
+                              {+userId === currentUser.id && (
+                                <div className="d-e-align">
+
+                                  {deletePostHandler = async () => {
+                                    if (window.confirm('Are you sure you want to delete your Post?')) {
+                                      await dispatch(deletePostThunk(post.id))
+                                      history.push(`/users/${userId}`)
+                                    } else {
+                                      history.push(`/users/${userId}`)
+                                    }
+                                  }}
+
+                                  <img id="delete-icons" onClick={deletePostHandler}src={deleted} />
+                                  <img id="edit-icons" src={edit} />
+                                </div>
                               )}
                             </div>
                           </div>
