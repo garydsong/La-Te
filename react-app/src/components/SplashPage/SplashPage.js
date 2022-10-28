@@ -221,9 +221,11 @@ function SplashPage() {
                                         <img id="pfp1" src={pfp} />
                                         <div className="pfp-desc-title-1"><b>XOK3K3Llif3</b> is offering eat your drywall and scavenge for lizards.</div>
                                     </div>
+                                    <NavLink id="un-style-nav-link" to="/users/12">
                                     <div className="visit-button">
                                         Visit
                                     </div>
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>
@@ -255,9 +257,11 @@ function SplashPage() {
                                         <img id="pfp1" src={pfp2} />
                                         <div className="pfp-desc-title-1"><b>TASKMAN</b> offers members task services. You got a task? He's on the case!</div>
                                     </div>
+                                    <NavLink id="un-style-nav-link" to="/users/1">
                                     <div className="visit-button">
                                         Visit
                                     </div>
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>
@@ -292,9 +296,11 @@ function SplashPage() {
                                         <img id="pfp1" src={pfp3} />
                                         <div className="pfp-desc-title-1"><b>wittosamywamy</b> offers members eternal love and devotion!</div>
                                     </div>
+                                    <NavLink id="un-style-nav-link" to="/users/4">
                                     <div className="visit-button">
                                         Visit
                                     </div>
+                                    </NavLink>
                                 </div>
                             </div>
                         </div>
