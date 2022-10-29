@@ -12,7 +12,7 @@ import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
 import lateimg from "../assets/la-te-cup.png"
 import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
-import createComment from '../store/comment'
+import {createComment} from '../store/comment'
 import { Modal } from './context/Modal';
 
 function User() {
