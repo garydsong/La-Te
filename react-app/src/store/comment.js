@@ -66,6 +66,7 @@ export const getCurrentComments = () => async dispatch => {
 }
 
 export const createComment = (comment, postId) => async dispatch => {
+    console.log('--------create comment thunk--------')
     const response = await fetch(`/api/posts/${postId}/comments`, {
         method: 'POST',
         headers: {

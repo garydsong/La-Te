@@ -136,10 +136,6 @@ def create_review(id):
   if not post:
     return {"message": "post couldn't be found.", "statusCode":404}
 
-  ## CHECK IF current_user.id WORKS
-  if post.owner_id == current_user.id:
-    return {"message": "Post owner cannot write a review for their post", "statusCode":403}
-
   form = CommentForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
@@ -147,7 +143,6 @@ def create_review(id):
     comment = Comment(
       user_id = current_user.id,
       post_id = id,
-      nope = form.nope.data,
       comment = form.comment.data
     )
 

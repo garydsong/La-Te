@@ -50,7 +50,7 @@ function User() {
     if (!showMenu) return;
 
     const closeMenu = (e) => {
-      if (e.key === 'Tab') {
+      if (e.key === 'Enter') {
         setShowMenu(false);
       }
     };
@@ -77,14 +77,17 @@ function User() {
 
   }
 
-  const handleCommentSubmit = async (e) => {
+  const handleCommentSubmit = (e) => {
     e.preventDefault()
+
 
     const newComment = {
       comment: comment
     }
 
-    await dispatch(createComment(newComment, +postIdHolder))
+    console.log('new c', newComment, 'postholder', +postIdHolder)
+
+    dispatch(createComment(newComment, +postIdHolder))
     // let createdComment =  dispatch(createComment(newComment, postIdHolder))
     // if (createdComment) {
     //   history.push(`/users/${userId}`)
