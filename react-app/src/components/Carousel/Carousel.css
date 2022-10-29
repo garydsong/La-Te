@@ -1,7 +1,7 @@
 .carousel {
     width: 740px;
     height: 400px;
-    background: rgba(201, 165, 118, 0.2);
+    /* background: rgba(201, 165, 118, 0.2); */
     direction: rtl;
     display: flex;
     justify-content: flex-start;
@@ -24,7 +24,6 @@
 
   .item {
     background: white;
-
     display: flex;
     justify-content: center;
     align-items: center;
