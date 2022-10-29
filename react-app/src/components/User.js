@@ -286,7 +286,11 @@ function User() {
 
                         <div className="counter">
                           <div className="btn__container">
-                            <button className="control__btn-sub" onClick={decrease}>-</button>
+                            {counter > 1 ? (
+                              <button className="control__btn-sub" onClick={decrease}>-</button>
+                            ) : (
+                              <button className="control__btn-sub">-</button>
+                            )}
                             <span className="counter__output">{counter}</span>
                             <button className="control__btn-add" onClick={increase}>+</button>
                             {/* <button className="reset" onClick={reset}>Reset</button> */}
