@@ -135,6 +135,18 @@ def seed_users():
         bio="You junga? Me junga. We big jungas.",
         cover_img='https://i.imgur.com/t057Wr7.png',
         website='https://david.com')
+    keke = User(
+        first_name='Keke',
+        last_name='Life',
+        username='XOK3K3Llif3',
+        email='keke@demo.io',
+        password='password',
+        city='San Diego',
+        state='CA',
+        avatar='https://i.imgur.com/SAF6qvd.png',
+        bio="Name = Keke. Like = Lizard",
+        cover_img='https://i.imgur.com/KJCSsqX.png',
+        website='https://iwantlizard.com')
 
     db.session.add(brandon)
     db.session.add(amanda)
@@ -147,6 +159,7 @@ def seed_users():
     db.session.add(jae)
     db.session.add(michael)
     db.session.add(david)
+    db.session.add(keke)
 
     db.session.commit()
 
