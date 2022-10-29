@@ -77,14 +77,14 @@ function User() {
 
   }
 
-  const handleCommentSubmit = (e) => {
+  const handleCommentSubmit = async (e) => {
     e.preventDefault()
 
     const newComment = {
       comment: comment
     }
 
-    dispatch(createComment(newComment, postIdHolder))
+    await dispatch(createComment(newComment, +postIdHolder))
     // let createdComment =  dispatch(createComment(newComment, postIdHolder))
     // if (createdComment) {
     //   history.push(`/users/${userId}`)
