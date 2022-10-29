@@ -79,7 +79,7 @@ export const createComment = (comment, postId) => async dispatch => {
         dispatch(create(postComment, postId))
         return postComment
     }
-    return
+    return "not ok"
 }
 
 export const updateComment = (comment, commentId) => async dispatch => {

@@ -11,6 +11,7 @@ import deleted from "../assets/icons/trash-icon.svg"
 import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
 import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
+import createComment from '../store/comment'
 import { Modal } from './context/Modal';
 
 function User() {
@@ -20,6 +21,8 @@ function User() {
   const [postImage, setPostImage] = useState('');
   const [postText, setPostText] = useState('');
   const [showMenu, setShowMenu] = useState(false);
+  const [comment, setComment] = useState('');
+  const [someThang, setSomeThang] = useState(undefined)
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
@@ -33,6 +36,7 @@ function User() {
   const userPosts = Object.values(posts).filter(post => post.user_id === +userId)
 
   let deletePostHandler;
+  let postIdHolder;
 
   console.log('user posts', userPosts)
   console.log('all posts', posts)
@@ -45,13 +49,15 @@ function User() {
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
+    const closeMenu = (e) => {
+      if (e.key === 'Tab') {
+        setShowMenu(false);
+      }
     };
 
-    document.addEventListener('click', closeMenu);
+    document.addEventListener('keypress', closeMenu);
 
-    return () => document.removeEventListener("click", closeMenu);
+    return () => document.removeEventListener("keypress", closeMenu);
   }, [showMenu]);
 
   const handleSubmit = (e) => {
@@ -71,6 +77,21 @@ function User() {
 
   }
 
+  const handleCommentSubmit = (e) => {
+    e.preventDefault()
+    
+    const newComment = {
+      comment: comment
+    }
+
+    dispatch(createComment(newComment, postIdHolder))
+    // let createdComment =  dispatch(createComment(newComment, postIdHolder))
+    // if (createdComment) {
+    //   history.push(`/users/${userId}`)
+    // }
+
+  }
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -87,27 +108,41 @@ function User() {
 
   }, [dispatch, userPosts.length, currentUser, singlePost]);
 
-  const [someThang, setSomeThang] = useState(undefined)
-  const otherThang = (<div id="comment-fixed-container">
-  <div id="comment-fixed-upper-div">
-    <div>
-    <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
-    <div id="comment-fixed-sections">
-      <div className="dropdown-top-sections" id="profile-username">
-        comments go here
-      </div>
-    </div>
-    </div>
-    <div id="dropdown-links-container">
 
-      <div className="dropdown-links" id="comment-business-navbar">
-        <img id="leave-comment-session-user-ava"  src={sessionUser.avatar} />
-        <div>Comment textarea here</div>
-      </div>
+  const otherThang = (
+    <div id="comment-fixed-container">
+    {someThang ? postIdHolder = someThang.id : null}
+    <div id="comment-fixed-upper-div">
 
+      <div>
+        <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
+        <div id="comment-fixed-sections">
+          <div className="dropdown-top-sections" id="profile-username">
+            comments go here
+          </div>
+        </div>
+      </div>
+      <div id="dropdown-links-container">
+
+        <div className="dropdown-links" id="comment-business-navbar">
+          <img id="leave-comment-session-user-ava" src={sessionUser.avatar} />
+          <form id="comment-side-form" onSubmit={handleCommentSubmit}>
+          <textarea
+            id="comment-text-input"
+            type='text'
+            name='comment'
+            placeholder='Leave a comment'
+            onChange={((e) => setComment(e.target.value))}
+            value={comment}
+          ></textarea>
+          <button type='submit'>submit</button>
+          </form>
+        </div>
+
+      </div>
     </div>
   </div>
-</div>)
+  )
 
 
   // useEffect(() => {
@@ -227,7 +262,7 @@ function User() {
                               {post.post}
                             </div>
                             <div className="post-comment-count">
-                              <div className="comment-counter" onClick={() => {setSomeThang(post); openMenu()}}>5 comments</div>
+                              <div className="comment-counter" onClick={() => { setSomeThang(post); openMenu() }}>5 comments</div>
 
                               {showMenu &&
                                 otherThang
