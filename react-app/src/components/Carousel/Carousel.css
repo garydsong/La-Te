@@ -41,3 +41,7 @@
 
   .item:first-child { margin-right: 0px !important;}
   .item:last-child { margin-left: 0px !important;}
+
+  #dont-look-at-this{
+    color: transparent;
+  }
