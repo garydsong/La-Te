@@ -443,7 +443,7 @@
 
 #comment-post-img-id {
     margin-top: 5px;
-    width: 100%;
+    width: 99%;
     height: 10px;
     object-fit: cover;
     border-radius: 999px;
@@ -529,3 +529,27 @@
     object-fit: cover;
     border-radius: 999px;
   }
+
+  #comment-text-input {
+    font-family: 'Nunito';
+    padding-top: 10px;
+    padding-left: 20px;
+    height: 30px;
+    width: 86%;
+    border-radius: 10px;
+    border: transparent;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+}
+
+#post-text-input::placeholder {
+    color: rgb(168, 199, 209);
+}
+
+#post-text-input:focus {
+    border: transparent;
+}
+#post-text-input:active {
+    border: transparent;
+}
