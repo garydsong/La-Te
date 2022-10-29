@@ -688,3 +688,7 @@
     cursor: pointer;
     background-color: #ff5353;
 }
+
+.counter__output {
+    font-size: 18px;
+}
