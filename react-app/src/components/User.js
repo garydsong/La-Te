@@ -10,6 +10,7 @@ import photo from "../assets/icons/photo-icon.svg"
 import deleted from "../assets/icons/trash-icon.svg"
 import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
+import lateimg from "../assets/la-te-cup.png"
 import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
 import createComment from '../store/comment'
 import { Modal } from './context/Modal';
@@ -23,13 +24,15 @@ function User() {
   const [showMenu, setShowMenu] = useState(false);
   const [comment, setComment] = useState('');
   const [someThang, setSomeThang] = useState(undefined)
+  const [counter, setCounter] = useState(1);
+  const [latteComment, setLatteComment] = useState('');
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user)
   const sessionUser = useSelector(state => state.session.user)
 
-
+  const comments = useSelector(state => state.commentReducer)
   const posts = useSelector(state => state.postReducer.allPosts)
   const singlePost = useSelector(state => state.postReducer.singlePost)
 
@@ -85,9 +88,11 @@ function User() {
       comment: comment
     }
 
-    console.log('new c', newComment, 'postholder', +postIdHolder)
+    console.log('new c', newComment, 'postholder', +postIdHolder, 'all comments', comments)
 
+    // createComment(newComment, +postIdHolder)
     dispatch(createComment(newComment, +postIdHolder))
+
     // let createdComment =  dispatch(createComment(newComment, postIdHolder))
     // if (createdComment) {
     //   history.push(`/users/${userId}`)
@@ -150,6 +155,20 @@ function User() {
     </div>
   )
 
+  //increase counter
+  const increase = () => {
+    setCounter(count => count + 1);
+  };
+
+  //decrease counter
+  const decrease = () => {
+    setCounter(count => count - 1);
+  };
+
+  //reset counter 
+  const reset = () => {
+    setCounter(0)
+  }
 
   // useEffect(() => {
 
@@ -236,23 +255,62 @@ function User() {
               </div>
 
               <div className="user-page-mid-right">
-                <div className="submit-post-container">
-                  <div className="submit-post-content">
-                    <div className="submit-post-top">
-                      <img id="post-user-ava-icon" src={user.avatar} />
-                      <div className="write-a-post-container" onClick={() => setShowModal(true)}>
-                        Write a Post
+                {sessionUser.id === +userId ? (
+                  <div className="submit-post-container">
+                    <div className="submit-post-content">
+                      <div className="submit-post-top">
+                        <img id="post-user-ava-icon" src={user.avatar} />
+                        <div className="write-a-post-container" onClick={() => setShowModal(true)}>
+                          Write a Post
+                        </div>
                       </div>
+                      <div className="submit-post-bottom">
+                        <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={photo} /> Images</div>
+                        <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={blog} /> Blog Posts</div>
+                        <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={audio} /> Audio Links</div>
+                        <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={video} /> Video Links</div>
+                      </div>
+                      <div className="post-tag">consider posting</div>
                     </div>
-                    <div className="submit-post-bottom">
-                      <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={photo} /> Images</div>
-                      <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={blog} /> Blog Posts</div>
-                      <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={audio} /> Audio Links</div>
-                      <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={video} /> Video Links</div>
-                    </div>
-                    <div className="post-tag">consider posting</div>
                   </div>
-                </div>
+                ) : (
+                  <div className="submit-latte-container">
+                    <div className="submit-latte-content">
+                      <div className="submit-latte-top">
+                        <div className="buy-latte-for-wrapper">
+                          Buy a latte for {user.first_name}
+                        </div>
+                      </div>
+                      <div className="buy-latte-counter">
+                        <img id="buy-latte-ava-icon" src={lateimg} />
+
+                        <div className="counter">
+                          <div className="btn__container">
+                            <button className="control__btn-sub" onClick={decrease}>-</button>
+                            <span className="counter__output">{counter}</span>
+                            <button className="control__btn-add" onClick={increase}>+</button>
+                            {/* <button className="reset" onClick={reset}>Reset</button> */}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="leave-comment-with-latte-wrapper">
+                        <div>
+                          <input
+                            id="latte-comment-input"
+                            name='latte-comment'
+                            type='text'
+                            placeholder='Leave a Comment'
+                            value={latteComment}
+                            onChange={(e => setLatteComment(e.target.value))}
+                          />
+                        </div>
+                      </div>
+                      <div className="leave-latte-submit-wrapper">
+                       Post
+                        </div>
+                    </div>
+                  </div>
+                )}
                 <>
                   {Object.values(userPosts).map((post, i) => {
                     return (
