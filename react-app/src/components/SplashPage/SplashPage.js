@@ -149,11 +149,78 @@ function SplashPage() {
                                     </div>
                                 ))
                             } */}
-                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 1</div>
-                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 2</div>
-                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 3</div>
-                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 4</div>
-                            <div className="item" style={{ ...itemStyle }}>this is going to be testimonial 5</div>
+                            <div className="testimonial-item" style={{ ...itemStyle }}>
+                                <img id="testimonial-pfp-img" src="https://i.imgur.com/VpFihH4.png" />
+                                <div className="testimonial-user-name">
+                                    Kobe
+                                </div>
+                                <div id="testimonial-category-wrapper">
+                                    <div id="testimonial-category">Podcaster</div>
+                                    <div id="testimonial-category">Cosplayer</div>
+
+                                </div>
+                                <div id="user-testimonial">
+                                    "!FWOOF"
+                                </div>
+                            </div>
+                            <div className="testimonial-item" style={{ ...itemStyle }}>
+                            <img id="testimonial-pfp-img" src="https://i.imgur.com/SAF6qvd.png" />
+                                <div className="testimonial-user-name">
+                                    Keke
+                                </div>
+                                <div id="testimonial-category-wrapper">
+                                    <div id="testimonial-category">Podcaster</div>
+                                    <div id="testimonial-category">Cosplayer</div>
+
+                                </div>
+                                <div id="user-testimonial">
+                                    "!YARROOOOOO"
+                                </div>
+                            </div>
+                            <div className="testimonial-item" style={{ ...itemStyle }}>
+                            <img id="testimonial-pfp-img" src="https://i.imgur.com/jO7Fugz.png" />
+                                <div className="testimonial-user-name">
+                                    Alex
+                                </div>
+                                <div id="testimonial-category-wrapper">
+                                    <div id="testimonial-category">Developer</div>
+                                    <div id="testimonial-category">Streamer</div>
+
+                                </div>
+                                <div id="user-testimonial">
+                                    "?Ayo"
+                                </div>
+                            </div>
+                            <div className="testimonial-item" style={{ ...itemStyle }}>
+                            <img id="testimonial-pfp-img" src="https://i.imgur.com/GP6MfOl.png" />
+                                <div className="testimonial-user-name">
+                                    Jake
+                                </div>
+                                <div id="testimonial-category-wrapper">
+                                    <div id="testimonial-category">Artist</div>
+                                    <div id="testimonial-category">Musician</div>
+
+                                </div>
+                                <div id="user-testimonial">
+                                    "FAFO"
+                                </div>
+                            </div>
+                            <div className="testimonial-item" style={{ ...itemStyle }}>
+
+                            <img id="testimonial-pfp-img" src="https://i.imgur.com/VpFihH4.png" />
+                                <div className="testimonial-user-name">
+                                    Kobe
+                                </div>
+                                <div id="testimonial-category-wrapper">
+                                    <div id="testimonial-category">Podcaster</div>
+                                    <div id="testimonial-category">Cosplayer</div>
+
+                                </div>
+                                <div id="user-testimonial">
+                                    "!FWOOF"
+                                </div>
+
+                            </div>
                         </Carousel>
                     </div>
                 </div>
@@ -222,9 +289,9 @@ function SplashPage() {
                                         <div className="pfp-desc-title-1"><b>XOK3K3Llif3</b> is offering eat your drywall and scavenge for lizards.</div>
                                     </div>
                                     <NavLink id="un-style-nav-link" to="/users/12">
-                                    <div className="visit-button">
-                                        Visit
-                                    </div>
+                                        <div className="visit-button">
+                                            Visit
+                                        </div>
                                     </NavLink>
                                 </div>
                             </div>
@@ -258,9 +325,9 @@ function SplashPage() {
                                         <div className="pfp-desc-title-1"><b>TASKMAN</b> offers members task services. You got a task? He's on the case!</div>
                                     </div>
                                     <NavLink id="un-style-nav-link" to="/users/1">
-                                    <div className="visit-button">
-                                        Visit
-                                    </div>
+                                        <div className="visit-button">
+                                            Visit
+                                        </div>
                                     </NavLink>
                                 </div>
                             </div>
@@ -297,9 +364,9 @@ function SplashPage() {
                                         <div className="pfp-desc-title-1"><b>wittosamywamy</b> offers members eternal love and devotion!</div>
                                     </div>
                                     <NavLink id="un-style-nav-link" to="/users/4">
-                                    <div className="visit-button">
-                                        Visit
-                                    </div>
+                                        <div className="visit-button">
+                                            Visit
+                                        </div>
                                     </NavLink>
                                 </div>
                             </div>

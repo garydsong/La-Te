@@ -79,7 +79,7 @@ function User() {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault()
-    
+
     const newComment = {
       comment: comment
     }
@@ -111,37 +111,40 @@ function User() {
 
   const otherThang = (
     <div id="comment-fixed-container">
-    {someThang ? postIdHolder = someThang.id : null}
-    <div id="comment-fixed-upper-div">
+      <div id="dont-look-at-this">
 
-      <div>
-        <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
-        <div id="comment-fixed-sections">
-          <div className="dropdown-top-sections" id="profile-username">
-            comments go here
+        {someThang ? postIdHolder = someThang.id : null}
+      </div>
+      <div id="comment-fixed-upper-div">
+
+        <div>
+          <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
+          <div id="comment-fixed-sections">
+            <div className="dropdown-top-sections" id="profile-username">
+              comments go here
+            </div>
           </div>
         </div>
-      </div>
-      <div id="dropdown-links-container">
+        <div id="dropdown-links-container">
 
-        <div className="dropdown-links" id="comment-business-navbar">
-          <img id="leave-comment-session-user-ava" src={sessionUser.avatar} />
-          <form id="comment-side-form" onSubmit={handleCommentSubmit}>
-          <textarea
-            id="comment-text-input"
-            type='text'
-            name='comment'
-            placeholder='Leave a comment'
-            onChange={((e) => setComment(e.target.value))}
-            value={comment}
-          ></textarea>
-          <button type='submit'>submit</button>
-          </form>
+          <div className="dropdown-links" id="comment-business-navbar">
+            <img id="leave-comment-session-user-ava" src={sessionUser.avatar} />
+            <form id="comment-side-form" onSubmit={handleCommentSubmit}>
+              <textarea
+                id="comment-text-input"
+                type='text'
+                name='comment'
+                placeholder='Leave a comment'
+                onChange={((e) => setComment(e.target.value))}
+                value={comment}
+              ></textarea>
+              <button type='submit'>submit</button>
+            </form>
+          </div>
+
         </div>
-
       </div>
     </div>
-  </div>
   )
 
 
