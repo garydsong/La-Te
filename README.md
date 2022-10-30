@@ -1,5 +1,24 @@
 ![la-te](https://user-images.githubusercontent.com/105745865/197884351-964fc2f7-9c9a-46bc-8026-1978f7929c97.png)
 
+# 🖥️ Technologies
+### Frameworks, Platforms, Libraries:
+[![My Skills](https://skillicons.dev/icons?i=py,flask,js,react)](http://nope-yelp.herokuapp.com)
+
+[![My Skills](https://skillicons.dev/icons?i=redux,postgres,docker,sqlite)](http://nope-yelp.herokuapp.com)
+
+[![My Skills](https://skillicons.dev/icons?i=css,html,heroku)](http://nope-yelp.herokuapp.com)
+
+- Python, Flask, JavaScript, React
+- Redux, Postgres, Docker, SQLite
+- CSS3, HTML5, Heroku
+
+### Asset Design:
+[![My Skills](https://skillicons.dev/icons?i=svg,ps,ai,css)](http://nope-yelp.herokuapp.com)
+
+Assets utilized and/or created by:
+
+- SVG, Adobe Photoshop, Adobe Illustrator, CSS3
+
 
 # Flask React Project
 
