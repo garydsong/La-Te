@@ -129,10 +129,9 @@ def add_reaction(id):
 @post_routes.route('/<int:id>/comments', methods=["POST"])
 @login_required ## must be logged in to leave a review
 def create_review(id):
-
   post = Post.query.get(id)
 
-  ##ERROR HANDLING NON-EXISTING BUSINESS
+  ##ERROR HANDLING NON-EXISTING POST
   if not post:
     return {"message": "post couldn't be found.", "statusCode":404}
 

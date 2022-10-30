@@ -17,11 +17,14 @@ const loadCurrent = (comments) => ({
     comments
 })
 
-const create = (comment, postId) => ({
-    type: CREATE,
-    comment,
-    postId
-})
+const create = (comment, postId) => {
+    console.log("CREATE ACTION MOFO")
+    return {
+        type: CREATE,
+        comment,
+        postId
+    }
+}
 
 const update = (comment) => ({
     type: UPDATE,
@@ -130,6 +133,8 @@ const initialState = {
 }
 
 const commentReducer = (state = initialState, action) => {
+    console.log("I AM A FAWKING REDUCER")
+    console.log("REDUCER RECEIVED: ", action)
     const post = {};
     const user = {};
     const allComments = {};
@@ -156,6 +161,7 @@ const commentReducer = (state = initialState, action) => {
             newState.post[action.commentId.id] = action.commentId
             return newState
         case CREATE:
+            console.log("GOT TO CREATE REDUCE STEP")
             newState = { post: { ...state.post }, user: { ...state.user } }
             newState.post[action.comment.id] = action.comment
             return newState

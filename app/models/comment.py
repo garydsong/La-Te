@@ -26,5 +26,4 @@ class Comment(db.Model):
             'updated_at': self.updated_at,
             'user_id': self.user_id,
             'post_id': self.post_id,
-            'reaction_id': self.reaction_id
         }
