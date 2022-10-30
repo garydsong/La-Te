@@ -37,10 +37,15 @@ function User() {
   const singlePost = useSelector(state => state.postReducer.singlePost)
 
   const userPosts = Object.values(posts).filter(post => post.user_id === +userId)
-
+  
   let deletePostHandler;
   let postIdHolder;
+  let postComments;
 
+  postComments = Object.values(comments).filter(comment => comment.post_id === +postIdHolder)
+  
+
+  console.log('comments', comments)
   console.log('user posts', userPosts)
   console.log('all posts', posts)
 
@@ -114,7 +119,7 @@ function User() {
     dispatch(getAllPostsThunk())
       .then(() => { setIsLoaded(true) })
 
-  }, [dispatch, userPosts.length, currentUser, singlePost]);
+  }, [dispatch, userPosts.length, currentUser, singlePost, comments]);
 
 
   const otherThang = (
@@ -122,6 +127,7 @@ function User() {
       <div id="dont-look-at-this">
 
         {someThang ? postIdHolder = someThang.id : null}
+        
       </div>
       <div id="comment-fixed-upper-div">
 
@@ -129,7 +135,7 @@ function User() {
           <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
           <div id="comment-fixed-sections">
             <div className="dropdown-top-sections" id="profile-username">
-              comments go here
+              {postComments.comment}
             </div>
           </div>
         </div>
@@ -282,7 +288,10 @@ function User() {
                         </div>
                       </div>
                       <div className="buy-latte-counter">
-                        <img id="buy-latte-ava-icon" src={lateimg} />
+                        <div>
+                        <img id="buy-latte-ava-icon" src={lateimg} /> 
+                        Lattes cost $4
+                        </div>
 
                         <div className="counter">
                           <div className="btn__container">
@@ -310,7 +319,7 @@ function User() {
                         </div>
                       </div>
                       <div className="leave-latte-submit-wrapper">
-                       Post
+                       Donate ${+counter * 4}
                         </div>
                     </div>
                   </div>
