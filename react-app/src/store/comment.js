@@ -1,4 +1,5 @@
 const LOAD_ALL = 'comments/LOAD_ALL'
+const LOAD_ALL_COMMENTS = 'reviews/LOAD_ALL_COMMENTS'
 const LOAD_CURRENT = 'comments/LOAD_CURRENT'
 const CREATE = 'comments/CREATE'
 const UPDATE = 'comments/UPDATE'
@@ -10,6 +11,11 @@ const load = (comments, postId) => ({
     type: LOAD_ALL,
     comments,
     postId
+})
+
+const loadEveryComment = (comments) => ({
+    type: LOAD_ALL_COMMENTS,
+    comments
 })
 
 const loadCurrent = (comments) => ({
@@ -56,6 +62,17 @@ export const getAllCommentsOfPost = (postId) => async dispatch => {
     }
     return
 }
+
+export const getEveryComment = () => async (dispatch) => {
+    const response = await fetch('/api/comments/')
+
+    if (response.ok) {
+        const commentData = await response.json()
+        await dispatch(loadEveryComment(commentData))
+        return commentData
+    }
+    return
+};
 
 export const getCurrentComments = () => async dispatch => {
     const response = await fetch('/api/comments/current')
@@ -148,6 +165,10 @@ const commentReducer = (state = initialState, action) => {
                 ...state,
                 post
             }
+        case LOAD_ALL_COMMENTS:
+            action.comments.comments.forEach(comment => {
+                allComments[comment.id] = comment
+            })
         case LOAD_CURRENT:
             action.comments.comments.forEach(comment => {
                 user[comment.id] = comment
