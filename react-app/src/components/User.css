@@ -455,8 +455,36 @@
 
 }
 
+.whereisthis::-webkit-scrollbar {
+    width: 14px;
+}
+
+.whereisthis::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+.whereisthis::-webkit-scrollbar-thumb {
+    background-color: lightgray;
+    border-radius: 10px;
+}
+
+.close-comment-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.close-comment-container:hover {
+    cursor: pointer;
+}
+
+#close-comment {
+    height: 15px;
+}
+
 #comment-post-img-id {
-    margin-top: 5px;
+    margin-top: 13px;
+    margin-bottom: 15px;
     width: 99%;
     height: 10px;
     object-fit: cover;
@@ -719,8 +747,11 @@
 }
 
 .comment-content-username {
+    display: flex;
+    width: 100%;
     font-weight: 700;
     font-size: 17px;
+    padding-right: 20px;
 }
 
 .comment-content-createdat {
@@ -737,5 +768,5 @@
 }
 
 .comment-content-comment {
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
