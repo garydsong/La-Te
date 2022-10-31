@@ -59,15 +59,13 @@ function User() {
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = (e) => {
-      if (e.key === 'Enter') {
-        setShowMenu(false);
-      }
+    const closeMenu = () => {
+      setShowMenu(false);
     };
 
-    document.addEventListener('keypress', closeMenu);
+    document.addEventListener('click', closeMenu);
 
-    return () => document.removeEventListener("keypress", closeMenu);
+    return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
   const handleSubmit = (e) => {
@@ -136,9 +134,11 @@ function User() {
 
       </div>
       <div id="comment-fixed-upper-div">
-
+        <div className="close-comment-container">
+        <img id="close-comment" onClick={showMenu} src={x} />
+        </div>
+        <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
         <div className="whereisthis">
-          <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
           <div id="comment-fixed-sections">
             <div className="dropdown-top-sections" id="profile-username">
               {() => {
@@ -151,32 +151,35 @@ function User() {
               {Object.values(comments.user).map(comment => {
                 return (
                   <>
-                    <div className="comment-content-username-wrapper">
-                      <img id="comment-content-user-avatar" src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null} />
+                    {comment?.post_id === someThang?.id &&
+                      <div className="comment-content-username-wrapper">
+                        <img id="comment-content-user-avatar" src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null} />
 
-                      <div className="comment-content-username">
-                        {comment?.post_id === someThang?.id ? comment?.owner?.username : null}
-                        {comment?.user_id === currentUser.id && (
-                                <div className="d-e-align">
+                        <div className="comment-content-username">
+                          {comment?.post_id === someThang?.id ? comment?.owner?.username : null}
+                          {comment?.user_id === currentUser.id && (
+                            <div className="d-e-align">
 
-                                  {deleteCommentHandler = () => {
-                                    if (window.confirm('Are you sure you want to delete your comment?')) {
-                                      dispatch(removeComment(comment?.id))
-                                    }
-                                  }}
+                              {deleteCommentHandler = () => {
+                                if (window.confirm('Are you sure you want to delete your comment?')) {
+                                  dispatch(removeComment(comment?.id))
+                                }
+                              }}
 
-                                  <img id="delete-icons" onClick={deleteCommentHandler} src={deleted} />
-                                  <NavLink to={`/users/posts/1`}>
-                                    <img id="edit-icons" src={edit} />
-                                  </NavLink>
-                                </div>
-                              )}
+                              <img id="delete-icons" onClick={deleteCommentHandler} src={deleted} />
+                              <NavLink to={`/users/posts/1`}>
+                                <img id="edit-icons" src={edit} />
+                              </NavLink>
+                            </div>
+                          )}
+                        </div>
+
                       </div>
 
-                    </div>
+                    }
                     <div className="comment-content-createdat">
-                        {comment?.post_id === someThang?.id ? comment?.created_at : null}
-                      </div>
+                      {comment?.post_id === someThang?.id ? comment?.created_at : null}
+                    </div>
 
                     <div className="comment-content-comment">
                       {comment?.post_id === someThang?.id ? comment?.comment : null}
@@ -386,7 +389,7 @@ function User() {
                               {post.post}
                             </div>
                             <div className="post-comment-count">
-                              <div className="comment-counter" onClick={() => { setSomeThang(post); openMenu() }}>comment</div>
+                              <div className="comment-counter" onClick={() => { setSomeThang(post); openMenu() }}>leave a comment</div>
 
                               {showMenu &&
                                 otherThang
@@ -430,7 +433,7 @@ function User() {
                       <div className="post-text">
                         This is an example of what post text will look like and display on the post card. After I am done with my capstone project I will be going to hot pot immediately. I really probably should have generated some lorem ipsum here but now that I've typed all of this out I've realized it's too late. On second thought there seems to be a lot of space left. Nah it's okay I'll just cut it here.
                       </div>
-                      <div className="post-comment-count">comment</div>
+                      <div className="post-comment-count">leave a comment</div>
                     </div>
                   </div>
                 </div>
