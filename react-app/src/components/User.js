@@ -12,7 +12,7 @@ import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
 import lateimg from "../assets/la-te-cup.png"
 import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
-import {createComment} from '../store/comment'
+import { createComment, getAllCommentsOfPost, getEveryComment } from '../store/comment'
 import { Modal } from './context/Modal';
 
 function User() {
@@ -35,15 +35,16 @@ function User() {
   const comments = useSelector(state => state.commentReducer)
   const posts = useSelector(state => state.postReducer.allPosts)
   const singlePost = useSelector(state => state.postReducer.singlePost)
+  const allComments = useSelector(state => state.commentReducer.allComments)
 
   const userPosts = Object.values(posts).filter(post => post.user_id === +userId)
-  
+
   let deletePostHandler;
   let postIdHolder;
   let postComments;
 
   postComments = Object.values(comments).filter(comment => comment.post_id === +postIdHolder)
-  
+
 
   console.log('comments', comments)
   console.log('user posts', userPosts)
@@ -119,7 +120,14 @@ function User() {
     dispatch(getAllPostsThunk())
       .then(() => { setIsLoaded(true) })
 
-  }, [dispatch, userPosts.length, currentUser, singlePost, comments]);
+    dispatch(getEveryComment())
+
+    for (let i = 1; i < userPosts.length; i++) {
+
+      dispatch(getAllCommentsOfPost(i))
+    }
+
+  }, [dispatch, userPosts.length, currentUser, singlePost, allComments]);
 
 
   const otherThang = (
@@ -127,15 +135,43 @@ function User() {
       <div id="dont-look-at-this">
 
         {someThang ? postIdHolder = someThang.id : null}
-        
+        {/* {someThang ? postComments = Object.values(comments).filter(comment => comment.post_id === someThang.id) : null} */}
+
       </div>
       <div id="comment-fixed-upper-div">
 
-        <div>
+        <div className="whereisthis">
           <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
           <div id="comment-fixed-sections">
             <div className="dropdown-top-sections" id="profile-username">
-              {postComments.comment}
+              {() => {
+                console.log('get comment of this post', someThang?.id)
+                dispatch(getAllCommentsOfPost(someThang?.id))
+              }}
+              {console.log('postcomments console', postComments)}
+              {console.log('somethang', someThang?.id)}
+              {console.log('comments console', comments.user)}
+              {Object.values(comments.user).map(comment => {
+                return (
+                  <>
+                    <div className="comment-content-username-wrapper">
+                      <img id="comment-content-user-avatar" src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null} />
+
+                      <div className="comment-content-username">
+                        {comment?.post_id === someThang?.id ? comment?.owner?.username : null}
+                      </div>
+
+                    </div>
+                    <div className="comment-content-createdat">
+                        {comment?.post_id === someThang?.id ? comment?.created_at : null}
+                      </div>
+
+                    <div className="comment-content-comment">
+                      {comment?.post_id === someThang?.id ? comment?.comment : null}
+                    </div>
+                  </>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -171,7 +207,7 @@ function User() {
     setCounter(count => count - 1);
   };
 
-  //reset counter 
+  //reset counter
   const reset = () => {
     setCounter(0)
   }
@@ -289,8 +325,8 @@ function User() {
                       </div>
                       <div className="buy-latte-counter">
                         <div>
-                        <img id="buy-latte-ava-icon" src={lateimg} /> 
-                        Lattes cost $4
+                          <img id="buy-latte-ava-icon" src={lateimg} />
+                          Lattes cost $4
                         </div>
 
                         <div className="counter">
@@ -319,8 +355,8 @@ function User() {
                         </div>
                       </div>
                       <div className="leave-latte-submit-wrapper">
-                       Donate ${+counter * 4}
-                        </div>
+                        Donate ${+counter * 4}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -348,9 +384,10 @@ function User() {
                               {+userId === currentUser.id && (
                                 <div className="d-e-align">
 
-                                  {deletePostHandler = async () => {
+                                  {deletePostHandler = () => {
+                                    console.log('del post hand post id', post.id)
                                     if (window.confirm('Are you sure you want to delete your Post?')) {
-                                      await dispatch(deletePostThunk(post.id))
+                                      dispatch(deletePostThunk(post.id))
                                       history.push(`/users/${userId}`)
                                     } else {
                                       history.push(`/users/${userId}`)

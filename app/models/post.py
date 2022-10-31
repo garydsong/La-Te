@@ -14,8 +14,8 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
 
     users = db.relationship("User", back_populates="posts")
-    comments = db.relationship("Comment", back_populates="post")
-    reactions = db.relationship("Reaction", back_populates="posts")
+    comments = db.relationship("Comment", back_populates="post", cascade='all, delete')
+    reactions = db.relationship("Reaction", back_populates="posts", cascade='all, delete')
 
     def to_dict(self):
         return {

@@ -142,9 +142,17 @@
     color: #E55E5E;
 }
 
-#website-url:link {text-decoration: none;}
-#website-url:active {text-decoration: none;}
-#website-url:focus {text-decoration: none;}
+#website-url:link {
+    text-decoration: none;
+}
+
+#website-url:active {
+    text-decoration: none;
+}
+
+#website-url:focus {
+    text-decoration: none;
+}
 
 .submit-post-container {
     display: flex;
@@ -200,7 +208,7 @@
     border-radius: 999px;
     margin-left: 10px;
     margin-right: 15px;
-    color:rgba(000, 000, 000, 0.5);
+    color: rgba(000, 000, 000, 0.5);
     transition: .5s;
 }
 
@@ -324,7 +332,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height:17.5%;
+    height: 17.5%;
 
 }
 
@@ -356,6 +364,7 @@
 #post-text-input:focus {
     border: transparent;
 }
+
 #post-text-input:active {
     border: transparent;
 }
@@ -381,7 +390,7 @@
     align-items: center;
     justify-content: flex-end;
     width: 100%;
-    height:17.5%;
+    height: 17.5%;
 }
 
 .post-modal-submit-button {
@@ -393,7 +402,7 @@
     background-color: #ffeeee;
     border-radius: 10px;
     font-weight: 700;
-    color:#FF5F5F;
+    color: #FF5F5F;
     transition: .5s;
     border: transparent;
 }
@@ -437,8 +446,13 @@
 
 #comment-fixed-container {
     position: fixed;
-    left: 878px;
-    bottom: 680px;
+    left: 868px;
+    bottom: 660px;
+}
+
+.whereisthis {
+    overflow-y: scroll;
+
 }
 
 #comment-post-img-id {
@@ -449,7 +463,7 @@
     border-radius: 999px;
 }
 
-  #comment-fixed-upper-div {
+#comment-fixed-upper-div {
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -463,74 +477,78 @@
     width: 380px;
     height: 620px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
 
-  .dropdown-links:hover {
+}
+
+.dropdown-links:hover {
     background-color: rgb(231, 231, 231);
     cursor: pointer;
-  }
+}
 
 
 
-  .dropdown-links {
+.dropdown-links {
     display: flex;
     align-items: center;
     padding: 10px 10px 10px 15px;
     /* display: block; */
-  }
+}
 
-  .dropdown-button {
+.dropdown-button {
     display: block;
-  }
+}
 
-  #comment-fixed-sections {
+#comment-fixed-sections {
     display: flex;
     flex-direction: column;
     align-items: left;
     padding: 5px 10px;
     border-bottom: 1px lightgray solid;
-  }
 
-  .dropdown-text-rows {
+}
+
+.dropdown-text-rows {
     padding: 0px 0px 10px 5px;
     overflow: ellipsis;
-  }
-  .dropdown-top-sections{
-    padding: 5px 5px;
-  }
-  .dropdown-email {
-    padding-top: 10px;
-  }
+}
 
-  .dropdown-about-me{
+.dropdown-top-sections {
+    padding: 5px 5px;
+}
+
+.dropdown-email {
+    padding-top: 10px;
+}
+
+.dropdown-about-me {
     border: none;
     background-color: white;
     text-align: left;
     font-size: 16px;
 
-  }
+}
 
-  .dropdown-about-me:hover{
+.dropdown-about-me:hover {
     background-color: rgb(231, 231, 231);
 
-  }
+}
 
-  .dropdown-about-me{
+.dropdown-about-me {
     padding-top: 10px;
-  }
+}
 
-  #dropdown-links-container {
+#dropdown-links-container {
     padding-top: 10px;
-  }
+}
 
-  #leave-comment-session-user-ava {
+#leave-comment-session-user-ava {
     height: 30px;
     width: 30px;
     object-fit: cover;
     border-radius: 999px;
-  }
+}
 
-  #comment-text-input {
+#comment-text-input {
     font-family: 'Nunito';
     padding-top: 10px;
     padding-left: 20px;
@@ -550,6 +568,7 @@
 #post-text-input:focus {
     border: transparent;
 }
+
 #post-text-input:active {
     border: transparent;
 }
@@ -666,7 +685,8 @@
     font-size: 16px;
 }
 
-#latte-comment-input::placeholder { /* Microsoft Edge */
+#latte-comment-input::placeholder {
+    /* Microsoft Edge */
     color: rgb(168, 199, 209);
 }
 
@@ -691,4 +711,31 @@
 
 .counter__output {
     font-size: 18px;
+}
+
+.comment-content-username-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.comment-content-username {
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.comment-content-createdat {
+    color: gray;
+    font-size: 12px;
+}
+
+#comment-content-user-avatar {
+    height: 20px;
+    width: 20px;
+    object-fit: cover;
+    border-radius: 999px;
+    margin-right: 10px;
+}
+
+.comment-content-comment {
+    margin-bottom: 10px;
 }

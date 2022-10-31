@@ -111,6 +111,7 @@ export const getAllPostsThunk = () => async (dispatch) => {
   }
 
   export const deletePostThunk = (postId) => async (dispatch) => {
+    console.log('delete thunk post id', postId)
     const response = await fetch(`/api/posts/${postId}`, {
       method: "DELETE"
     });
