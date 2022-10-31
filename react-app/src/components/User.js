@@ -12,7 +12,7 @@ import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
 import lateimg from "../assets/la-te-cup.png"
 import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
-import { createComment, getAllCommentsOfPost, getEveryComment } from '../store/comment'
+import { createComment, getAllCommentsOfPost, getEveryComment, removeComment } from '../store/comment'
 import { Modal } from './context/Modal';
 
 function User() {
@@ -40,6 +40,7 @@ function User() {
   const userPosts = Object.values(posts).filter(post => post.user_id === +userId)
 
   let deletePostHandler;
+  let deleteCommentHandler;
   let postIdHolder;
   let postComments;
 
@@ -89,21 +90,17 @@ function User() {
   const handleCommentSubmit = (e) => {
     e.preventDefault()
 
-
     const newComment = {
       comment: comment
     }
 
     console.log('new c', newComment, 'postholder', +postIdHolder, 'all comments', comments)
-
     // createComment(newComment, +postIdHolder)
     dispatch(createComment(newComment, +postIdHolder))
-
     // let createdComment =  dispatch(createComment(newComment, postIdHolder))
     // if (createdComment) {
     //   history.push(`/users/${userId}`)
     // }
-
   }
 
   useEffect(() => {
@@ -159,6 +156,21 @@ function User() {
 
                       <div className="comment-content-username">
                         {comment?.post_id === someThang?.id ? comment?.owner?.username : null}
+                        {comment?.user_id === currentUser.id && (
+                                <div className="d-e-align">
+
+                                  {deleteCommentHandler = () => {
+                                    if (window.confirm('Are you sure you want to delete your comment?')) {
+                                      dispatch(removeComment(comment?.id))
+                                    }
+                                  }}
+
+                                  <img id="delete-icons" onClick={deleteCommentHandler} src={deleted} />
+                                  <NavLink to={`/users/posts/1`}>
+                                    <img id="edit-icons" src={edit} />
+                                  </NavLink>
+                                </div>
+                              )}
                       </div>
 
                     </div>
@@ -312,7 +324,6 @@ function User() {
                         <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={audio} /> Audio Links</div>
                         <div id="submit-post-action-suggestions"><img id="submit-post-icon" src={video} /> Video Links</div>
                       </div>
-                      <div className="post-tag">consider posting</div>
                     </div>
                   </div>
                 ) : (
@@ -375,7 +386,7 @@ function User() {
                               {post.post}
                             </div>
                             <div className="post-comment-count">
-                              <div className="comment-counter" onClick={() => { setSomeThang(post); openMenu() }}>5 comments</div>
+                              <div className="comment-counter" onClick={() => { setSomeThang(post); openMenu() }}>comment</div>
 
                               {showMenu &&
                                 otherThang
@@ -386,7 +397,7 @@ function User() {
 
                                   {deletePostHandler = () => {
                                     console.log('del post hand post id', post.id)
-                                    if (window.confirm('Are you sure you want to delete your Post?')) {
+                                    if (window.confirm('Are you sure you want to delete your post?')) {
                                       dispatch(deletePostThunk(post.id))
                                       history.push(`/users/${userId}`)
                                     } else {
@@ -419,7 +430,7 @@ function User() {
                       <div className="post-text">
                         This is an example of what post text will look like and display on the post card. After I am done with my capstone project I will be going to hot pot immediately. I really probably should have generated some lorem ipsum here but now that I've typed all of this out I've realized it's too late. On second thought there seems to be a lot of space left. Nah it's okay I'll just cut it here.
                       </div>
-                      <div className="post-comment-count">5 comments</div>
+                      <div className="post-comment-count">comment</div>
                     </div>
                   </div>
                 </div>
