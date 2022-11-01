@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, NavLink, Link } from 'react-router-dom';
+import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
+import { Modal } from './context/Modal';
+import { createComment, getAllCommentsOfPost, getEveryComment, removeComment } from '../store/comment'
+import { createLatte, getEveryLatte, getCurrentLattes, getAllLattes } from '../store/latte';
 import './User.css'
 import website from "../assets/icons/website-icon.svg"
 import audio from "../assets/icons/audio-icon.svg"
@@ -11,13 +15,11 @@ import deleted from "../assets/icons/trash-icon.svg"
 import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
 import lateimg from "../assets/la-te-cup.png"
+import rec from "../assets/singlelate.png"
 import defaultpfp from "../assets/pfp/nopicpfp.png"
 import defaultpost from "../assets/onerrorimg/postimg.jpg"
 import defaultcover from "../assets/onerrorimg/coverimg.jpeg"
-import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
-import { createComment, getAllCommentsOfPost, getEveryComment, removeComment } from '../store/comment'
-import { createLatte } from '../store/latte';
-import { Modal } from './context/Modal';
+import firstpostimg from "../assets/firstpost.png"
 
 function User() {
   const [user, setUser] = useState({});
@@ -32,12 +34,14 @@ function User() {
   const [latteComment, setLatteComment] = useState('');
   const [latte, setLatte] = useState(1);
   const [editCommentText, setEditCommentText] = useState(0);
+  const [thanks, setThanks] = useState(false);
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
   const currentUser = useSelector(state => state.session.user)
   const sessionUser = useSelector(state => state.session.user)
-
+  const currUserLattes = useSelector(state => state.latteReducer.user)
+  const lattes = useSelector(state => state.latteReducer.allLattes);
   const comments = useSelector(state => state.commentReducer)
   const posts = useSelector(state => state.postReducer.allPosts)
   const singlePost = useSelector(state => state.postReducer.singlePost)
@@ -51,7 +55,11 @@ function User() {
   let postIdHolder;
   let postComments;
 
+
+
   postComments = Object.values(comments).filter(comment => comment.post_id === +postIdHolder)
+
+
 
 
   console.log('comments', comments)
@@ -100,6 +108,7 @@ function User() {
       comment: comment
     }
 
+
     console.log('new c', newComment, 'postholder', +postIdHolder, 'all comments', comments)
     // createComment(newComment, +postIdHolder)
     dispatch(createComment(newComment, +postIdHolder))
@@ -109,7 +118,7 @@ function User() {
     // }
   }
 
-  const handleLatteSubmit = (e) => {
+  const handleLatteSubmit = async (e) => {
     e.preventDefault()
 
     const newLatte = {
@@ -117,8 +126,21 @@ function User() {
       comment: latteComment
     }
 
-    dispatch(createLatte(newLatte, sessionUser.id))
+    if (newLatte) {
+      setThanks(true)
+    }
+
+    await dispatch(createLatte(newLatte, userId))
+    history.push(`/users/${userId}`)
   }
+
+  // console.log('try', Object.values(lattes)?.filter(latte =>
+  //   latte?.donatee_id === +userId)?.length)
+
+  useEffect(() => {
+    dispatch(getAllLattes(sessionUser.id))
+  }, [])
+
 
   useEffect(() => {
     if (!userId) {
@@ -131,17 +153,19 @@ function User() {
       setUser(user);
     })();
 
+    dispatch(getEveryLatte())
+
     dispatch(getAllPostsThunk())
       .then(() => { setIsLoaded(true) })
 
     dispatch(getEveryComment())
 
     for (let i = 1; i < userPosts.length; i++) {
-
       dispatch(getAllCommentsOfPost(i))
     }
 
-  }, [dispatch, userPosts.length, currentUser, singlePost, allComments]);
+
+  }, [dispatch, userPosts.length, currentUser, singlePost, allComments, currUserLattes]);
 
 
   const otherThang = (
@@ -165,12 +189,9 @@ function User() {
           <div id="comment-fixed-sections">
             <div className="dropdown-top-sections" id="profile-username">
               {() => {
-                console.log('get comment of this post', someThang?.id)
                 dispatch(getAllCommentsOfPost(someThang?.id))
               }}
-              {console.log('postcomments console', postComments)}
-              {console.log('somethang', someThang?.id)}
-              {console.log('comments console', comments.user)}
+
               {Object.values(comments.user).map(comment => {
                 return (
                   <>
@@ -268,9 +289,11 @@ function User() {
     setCounter(0)
   }
 
+  // let latteLength = Object.values(lattes)
+
   // useEffect(() => {
 
-  // }, [])
+  // }, [latteLength.length])
 
 
   if (!user) {
@@ -345,6 +368,23 @@ function User() {
               </div>
             </div>
 
+            <div className="top-bottom-portion-profile">
+              <div className="top-bottom-portion-about">
+                About
+              </div>
+              <div className="top-bottom-portion-received">
+                <img id="received-lattes" src={rec} /> x
+                <div className="rec-div">
+                  {lattes && <b>{Object.values(lattes)?.filter(latte =>
+                    latte?.donatee_id === +userId)?.length}</b>}
+                </div>
+                <div className="rec-div">
+                  Received
+                </div>
+              </div>
+
+            </div>
+
             <div className="user-page-mid-wrapper">
               <div className="user-page-mid-left-container">
                 <div className="user-page-mid-left">
@@ -396,21 +436,20 @@ function User() {
                           </div>
                         </div>
                         <div className="buy-latte-counter">
-                          <div>
+                          <div className="lattes-cost-center">
                             <img id="buy-latte-ava-icon" src={lateimg} />
-                            Lattes cost $4
+                            $4 each
                           </div>
 
                           <div className="counter">
                             <div className="btn__container">
                               {counter > 1 ? (
-                                <button className="control__btn-sub" onClick={decrease}>-</button>
+                                <div className="control__btn-sub" onClick={() => setCounter(counter - 1)}>-</div>
                               ) : (
-                                <button className="control__btn-sub">-</button>
+                                <div className="control__btn-sub">-</div>
                               )}
                               <span className="counter__output">{counter}</span>
-                              <button className="control__btn-add" onClick={increase}>+</button>
-                              {/* <button className="reset" onClick={reset}>Reset</button> */}
+                              <div className="control__btn-add" onClick={() => setCounter(counter + 1)}>+</div>
                             </div>
                           </div>
                         </div>
@@ -434,6 +473,15 @@ function User() {
                       </div>
                     </div>
                   </form>
+                )}
+                {thanks && (
+                  <>
+                    <div className="thank-you-submit-latte-container">
+                      <img id="your-donation-cup" src={rec} />
+                      <div className="your-donation-sent">Your donation has been sent to {user.first_name}!</div>
+                      <div className="your-donation-thanks">Thanks a latte!</div>
+                    </div>
+                  </>
                 )}
                 <>
                   {Object.values(userPosts).map((post, i) => {
@@ -502,11 +550,16 @@ function User() {
                   <div className="post-container">
 
                     <div className="post-content-wrapper">
-                      <img className="post-image" src="https://i.imgur.com/LKgVkZr.gif" />
+                      <img className="post-image" src={firstpostimg} />
                       <div className="post-text">
-                        This is an example of what post text will look like and display on the post card. After I am done with my capstone project I will be going to hot pot immediately. I really probably should have generated some lorem ipsum here but now that I've typed all of this out I've realized it's too late. On second thought there seems to be a lot of space left. Nah it's okay I'll just cut it here.
+                        Welcome to La-Té! This is the first post on everyone's feed! Explore other profiles, comment on posts, and buy someone a latte!
+
+                        <br></br><br></br>
+                        <i>-La-Té Team</i>
+
+
                       </div>
-                      <div className="post-comment-count">leave a comment</div>
+                      <div className="post-comment-count">comments disabled for this post</div>
                     </div>
                   </div>
                 </div>

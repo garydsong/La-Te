@@ -17,11 +17,11 @@ latte_routes = Blueprint('lattes', __name__)
 ## GET ALL LATTES
 @latte_routes.route("/", methods=["GET"])
 def get_lattes():
-  lattes = Latte.query.order_by(Latte.created_at.desc()).all()
+  lattes = Latte.query.all()
   latte_list = []
 
   for latte in lattes:
-    owner = (User.query.filter(User.id == latte.user_id).one()).to_dict()
+    owner = (User.query.filter(User.id == latte.donor_id).one()).to_dict()
     lattes_dict = latte.to_dict()
     lattes_dict['owner'] = owner
     latte_list.append(lattes_dict)
@@ -51,6 +51,3 @@ def get_singular_latte(id):
   latte_dict['Owner'] = owner
 
   return latte_dict
-
-
-

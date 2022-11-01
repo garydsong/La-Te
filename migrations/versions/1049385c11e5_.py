@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 600fcfe6aff7
+Revision ID: 1049385c11e5
 Revises: 
-Create Date: 2022-10-28 19:16:05.305284
+Create Date: 2022-11-01 13:45:01.996827
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '600fcfe6aff7'
+revision = '1049385c11e5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,9 +27,9 @@ def upgrade():
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.Column('city', sa.String(length=20), nullable=False),
     sa.Column('state', sa.String(length=15), nullable=False),
-    sa.Column('avatar', sa.String(length=100), nullable=False),
+    sa.Column('avatar', sa.String(length=100), nullable=True),
     sa.Column('bio', sa.String(length=2000), nullable=False),
-    sa.Column('cover_img', sa.String(length=100), nullable=False),
+    sa.Column('cover_img', sa.String(length=100), nullable=True),
     sa.Column('website', sa.String(length=100), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
@@ -41,6 +41,7 @@ def upgrade():
     sa.Column('comment', sa.String(length=1000), nullable=False),
     sa.Column('created_at', sa.DateTime(timezone=True), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('donor_id', sa.Integer(), nullable=False),
+    sa.Column('donatee_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['donor_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
