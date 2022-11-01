@@ -64,7 +64,7 @@ def edit_a_user(id):
 
 
 ## CREATE A LATTE
-@user_routes.route("/<int:id>", methods=["POST"])
+@user_routes.route("/<int:id>/lattes", methods=["POST"])
 @login_required
 def create_latte(id):
   form = LatteForm()

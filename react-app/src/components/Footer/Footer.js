@@ -26,8 +26,8 @@ function Footer() {
                             <div className="top-footer-title-link">
                             Use La-Té With
                             </div>
-                            <p>Twitter</p>
-                            <p>Instagram</p>
+                            <p>Nope</p>
+                            <p>GareBnB</p>
                             <p>Twitch</p>
                             <p>YouTube</p>
                             <p>Medium</p>
@@ -49,12 +49,18 @@ function Footer() {
 
                         <div className="top-footer-links">
                             <div className="top-footer-title-link">
-                            About La-Té
+                            S/O June Squad
                             </div>
-                            <p>About La-Té</p>
-                            <p>Hire Me!</p>
-                            <p>Terms</p>
-                            <p>Privacy</p>
+                            <p>Michael Jung  - <a href="https://escape-hatch.herokuapp.com/">Escape Hatch</a></p>
+                            <p>Amanda Vien - <a href="https://slate-canva.herokuapp.com/">Slate</a></p>
+                            <p>Jack Fisher - <a href="https://dancefam.herokuapp.com/">Dance Fam</a></p>
+                            <p>Brandon Tasaki - <a href="https://pearbnb-final.herokuapp.com/">PearBnB</a></p>
+                            <p>John Carerra - </p>
+                            <p>Sam Suh - </p>
+                            <p>Jae Hwang - </p>
+                            <p>Jake Matillano - <a href="https://tunenimbus.herokuapp.com/">Tunenimbus</a></p>
+                            <p>Alex Dam - </p>
+                            <p>Logan Seals - </p>
                         </div>
                     </div>
                 </div>

@@ -15,9 +15,9 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(20), nullable=False)
     state = db.Column(db.String(15), nullable=False)
-    avatar = db.Column(db.String(100), nullable=False)
+    avatar = db.Column(db.String(100), nullable=True)
     bio = db.Column(db.String(2000), nullable=False)
-    cover_img = db.Column(db.String(100), nullable=False)
+    cover_img = db.Column(db.String(100), nullable=True)
     website = db.Column(db.String(100), nullable=True)
 
     posts = db.relationship("Post", back_populates="users")

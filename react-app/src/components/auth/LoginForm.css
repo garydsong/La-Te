@@ -97,3 +97,7 @@
 #new-to-la-te-div:active {text-decoration: none;}
 #new-to-la-te-div:visited {text-decoration: none;}
 .signup-title:hover {color: #ff4545;}
+
+.errors-login {
+    color: #FF5F5F;
+}

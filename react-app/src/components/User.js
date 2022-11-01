@@ -16,6 +16,7 @@ import defaultpost from "../assets/onerrorimg/postimg.jpg"
 import defaultcover from "../assets/onerrorimg/coverimg.jpeg"
 import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
 import { createComment, getAllCommentsOfPost, getEveryComment, removeComment } from '../store/comment'
+import { createLatte } from '../store/latte';
 import { Modal } from './context/Modal';
 
 function User() {
@@ -29,6 +30,8 @@ function User() {
   const [someThang, setSomeThang] = useState(undefined)
   const [counter, setCounter] = useState(1);
   const [latteComment, setLatteComment] = useState('');
+  const [latte, setLatte] = useState(1);
+  const [editCommentText, setEditCommentText] = useState(0);
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
@@ -44,6 +47,7 @@ function User() {
 
   let deletePostHandler;
   let deleteCommentHandler;
+  let editCommentHandler;
   let postIdHolder;
   let postComments;
 
@@ -105,6 +109,17 @@ function User() {
     // }
   }
 
+  const handleLatteSubmit = (e) => {
+    e.preventDefault()
+
+    const newLatte = {
+      latte: counter,
+      comment: latteComment
+    }
+
+    dispatch(createLatte(newLatte, sessionUser.id))
+  }
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -139,12 +154,12 @@ function User() {
       </div>
       <div id="comment-fixed-upper-div">
         <div className="close-comment-container">
-        <img id="close-comment" onClick={(()=>setShowMenu(false))} src={x} />
+          <img id="close-comment" onClick={(() => setShowMenu(false))} src={x} />
         </div>
         <img
-        id="comment-post-img-id"
-        src={someThang ? someThang.post_img : null}
-        onError={postImageOnErrorHandler}
+          id="comment-post-img-id"
+          src={someThang ? someThang.post_img : null}
+          onError={postImageOnErrorHandler}
         />
         <div className="whereisthis">
           <div id="comment-fixed-sections">
@@ -162,9 +177,9 @@ function User() {
                     {comment?.post_id === someThang?.id &&
                       <div className="comment-content-username-wrapper">
                         <img
-                        id="comment-content-user-avatar"
-                        src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null}
-                        onError={imageOnErrorHandler}
+                          id="comment-content-user-avatar"
+                          src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null}
+                          onError={imageOnErrorHandler}
                         />
 
                         <div className="comment-content-username">
@@ -179,9 +194,13 @@ function User() {
                               }}
 
                               <img id="delete-icons" onClick={deleteCommentHandler} src={deleted} />
-                              <NavLink to={`/users/posts/1`}>
-                                <img id="edit-icons" src={edit} />
-                              </NavLink>
+
+                              {editCommentHandler = () => {
+                                history.push(`/comments/${comment?.id}/`)
+                              }}
+
+                              <img id="edit-icons" src={edit} onClick={editCommentHandler} />
+
                             </div>
                           )}
                         </div>
@@ -189,13 +208,19 @@ function User() {
                       </div>
 
                     }
+
                     <div className="comment-content-createdat">
                       {comment?.post_id === someThang?.id ? comment?.created_at : null}
                     </div>
-
-                    <div className="comment-content-comment">
-                      {comment?.post_id === someThang?.id ? comment?.comment : null}
-                    </div>
+                    {editCommentText ?
+                      (<div className="comment-content-comment">
+                        {comment?.post_id === someThang?.id ? comment?.comment : null}
+                      </div>)
+                      :
+                      (<div className="comment-content-comment">
+                        {comment?.post_id === someThang?.id ? comment?.comment : null}
+                      </div>)
+                    }
                   </>
                 )
               })}
@@ -206,9 +231,9 @@ function User() {
 
           <div className="dropdown-links" id="comment-business-navbar">
             <img
-            id="leave-comment-session-user-ava"
-            src={sessionUser.avatar}
-            onError={imageOnErrorHandler}
+              id="leave-comment-session-user-ava"
+              src={sessionUser.avatar}
+              onError={imageOnErrorHandler}
             />
             <form id="comment-side-form" onSubmit={handleCommentSubmit}>
               <textarea
@@ -263,9 +288,9 @@ function User() {
             <form id="post-modal-form" onSubmit={handleSubmit}>
               <div className="post-modal-ava-post-container">
                 <img
-                id="modal-avatar"
-                src={user.avatar}
-                onError={imageOnErrorHandler}
+                  id="modal-avatar"
+                  src={user.avatar}
+                  onError={imageOnErrorHandler}
                 />
                 <textarea
                   id="post-text-input"
@@ -303,16 +328,16 @@ function User() {
           <div className="user-page-container">
             <div className="cover-img-wrapper">
               <img
-              id="user-page-cover-img"
-              src={user.cover_img}
-              onError={coverImageOnErrorHandler}
+                id="user-page-cover-img"
+                src={user.cover_img}
+                onError={coverImageOnErrorHandler}
               />
             </div>
             <div className="avatar-wrapper">
               <img
-              id="user-page-avatar"
-              src={user.avatar}
-              onError={imageOnErrorHandler}
+                id="user-page-avatar"
+                src={user.avatar}
+                onError={imageOnErrorHandler}
               />
               <div className="user-page-top-name-container">
                 <div className="user-page-top-name">{user.first_name} {user.last_name}</div>
@@ -345,9 +370,9 @@ function User() {
                     <div className="submit-post-content">
                       <div className="submit-post-top">
                         <img
-                        id="post-user-ava-icon"
-                        src={user.avatar}
-                        onError={imageOnErrorHandler}
+                          id="post-user-ava-icon"
+                          src={user.avatar}
+                          onError={imageOnErrorHandler}
                         />
                         <div className="write-a-post-container" onClick={() => setShowModal(true)}>
                           Write a Post
@@ -362,49 +387,53 @@ function User() {
                     </div>
                   </div>
                 ) : (
-                  <div className="submit-latte-container">
-                    <div className="submit-latte-content">
-                      <div className="submit-latte-top">
-                        <div className="buy-latte-for-wrapper">
-                          Buy a latte for {user.first_name}
-                        </div>
-                      </div>
-                      <div className="buy-latte-counter">
-                        <div>
-                          <img id="buy-latte-ava-icon" src={lateimg} />
-                          Lattes cost $4
-                        </div>
-
-                        <div className="counter">
-                          <div className="btn__container">
-                            {counter > 1 ? (
-                              <button className="control__btn-sub" onClick={decrease}>-</button>
-                            ) : (
-                              <button className="control__btn-sub">-</button>
-                            )}
-                            <span className="counter__output">{counter}</span>
-                            <button className="control__btn-add" onClick={increase}>+</button>
-                            {/* <button className="reset" onClick={reset}>Reset</button> */}
+                  <form onSubmit={handleLatteSubmit}>
+                    <div className="submit-latte-container">
+                      <div className="submit-latte-content">
+                        <div className="submit-latte-top">
+                          <div className="buy-latte-for-wrapper">
+                            Buy a latte for {user.first_name}
                           </div>
                         </div>
-                      </div>
-                      <div className="leave-comment-with-latte-wrapper">
-                        <div>
-                          <input
-                            id="latte-comment-input"
-                            name='latte-comment'
-                            type='text'
-                            placeholder='Leave a Comment'
-                            value={latteComment}
-                            onChange={(e => setLatteComment(e.target.value))}
-                          />
+                        <div className="buy-latte-counter">
+                          <div>
+                            <img id="buy-latte-ava-icon" src={lateimg} />
+                            Lattes cost $4
+                          </div>
+
+                          <div className="counter">
+                            <div className="btn__container">
+                              {counter > 1 ? (
+                                <button className="control__btn-sub" onClick={decrease}>-</button>
+                              ) : (
+                                <button className="control__btn-sub">-</button>
+                              )}
+                              <span className="counter__output">{counter}</span>
+                              <button className="control__btn-add" onClick={increase}>+</button>
+                              {/* <button className="reset" onClick={reset}>Reset</button> */}
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div className="leave-latte-submit-wrapper">
-                        Donate ${+counter * 4}
+                        <div className="leave-comment-with-latte-wrapper">
+                          <div>
+                            <input
+                              id="latte-comment-input"
+                              name='latte-comment'
+                              type='text'
+                              placeholder='Leave a Comment'
+                              value={latteComment}
+                              onChange={(e => setLatteComment(e.target.value))}
+                            />
+                          </div>
+                        </div>
+                        <button className="leave-latte-submit-wrapper"
+                          type='submit'
+                        >
+                          Donate ${+counter * 4}
+                        </button>
                       </div>
                     </div>
-                  </div>
+                  </form>
                 )}
                 <>
                   {Object.values(userPosts).map((post, i) => {
@@ -412,18 +441,18 @@ function User() {
                       <div className="post-wrapper">
                         <div className="post-ava-username">
                           <img
-                          id="post-user-pfp"
-                          src={user.avatar}
-                          onError={imageOnErrorHandler}
+                            id="post-user-pfp"
+                            src={user.avatar}
+                            onError={imageOnErrorHandler}
                           />
                           <div className="post-user-username">{user.username}</div>
                         </div>
                         <div className="post-container">
                           <div className="post-content-wrapper">
                             <img
-                            className="post-image"
-                            src={post.post_img}
-                            onError={postImageOnErrorHandler}
+                              className="post-image"
+                              src={post.post_img}
+                              onError={postImageOnErrorHandler}
                             />
                             <div className="post-text">
                               {post.post}
@@ -464,9 +493,9 @@ function User() {
                 <div className="post-wrapper">
                   <div className="post-ava-username">
                     <img
-                    id="post-user-pfp"
-                    src={user.avatar}
-                    onError={imageOnErrorHandler}
+                      id="post-user-pfp"
+                      src={user.avatar}
+                      onError={imageOnErrorHandler}
                     />
                     <div className="post-user-username">{user.username}</div>
                   </div>

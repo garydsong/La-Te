@@ -78,7 +78,13 @@ const NavBar = () => {
                   <div id="dropdown-links-container">
                     <Link id="about-link" to={`/users`}>
                       <div className="dropdown-links" id="dropdown-links-business-navbar">
-                        <img className='icon-img-asset' id="icon-img-business-navbar" alt='abt me' src={sessionUser.avatar} />
+                        <img
+                        className='icon-img-asset'
+                        id="icon-img-business-navbar"
+                        alt='abt me'
+                        src={sessionUser.avatar}
+                        onError={imageOnErrorHandler}
+                        />
                         <div>About Me</div>
                       </div>
                     </Link>

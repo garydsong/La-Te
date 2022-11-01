@@ -196,7 +196,7 @@ const SignUpForm = () => {
                 id="avatar-input"
                 type='text'
                 name='avatar'
-                placeholder='Avatar URL'
+                placeholder='Avatar URL (Optional)'
                 onChange={updateAvatar}
                 value={avatar}
               ></input>
@@ -206,7 +206,7 @@ const SignUpForm = () => {
                 id="cover-img-input"
                 type='text'
                 name='cover-img'
-                placeholder='Cover Image Url'
+                placeholder='Cover Image Url (Optional)'
                 onChange={updateCoverImg}
                 value={coverImg}
               ></input>
@@ -226,7 +226,7 @@ const SignUpForm = () => {
                 id="website-input"
                 type='text'
                 name='website'
-                placeholder='Website'
+                placeholder='Website (Optional)'
                 onChange={updateWebsite}
                 value={website}
               ></input>
