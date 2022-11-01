@@ -28,5 +28,4 @@ class Latte(db.Model):
             'comment': self.comment,
             'created_at': self.created_at,
             'donor_id': self.donor_id,
-            'donatee_id': self.donatee_id
         }

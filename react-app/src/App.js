@@ -42,6 +42,9 @@ function App() {
         <Route path='/users/posts/:postId'>
           <EditPost />
         </Route>
+        <Route path='/users/comments/:commentId'>
+          <EditPost />
+        </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
         </ProtectedRoute>
