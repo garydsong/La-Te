@@ -74,7 +74,8 @@ def create_latte(id):
     latte = Latte(
         donor_id = current_user.id,
         latte = form.latte.data,
-        comment = form.comment.data
+        comment = form.comment.data,
+        donatee_id = id
     )
 
     db.session.add(latte)
@@ -84,3 +85,26 @@ def create_latte(id):
     return new_latte
 
   return {"errors": validation_form_errors(form.errors), "statusCode":401}
+
+## GET A LATTE BASED ON USER ID
+@user_routes.route('/<int:id>/lattes', methods=["GET"])
+def get_latte_by_user(id):
+
+  ##ERROR HANDLING NON-EXISTING USER
+  user = User.query.get(id)
+  if not user:
+    return {"message": "User couldn't be found.", "statusCode":404}
+
+  ## FILTERING LATTES BY USER ID
+  lattes_lst = []
+  lattes = Latte.query.filter(Latte.donor_id == id).order_by(Latte.created_at.desc()).all()
+  print('\n\n\n\n\n\n ----lattes----', lattes)
+  for latte in lattes:
+    latte_dict = latte.to_dict()
+
+    ## FINDING THE OWNER OF EACH LATTE BY USER ID
+    owner = (User.query.filter(User.id == latte.donor_id).one()).to_dict()
+    latte_dict['Owner'] = owner
+
+    lattes_lst.append(latte_dict)
+  return jsonify(lattes_lst)

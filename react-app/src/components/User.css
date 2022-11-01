@@ -21,20 +21,50 @@
     width: 100%;
     height: 600px;
     border-bottom: #f7f8f9 3px solid;
-
 }
 
 .user-page-container {
     padding-top: 50px;
     width: 950px;
     height: 1500px;
-    /* border: blue 1px solid; */
+
 }
 
 .cover-img-wrapper {
     width: 950px;
     height: 300px;
 
+}
+
+.top-bottom-portion-profile {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 120px;
+}
+
+.top-bottom-portion-about {
+    color: #FF5F5F;
+    font-weight: 700;
+    font-size: 16px;
+
+    border-bottom: #FF5F5F solid 3px;
+}
+
+.top-bottom-portion-received {
+    display: flex;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+
+#received-lattes {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.rec-div {
+    margin-left: 10px;
 }
 
 #user-page-cover-img {
@@ -80,7 +110,7 @@
     justify-content: space-between;
     width: 100%;
     /* height: 700px; */
-    margin-top: 180px;
+    margin-top: 60px;
 }
 
 .user-page-mid-left {
@@ -616,6 +646,48 @@
     border-radius: 20px;
 }
 
+.thank-you-submit-latte-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    background-color:rgba(255,255,255,0.9);
+    width: 530px;
+    height: 250px;
+    border-radius: 20px;
+    animation-name: animate-pop;
+    animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+    animation-duration: 0.5s;
+  }
+
+
+@keyframes animate-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+#your-donation-cup {
+    height: 50px;
+}
+
+.your-donation-sent {
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.your-donation-thanks {
+    font-size: 20px;
+    font-style: italic;
+}
+
 .submit-latte-content {
     display: flex;
     flex-direction: column;
@@ -701,6 +773,7 @@
     height: 45px;
     border-radius: 999px;
     object-fit: cover;
+    margin-right: 15px;
 }
 
 #latte-comment-input {
@@ -730,6 +803,7 @@
     font-weight: 700;
     font-size: 20px;
     transition: .5s;
+    border: transparent;
 }
 
 .leave-latte-submit-wrapper:hover {
@@ -769,4 +843,9 @@
 
 .comment-content-comment {
     margin-bottom: 30px;
+}
+
+.lattes-cost-center {
+    display: flex;
+    align-items: center;
 }

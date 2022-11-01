@@ -1,4 +1,5 @@
 const LOAD_ALL = 'lattes/LOAD_ALL'
+const LOAD_EVERY_LATTE = 'lattes/LOAD_EVERY_LATTE'
 const LOAD_CURRENT = 'lattes/LOAD_CURRENT'
 const CREATE = 'lattes/CREATE'
 const RESET = 'lattes/RESET'
@@ -8,6 +9,11 @@ const load = (lattes, userId) => ({
     type: LOAD_ALL,
     lattes,
     userId
+})
+
+const loadEveryLatte = (lattes) => ({
+    type: LOAD_EVERY_LATTE,
+    lattes
 })
 
 const loadCurrent = (lattes) => ({
@@ -31,7 +37,7 @@ const loadOne = (latteId) => ({
 })
 
 export const getAllLattes = (userId) => async dispatch => {
-    const response = await fetch(`/api/useres/${userId}/lattes`)
+    const response = await fetch(`/api/users/${userId}/lattes`)
 
     if (response.ok) {
         const lattes = await response.json()
@@ -40,6 +46,17 @@ export const getAllLattes = (userId) => async dispatch => {
     }
     return
 }
+
+export const getEveryLatte = () => async (dispatch) => {
+    const response = await fetch('/api/lattes/')
+    console.log('get every lattes thunk')
+    if (response.ok) {
+        const latteData = await response.json()
+        await dispatch(loadEveryLatte(latteData))
+        return latteData
+    }
+    return
+};
 
 export const getCurrentLattes = () => async dispatch => {
     const response = await fetch('/api/lattes/current')
@@ -98,6 +115,14 @@ const latteReducer = (state = initialState, action) => {
                 ...state,
                 user
             }
+        case LOAD_EVERY_LATTE:
+            action.lattes.lattes.forEach(latte => {
+                allLattes[latte.id] = latte
+            })
+            return {
+                ...state,
+                allLattes
+            }
         case LOAD_CURRENT:
             action.lattes.lattes.forEach(latte => {
                 user[latte.id] = latte
@@ -111,7 +136,7 @@ const latteReducer = (state = initialState, action) => {
             newState.user[action.latteId.id] = action.latteId
             return newState
         case CREATE:
-            newState = {user: { ...state.user } }
+            newState = { user: { ...state.user } }
             newState.user[action.latte.id] = action.latte
             return newState
         case RESET:
