@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/session';
@@ -80,6 +80,20 @@ const SignUpForm = () => {
     setRepeatPassword(e.target.value);
   };
 
+  useEffect(() => {
+    const err = []
+    if (!firstName || firstName.length > 40) err.push("First name must be between 1 and 40 characters")
+    if (!lastName || lastName.length > 40) err.push("Last name must be between 1 and 40 characters")
+    if (!username || username.length > 40) err.push("Username must be between 1 and 40 characters")
+    if (!email.match(/^\S+@\S+\.\S+$/)) err.push('Please enter a valid email address')
+    if (!city || city.length > 20) err.push('Please enter a valid city between 1 and 20 characters')
+    if (!state || state.length > 15) err.push('Please enter a valid state between 1 and 15 characters')
+    if (!bio || bio.length < 2) err.push('Please tell us a little about yourself')
+
+    setErrors(err)
+  }, [firstName, lastName, username, email, city, state, bio])
+
+
   if (user) {
     return <Redirect to='/' />;
   }
@@ -87,10 +101,10 @@ const SignUpForm = () => {
   return (
     <>
       <div className="sign-up-full-page">
-        <div className="whitespace"></div>
+        <div className="whitespace-errors"></div>
         <div className="checking">
           <form id="signup-form-spacing" onSubmit={onSignUp}>
-            <div>
+            <div className="signup-form-errors">
               {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
               ))}

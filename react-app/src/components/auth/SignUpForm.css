@@ -1,14 +1,38 @@
 .sign-up-full-page{
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     background-color: #fefaf9;
+}
+
+.whitespace-errors {
+    width: 100%;
+    height: 70px;
+}
+
+.signup-form-errors {
+    color: #FF5F5F;
+    overflow-y: scroll;
+    height: 70px;
+}
+
+.signup-form-errors::-webkit-scrollbar {
+    width: 14px;
+}
+
+.signup-form-errors::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.signup-form-errors::-webkit-scrollbar-thumb {
+    background-color: #FF7F7F;
+    border-radius: 10px;
 }
 
 .checking {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 800px;
+    height: 1000px;
 }
 
 #first-name-input {
@@ -189,7 +213,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 800px;
+    height: 100%;
     justify-content: space-between;
 }
 
