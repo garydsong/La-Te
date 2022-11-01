@@ -56,17 +56,6 @@ function User() {
     setShowMenu(true)
   }
 
-  useEffect(() => {
-    if (!showMenu) return;
-
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
-
-    document.addEventListener('click', closeMenu);
-
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -135,7 +124,7 @@ function User() {
       </div>
       <div id="comment-fixed-upper-div">
         <div className="close-comment-container">
-        <img id="close-comment" onClick={showMenu} src={x} />
+        <img id="close-comment" onClick={(()=>setShowMenu(false))} src={x} />
         </div>
         <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
         <div className="whereisthis">
