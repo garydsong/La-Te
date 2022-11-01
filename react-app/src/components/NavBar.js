@@ -7,12 +7,17 @@ import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import logo from '../assets/la-te.png'
 import menu from '../assets/icons/menu-icon.svg'
+import defaultpfp from '../assets/pfp/nopicpfp.png'
 
 const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
   const [showMenu, setShowMenu] = useState(false);
   const dispatch = useDispatch()
   const history = useHistory()
+
+  const imageOnErrorHandler = (event) => {
+    event.currentTarget.src = defaultpfp;
+  };
 
   const openMenu = () => {
     if (showMenu) return;
@@ -30,7 +35,7 @@ const NavBar = () => {
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
-  
+
 
   const logout = (e) => {
     e.preventDefault();
@@ -50,7 +55,11 @@ const NavBar = () => {
           <div className="logged-in-container">
             <NavLink id="your-page-text-dec" to={`/users/${sessionUser.id}`} exact={true} activeClassName='active'>
               <div className="your-page-button">
-                <img id="nav-bar-avatar" src={sessionUser.avatar} />
+                <img
+                id="nav-bar-avatar"
+                src={sessionUser.avatar}
+                onError={imageOnErrorHandler}
+                />
                 <div className="your-page">Your Page</div>
               </div>
             </NavLink>

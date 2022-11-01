@@ -11,6 +11,9 @@ import deleted from "../assets/icons/trash-icon.svg"
 import edit from "../assets/icons/edit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
 import lateimg from "../assets/la-te-cup.png"
+import defaultpfp from "../assets/pfp/nopicpfp.png"
+import defaultpost from "../assets/onerrorimg/postimg.jpg"
+import defaultcover from "../assets/onerrorimg/coverimg.jpeg"
 import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
 import { createComment, getAllCommentsOfPost, getEveryComment, removeComment } from '../store/comment'
 import { Modal } from './context/Modal';
@@ -50,6 +53,18 @@ function User() {
   console.log('comments', comments)
   console.log('user posts', userPosts)
   console.log('all posts', posts)
+
+  const imageOnErrorHandler = (event) => {
+    event.currentTarget.src = defaultpfp;
+  };
+
+  const postImageOnErrorHandler = (event) => {
+    event.currentTarget.src = defaultpost;
+  };
+
+  const coverImageOnErrorHandler = (event) => {
+    event.currentTarget.src = defaultcover;
+  };
 
   const openMenu = () => {
     if (showMenu) return;
@@ -126,7 +141,11 @@ function User() {
         <div className="close-comment-container">
         <img id="close-comment" onClick={(()=>setShowMenu(false))} src={x} />
         </div>
-        <img id="comment-post-img-id" src={someThang ? someThang.post_img : null} />
+        <img
+        id="comment-post-img-id"
+        src={someThang ? someThang.post_img : null}
+        onError={postImageOnErrorHandler}
+        />
         <div className="whereisthis">
           <div id="comment-fixed-sections">
             <div className="dropdown-top-sections" id="profile-username">
@@ -142,7 +161,11 @@ function User() {
                   <>
                     {comment?.post_id === someThang?.id &&
                       <div className="comment-content-username-wrapper">
-                        <img id="comment-content-user-avatar" src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null} />
+                        <img
+                        id="comment-content-user-avatar"
+                        src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null}
+                        onError={imageOnErrorHandler}
+                        />
 
                         <div className="comment-content-username">
                           {comment?.post_id === someThang?.id ? comment?.owner?.username : null}
@@ -182,7 +205,11 @@ function User() {
         <div id="dropdown-links-container">
 
           <div className="dropdown-links" id="comment-business-navbar">
-            <img id="leave-comment-session-user-ava" src={sessionUser.avatar} />
+            <img
+            id="leave-comment-session-user-ava"
+            src={sessionUser.avatar}
+            onError={imageOnErrorHandler}
+            />
             <form id="comment-side-form" onSubmit={handleCommentSubmit}>
               <textarea
                 id="comment-text-input"
@@ -235,7 +262,11 @@ function User() {
           <div className="post-modal-wrapper">
             <form id="post-modal-form" onSubmit={handleSubmit}>
               <div className="post-modal-ava-post-container">
-                <img id="modal-avatar" src={user.avatar} />
+                <img
+                id="modal-avatar"
+                src={user.avatar}
+                onError={imageOnErrorHandler}
+                />
                 <textarea
                   id="post-text-input"
                   type='text'
@@ -271,10 +302,18 @@ function User() {
         <div className="user-page-top-wrapper">
           <div className="user-page-container">
             <div className="cover-img-wrapper">
-              <img id="user-page-cover-img" src={user.cover_img} />
+              <img
+              id="user-page-cover-img"
+              src={user.cover_img}
+              onError={coverImageOnErrorHandler}
+              />
             </div>
             <div className="avatar-wrapper">
-              <img id="user-page-avatar" src={user.avatar} />
+              <img
+              id="user-page-avatar"
+              src={user.avatar}
+              onError={imageOnErrorHandler}
+              />
               <div className="user-page-top-name-container">
                 <div className="user-page-top-name">{user.first_name} {user.last_name}</div>
                 <div>la-te.com/{user.username}</div>
@@ -305,7 +344,11 @@ function User() {
                   <div className="submit-post-container">
                     <div className="submit-post-content">
                       <div className="submit-post-top">
-                        <img id="post-user-ava-icon" src={user.avatar} />
+                        <img
+                        id="post-user-ava-icon"
+                        src={user.avatar}
+                        onError={imageOnErrorHandler}
+                        />
                         <div className="write-a-post-container" onClick={() => setShowModal(true)}>
                           Write a Post
                         </div>
@@ -368,12 +411,20 @@ function User() {
                     return (
                       <div className="post-wrapper">
                         <div className="post-ava-username">
-                          <img id="post-user-pfp" src={user.avatar} />
+                          <img
+                          id="post-user-pfp"
+                          src={user.avatar}
+                          onError={imageOnErrorHandler}
+                          />
                           <div className="post-user-username">{user.username}</div>
                         </div>
                         <div className="post-container">
                           <div className="post-content-wrapper">
-                            <img className="post-image" src={post.post_img} />
+                            <img
+                            className="post-image"
+                            src={post.post_img}
+                            onError={postImageOnErrorHandler}
+                            />
                             <div className="post-text">
                               {post.post}
                             </div>
@@ -412,7 +463,11 @@ function User() {
                 </>
                 <div className="post-wrapper">
                   <div className="post-ava-username">
-                    <img id="post-user-pfp" src={user.avatar} />
+                    <img
+                    id="post-user-pfp"
+                    src={user.avatar}
+                    onError={imageOnErrorHandler}
+                    />
                     <div className="post-user-username">{user.username}</div>
                   </div>
                   <div className="post-container">
