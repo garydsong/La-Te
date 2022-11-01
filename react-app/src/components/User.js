@@ -56,15 +56,7 @@ function User() {
   let postComments;
 
 
-
   postComments = Object.values(comments).filter(comment => comment.post_id === +postIdHolder)
-
-
-
-
-  console.log('comments', comments)
-  console.log('user posts', userPosts)
-  console.log('all posts', posts)
 
   const imageOnErrorHandler = (event) => {
     event.currentTarget.src = defaultpfp;
@@ -139,6 +131,7 @@ function User() {
 
   useEffect(() => {
     dispatch(getAllLattes(sessionUser.id))
+
   }, [])
 
 
@@ -154,11 +147,11 @@ function User() {
     })();
 
     dispatch(getEveryLatte())
-
+    dispatch(getEveryComment())
     dispatch(getAllPostsThunk())
       .then(() => { setIsLoaded(true) })
 
-    dispatch(getEveryComment())
+
 
     for (let i = 1; i < userPosts.length; i++) {
       dispatch(getAllCommentsOfPost(i))
@@ -177,6 +170,7 @@ function User() {
 
       </div>
       <div id="comment-fixed-upper-div">
+        <div>
         <div className="close-comment-container">
           <img id="close-comment" onClick={(() => setShowMenu(false))} src={x} />
         </div>
@@ -185,6 +179,7 @@ function User() {
           src={someThang ? someThang.post_img : null}
           onError={postImageOnErrorHandler}
         />
+        </div>
         <div className="whereisthis">
           <div id="comment-fixed-sections">
             <div className="dropdown-top-sections" id="profile-username">

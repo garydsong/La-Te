@@ -480,9 +480,13 @@
     bottom: 660px;
 }
 
+.comment-overflow {
+    overflow-y: scroll;
+}
+
 .whereisthis {
     overflow-y: scroll;
-
+    height: 100%;
 }
 
 .whereisthis::-webkit-scrollbar {
@@ -535,7 +539,6 @@
     width: 380px;
     height: 620px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
 }
 
 .dropdown-links:hover {
@@ -561,7 +564,7 @@
     flex-direction: column;
     align-items: left;
     padding: 5px 10px;
-    border-bottom: 1px lightgray solid;
+    /* border-bottom: 1px lightgray solid; */
 
 }
 
