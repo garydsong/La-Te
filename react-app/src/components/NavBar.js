@@ -7,6 +7,7 @@ import LogoutButton from './auth/LogoutButton';
 import './NavBar.css'
 import logo from '../assets/la-te.png'
 import menu from '../assets/icons/menu-icon.svg'
+import disc from '../assets/icons/earth-icon.svg'
 import defaultpfp from '../assets/pfp/nopicpfp.png'
 
 const NavBar = () => {
@@ -76,16 +77,16 @@ const NavBar = () => {
                     </div>
                   </div>
                   <div id="dropdown-links-container">
-                    <Link id="about-link" to={`/users`}>
+                    <Link id="discover-link" to={`/users`}>
                       <div className="dropdown-links" id="dropdown-links-business-navbar">
                         <img
                         className='icon-img-asset'
                         id="icon-img-business-navbar"
                         alt='abt me'
-                        src={sessionUser.avatar}
+                        src={disc}
                         onError={imageOnErrorHandler}
                         />
-                        <div>About Me</div>
+                        <div>Discover</div>
                       </div>
                     </Link>
                     <div onClick={logout} className="dropdown-links" id="dropdown-links-business-navbar">
