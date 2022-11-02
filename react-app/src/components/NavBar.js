@@ -77,7 +77,7 @@ const NavBar = () => {
                     </div>
                   </div>
                   <div id="dropdown-links-container">
-                    <Link id="discover-link" to={`/users`}>
+                    <Link id="discover-link" to={`/discover`}>
                       <div className="dropdown-links" id="dropdown-links-business-navbar">
                         <img
                         className='icon-img-asset'

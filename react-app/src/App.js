@@ -10,6 +10,7 @@ import User from './components/User';
 import SplashPage from './components/SplashPage/SplashPage';
 import { authenticate } from './store/session';
 import EditPost from './components/EditPost/EditPost';
+import Discover from './components/Discover/Discover';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -39,11 +40,14 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <Route path='/users/posts/:postId'>
+        <Route path='/users/posts/:postId' exact={true}>
           <EditPost />
         </Route>
-        <Route path='/users/comments/:commentId'>
+        <Route path='/users/comments/:commentId' exact={true}>
           <EditPost />
+        </Route>
+        <Route path='/discover' exact={true}>
+          <Discover />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

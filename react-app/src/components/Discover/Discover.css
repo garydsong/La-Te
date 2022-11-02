@@ -1,0 +1,87 @@
+.discover-page-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+}
+
+.discover-page-grid-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 1010px;
+    height: 100%;
+}
+
+.discover-page-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 237.5px);
+    gap: 20px;
+}
+
+.discover-title {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 80px;
+}
+
+.discover-page-user-cards {
+    display: flex;
+    flex-direction: column;
+    height: 237.5px;
+    width: 237.5px;
+    border-radius: 10px;
+    text-overflow: clip;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: all .2s ease-in-out;
+}
+
+.discover-page-user-cards:hover {
+    transform: scale(1.06);
+}
+
+#discover-user-cover-img {
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#discover-user-avatar {
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+    border-radius: 999px;
+    margin-top: 45px;
+    margin-left: 18px;
+}
+
+.discover-user-username {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 26px;
+    margin-left: 18px;
+}
+
+#no-styling-navlink {
+    color: black;
+}
+#no-styling-navlink:link {text-decoration: none;}
+#no-styling-navlink:focus {text-decoration: none;}
+#no-styling-navlink:active {text-decoration: none;}
+
+.discover-user-first-last-name {
+    color: gray;
+    margin-left: 18px;
+}
+
+.discover-user-bio {
+    color: gray;
+    margin-top: 10px;
+    margin-left: 18px;
+    font-size: 14px;
+}
