@@ -53,6 +53,7 @@ function User() {
 
   const userPosts = Object.values(posts).filter(post => post.user_id === +userId)
 
+
   let deletePostHandler;
   let deleteCommentHandler;
   let editCommentHandler;
@@ -147,7 +148,7 @@ function User() {
   useEffect(() => {
     dispatch(getAllLattes(sessionUser.id))
 
-  }, [commentsUsers])
+  }, [commentsUsers, comments])
 
 
   useEffect(() => {
@@ -173,6 +174,8 @@ function User() {
     }
 
 
+
+
   }, [dispatch, userPosts.length, currentUser, singlePost, allComments, currUserLattes, commentsUsers]);
 
 
@@ -181,7 +184,7 @@ function User() {
 
       {useEffect(() => {
         // for (let i = 1; i < userPosts.length; i++) {
-          dispatch(getAllCommentsOfPost(someThang?.id))
+        dispatch(getAllCommentsOfPost(someThang?.id))
         // }
         // await dispatch(getEveryComment())
       }, [singlePost, someThang, commentsUsers, comments])}
@@ -212,10 +215,10 @@ function User() {
                 {() => {
                   dispatch(getAllCommentsOfPost(someThang?.id))
                 }}
-                {console.log('comments', comments, 'user', comments.user)}
                 {Object.values(comments?.user)?.map(comment => {
                   return (
                     <>
+
                       {showCommentModal && (
                         <Modal id='photo-modal' onClose={() => setShowCommentModal(false)}>
                           <div id="close-modal" onClick={() => setShowCommentModal(false)}><img id="close-modal-icon" src={x} alt='close icon' />
@@ -241,6 +244,9 @@ function User() {
 
                                 }
                               }}>
+
+
+
                               <div className="post-modal-ava-post-container">
                                 <img
                                   id="modal-avatar"
@@ -340,7 +346,7 @@ function User() {
                   onChange={((e) => setComment(e.target.value))}
                   value={comment}
                 ></textarea>
-                <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon}/></button>
+                <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon} /></button>
 
               </form>
             </div>
