@@ -88,8 +88,11 @@ function User() {
 
     if (createdPost) {
       setShowModal(false)
+      setPostText('')
+      setPostImage('')
       history.push(`/users/${userId}`)
     }
+
 
   }
 
@@ -104,6 +107,7 @@ function User() {
     console.log('new c', newComment, 'postholder', +postIdHolder, 'all comments', comments)
     // createComment(newComment, +postIdHolder)
     dispatch(createComment(newComment, +postIdHolder))
+    setComment('')
     // let createdComment =  dispatch(createComment(newComment, postIdHolder))
     // if (createdComment) {
     //   history.push(`/users/${userId}`)
@@ -127,6 +131,7 @@ function User() {
 
     await dispatch(createLatte(newLatte, userId))
     history.push(`/users/${userId}`)
+    setLatteComment('')
   }
 
   // console.log('try', Object.values(lattes)?.filter(latte =>
@@ -166,6 +171,11 @@ function User() {
 
   const otherThang = (
     <div id="comment-fixed-container">
+      {useEffect(() => {
+        for (let i = 1; i < userPosts.length; i++) {
+          dispatch(getAllCommentsOfPost(i))
+        }
+      }, [comments])}
       <div id="dont-look-at-this">
 
         {someThang ? postIdHolder = someThang.id : null}
@@ -174,14 +184,14 @@ function User() {
       </div>
       <div id="comment-fixed-upper-div">
         <div>
-        <div className="close-comment-container">
-          <img id="close-comment" onClick={(() => setShowMenu(false))} src={x} />
-        </div>
-        <img
-          id="comment-post-img-id"
-          src={someThang ? someThang.post_img : null}
-          onError={postImageOnErrorHandler}
-        />
+          <div className="close-comment-container">
+            <img id="close-comment" onClick={(() => setShowMenu(false))} src={x} />
+          </div>
+          <img
+            id="comment-post-img-id"
+            src={someThang ? someThang.post_img : null}
+            onError={postImageOnErrorHandler}
+          />
         </div>
         <div className="whereisthis">
           <div id="comment-fixed-sections">
