@@ -183,6 +183,7 @@
 
   #icon-img-business-navbar {
     height: 15px;
+    margin-right: 10px;
   }
 
   .your-page-button {
@@ -211,3 +212,11 @@
   .your-page {
     font-size: 14px;
   }
+
+  #discover-link {
+    color: black;
+  }
+
+  #discover-link:link {text-decoration: none;}
+  #discover-link:active {text-decoration: none;}
+  #discover-link:focus {text-decoration: none;}

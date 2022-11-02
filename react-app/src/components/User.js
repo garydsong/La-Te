@@ -120,6 +120,9 @@ function User() {
 
     if (newLatte) {
       setThanks(true)
+      setTimeout(() => {
+        setThanks(false)
+      }, 5000)
     }
 
     await dispatch(createLatte(newLatte, userId))
