@@ -13,6 +13,7 @@ import video from "../assets/icons/video-icon.svg"
 import photo from "../assets/icons/photo-icon.svg"
 import deleted from "../assets/icons/trash-icon.svg"
 import edit from "../assets/icons/edit-icon.svg"
+import submiticon from "../assets/icons/submit-icon.svg"
 import x from "../assets/icons/x-icon.svg"
 import lateimg from "../assets/la-te-cup.png"
 import rec from "../assets/singlelate.png"
@@ -57,7 +58,7 @@ function User() {
   let editCommentHandler;
   let postIdHolder;
   let postComments;
-
+  let commentEdit;
 
   postComments = Object.values(comments).filter(comment => comment.post_id === +postIdHolder)
 
@@ -172,186 +173,183 @@ function User() {
     }
 
 
-  }, [dispatch, userPosts.length, currentUser, singlePost, allComments, currUserLattes]);
+  }, [dispatch, userPosts.length, currentUser, singlePost, allComments, currUserLattes, commentsUsers]);
 
 
   const otherThang = (
     <div id="comment-fixed-container">
 
-      {useEffect(async () => {
-        for (let i = 1; i < userPosts.length; i++) {
-          dispatch(getAllCommentsOfPost(i))
-        }
+      {useEffect(() => {
+        // for (let i = 1; i < userPosts.length; i++) {
+          dispatch(getAllCommentsOfPost(someThang?.id))
+        // }
         // await dispatch(getEveryComment())
+      }, [singlePost, someThang, commentsUsers, comments])}
 
-      }, [singlePost])}
+      <>
+        <div id="dont-look-at-this">
 
-      <div id="dont-look-at-this">
+          {someThang ? postIdHolder = someThang.id : null}
+          {/* {someThang ? postComments = Object.values(comments).filter(comment => comment.post_id === someThang.id) : null} */}
 
-        {someThang ? postIdHolder = someThang.id : null}
-        {/* {someThang ? postComments = Object.values(comments).filter(comment => comment.post_id === someThang.id) : null} */}
-
-      </div>
-      <div id="comment-fixed-upper-div">
-        <div>
-          <div className="close-comment-container">
-            <img id="close-comment" onClick={(() => setShowMenu(false))} src={x} />
-          </div>
-          <img
-            id="comment-post-img-id"
-            src={someThang ? someThang.post_img : null}
-            onError={postImageOnErrorHandler}
-          />
         </div>
-        <div className="whereisthis">
-          <div id="comment-fixed-sections">
-            <div className="dropdown-top-sections" id="profile-username">
-              {() => {
-                dispatch(getAllCommentsOfPost(someThang?.id))
-              }}
-
-              {Object.values(comments?.user)?.map(comment => {
-                return (
-                  <>
-      {showCommentModal && (
-        <Modal id='photo-modal' onClose={() => setShowCommentModal(false)}>
-          <div id="close-modal" onClick={() => setShowCommentModal(false)}><img id="close-modal-icon" src={x} alt='close icon' />
+        <div id="comment-fixed-upper-div">
+          <div>
+            <div className="close-comment-container">
+              <img id="close-comment" onClick={(() => setShowMenu(false))} src={x} />
+            </div>
+            <img
+              id="comment-post-img-id"
+              src={someThang ? someThang.post_img : null}
+              onError={postImageOnErrorHandler}
+            />
           </div>
-          <div className="post-modal-wrapper">
-            {/* {function handleEditComment(e) {
-              e.preventDefault()
-
-              const newComment = {
-                comment: editCommentModalText,
-              }
-
-              dispatch(updateComment(newComment, comment?.id))
-              setEditCommentModalText('')
-            }} */}
 
 
-            <form id="post-modal-form" onSubmit={
-              async (e) => {
-                e.preventDefault()
+          <div className="whereisthis">
+            <div id="comment-fixed-sections">
+              <div className="dropdown-top-sections" id="profile-username">
+                {() => {
+                  dispatch(getAllCommentsOfPost(someThang?.id))
+                }}
+                {console.log('comments', comments, 'user', comments.user)}
+                {Object.values(comments?.user)?.map(comment => {
+                  return (
+                    <>
+                      {showCommentModal && (
+                        <Modal id='photo-modal' onClose={() => setShowCommentModal(false)}>
+                          <div id="close-modal" onClick={() => setShowCommentModal(false)}><img id="close-modal-icon" src={x} alt='close icon' />
+                          </div>
+                          <div className="post-modal-wrapper">
 
-                const newComment = {
-                  comment: editCommentModalText
-                }
+                            <form id="post-modal-form" onSubmit={
+                              async (e) => {
+                                e.preventDefault()
 
-                console.log('comment', comment?.id, 'content', comment, 'modaltxt', editCommentModalText)
-
-                let updatedComment = await dispatch(updateComment(newComment, comment?.id))
-
-                if (updatedComment) {
-                  setEditCommentModalText('')
-                  setShowCommentModal(false)
-                }
-              }}>
-              <div className="post-modal-ava-post-container">
-                <img
-                  id="modal-avatar"
-                  src={user.avatar}
-                  onError={imageOnErrorHandler}
-                />
-                <textarea
-                  id="post-text-input"
-                  type='text'
-                  name='post'
-                  placeholder='Edit your comment'
-                  onChange={((e) => setEditCommentModalText(e.target.value))}
-                  value={editCommentModalText}
-                ></textarea>
-              </div>
-              <div className="whitespace"></div>
-              <div className="post-modal-submit-container">
-                <button className="post-modal-submit-button"
-                  type='submit'>
-                  Post
-                </button>
-              </div>
-            </form>
-          </div>
-        </Modal>
-      )}
-
-
-                    {comment?.post_id === someThang?.id &&
-                      <div className="comment-content-username-wrapper">
-                        <img
-                          id="comment-content-user-avatar"
-                          src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null}
-                          onError={imageOnErrorHandler}
-                        />
-
-                        <div className="comment-content-username">
-                          {comment?.post_id === someThang?.id ? comment?.owner?.username : null}
-                          {comment?.user_id === currentUser.id && (
-                            <div className="d-e-align">
-
-                              {deleteCommentHandler = () => {
-                                if (window.confirm('Are you sure you want to delete your comment?')) {
-                                  dispatch(removeComment(comment?.id))
+                                const newComment = {
+                                  comment: editCommentModalText
                                 }
-                              }}
 
-                              <img id="delete-icons" onClick={deleteCommentHandler} src={deleted} />
+                                console.log('comment', comment?.id, 'content', comment, 'modaltxt', editCommentModalText)
 
-                              {/* {editCommentHandler = () => {
+                                let updatedComment = await dispatch(updateComment(newComment, comment?.id))
+
+                                if (updatedComment) {
+
+                                  setEditCommentModalText('')
+                                  setShowCommentModal(false)
+
+                                }
+                              }}>
+                              <div className="post-modal-ava-post-container">
+                                <img
+                                  id="modal-avatar"
+                                  src={user.avatar}
+                                  onError={imageOnErrorHandler}
+                                />
+                                <textarea
+                                  id="post-text-input"
+                                  type='text'
+                                  name='post'
+                                  placeholder='Edit your comment'
+                                  onChange={((e) => setEditCommentModalText(e.target.value))}
+                                  value={editCommentModalText}
+                                ></textarea>
+                              </div>
+                              <div className="whitespace"></div>
+                              <div className="post-modal-submit-container">
+                                <button className="post-modal-submit-button"
+                                  type='submit'>
+                                  Post
+                                </button>
+                              </div>
+                            </form>
+                          </div>
+                        </Modal>
+                      )}
+
+
+                      {comment?.post_id === someThang?.id &&
+                        <div className="comment-content-username-wrapper">
+                          <img
+                            id="comment-content-user-avatar"
+                            src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null}
+                            onError={imageOnErrorHandler}
+                          />
+
+                          <div className="comment-content-username">
+                            {comment?.post_id === someThang?.id ? comment?.owner?.username : null}
+                            {comment?.user_id === currentUser.id && (
+                              <div className="d-e-align">
+
+                                {deleteCommentHandler = () => {
+                                  if (window.confirm('Are you sure you want to delete your comment?')) {
+                                    dispatch(removeComment(comment?.id))
+                                  }
+                                }}
+
+                                <img id="delete-icons" onClick={deleteCommentHandler} src={deleted} />
+
+                                {/* {editCommentHandler = () => {
                                 history.push(`/comments/${comment?.id}/`)
                               }} */}
 
-                              <img id="edit-icons" src={edit} onClick={() => setShowCommentModal(true)} />
+                                <img id="edit-icons" src={edit} onClick={() => setShowCommentModal(true)} />
 
-                            </div>
-                          )}
+                              </div>
+                            )}
+                          </div>
+
                         </div>
 
+                      }
+
+                      <div className="comment-content-createdat">
+                        {comment?.post_id === someThang?.id ? comment?.created_at : null}
                       </div>
-
-                    }
-
-                    <div className="comment-content-createdat">
-                      {comment?.post_id === someThang?.id ? comment?.created_at : null}
-                    </div>
-                    {editCommentText ?
-                      (<div className="comment-content-comment">
-                        {comment?.post_id === someThang?.id ? comment?.comment : null}
-                      </div>)
-                      :
-                      (<div className="comment-content-comment">
-                        {comment?.post_id === someThang?.id ? comment?.comment : null}
-                      </div>)
-                    }
-                  </>
-                )
-              })}
+                      {editCommentText ?
+                        (<div className="comment-content-comment">
+                          {comment?.post_id === someThang?.id ? comment?.comment : null}
+                        </div>)
+                        :
+                        (<div className="comment-content-comment">
+                          {comment?.post_id === someThang?.id ? comment?.comment : null}
+                        </div>)
+                      }
+                    </>
+                  )
+                })}
+              </div>
             </div>
           </div>
-        </div>
-        <div id="dropdown-links-container">
 
-          <div className="dropdown-links" id="comment-business-navbar">
-            <img
-              id="leave-comment-session-user-ava"
-              src={sessionUser.avatar}
-              onError={imageOnErrorHandler}
-            />
-            <form id="comment-side-form" onSubmit={handleCommentSubmit}>
-              <textarea
-                id="comment-text-input"
-                type='text'
-                name='comment'
-                placeholder='Leave a comment'
-                onChange={((e) => setComment(e.target.value))}
-                value={comment}
-              ></textarea>
-              <button type='submit'>submit</button>
-            </form>
+          <div id="dropdown-links-container">
+
+            <div className="comment-send-links" id="comment-business-navbar">
+              <img
+                id="leave-comment-session-user-ava"
+                src={sessionUser.avatar}
+                onError={imageOnErrorHandler}
+              />
+              <form id="comment-side-form" onSubmit={handleCommentSubmit}>
+                <textarea
+                  id="comment-text-input"
+                  type='text'
+                  name='comment'
+                  placeholder='Leave a comment'
+                  onChange={((e) => setComment(e.target.value))}
+                  value={comment}
+                ></textarea>
+                <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon}/></button>
+
+              </form>
+            </div>
+
           </div>
-
         </div>
-      </div>
+      </>
     </div>
+
   )
 
   //increase counter
