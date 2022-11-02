@@ -36,7 +36,7 @@ def seed_users():
         city='San Diego',
         state='CA',
         avatar='https://i.imgur.com/aqzuU9V.jpeg',
-        bio="Got Anita Baker booming out the '87 Buick (bitch) Stepping in some Pumas, but this Molly got me booted (whew)",
+        bio="Boosted since June 2022",
         cover_img='https://i.imgur.com/UhL70iU.jpeg',
         website='https://vien.com')
     sam = User(
@@ -108,7 +108,7 @@ def seed_users():
         city='NorCal',
         state='CA',
         avatar='https://i.imgur.com/y8pCNmh.jpeg',
-        bio="FAFO FAFO FAFO FAFO",
+        bio="I'm in the club gonna flirt with some shades on. Tatted up, mini skirt with my Jae's on",
         cover_img='https://i.imgur.com/j9GEhzz.png',
         website='https://jae.com')
     michael = User(
@@ -132,7 +132,7 @@ def seed_users():
         city='Turlock',
         state='CA',
         avatar='https://i.imgur.com/JBsyeyD.png',
-        bio="You junga? Me junga. We big jungas.",
+        bio="we have a TYYYPOOOOOOO",
         cover_img='https://i.imgur.com/t057Wr7.png',
         website='https://david.com')
     keke = User(
@@ -147,6 +147,18 @@ def seed_users():
         bio="Name = Keke. Like = Lizard",
         cover_img='https://i.imgur.com/KJCSsqX.png',
         website='https://iwantlizard.com')
+    nina = User(
+        first_name='Nina',
+        last_name='Wang',
+        username='pinki',
+        email='nina@demo.io',
+        password='password',
+        city='San Diego',
+        state='CA',
+        avatar='https://i.imgur.com/F54DP2V.png',
+        bio="Only two definites in existence. One, hot pot, and two, hot pot.",
+        cover_img='https://i.imgur.com/vrxg9Qg.png',
+        website='https://pinkiwish.com')
 
     db.session.add(brandon)
     db.session.add(amanda)
@@ -160,6 +172,7 @@ def seed_users():
     db.session.add(michael)
     db.session.add(david)
     db.session.add(keke)
+    db.session.add(nina)
 
     db.session.commit()
 

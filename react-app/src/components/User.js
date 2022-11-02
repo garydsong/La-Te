@@ -482,7 +482,7 @@ function User() {
                   </>
                 )}
                 <>
-                  {Object.values(userPosts).map((post, i) => {
+                  {Object.values(userPosts).reverse().map((post, i) => {
                     return (
                       <div className="post-wrapper">
                         <div className="post-ava-username">
