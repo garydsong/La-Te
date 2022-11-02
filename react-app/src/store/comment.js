@@ -104,6 +104,7 @@ export const createComment = (comment, postId) => async dispatch => {
 }
 
 export const updateComment = (comment, commentId) => async dispatch => {
+    console.log('update thunk', comment, commentId)
     const response = await fetch(`/api/comments/${commentId}`, {
         method: 'PUT',
         headers: {

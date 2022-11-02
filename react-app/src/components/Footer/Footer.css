@@ -67,3 +67,19 @@
     color: gray;
     font-size: 14px;
 }
+
+#footer-link-dec {
+    color: gray;
+}
+
+#footer-link-dec:link {
+    text-decoration: none;
+}
+
+#footer-link-dec:active {
+    text-decoration: none;
+}
+
+#footer-link-dec:focus {
+    text-decoration: none;
+}

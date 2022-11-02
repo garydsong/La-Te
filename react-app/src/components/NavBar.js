@@ -77,7 +77,7 @@ const NavBar = () => {
                     </div>
                   </div>
                   <div id="dropdown-links-container">
-                    <Link id="discover-link" to={`/discover`}>
+                    <NavLink id="discover-link" to={`/discover`}>
                       <div className="dropdown-links" id="dropdown-links-business-navbar">
                         <img
                         className='icon-img-asset'
@@ -88,7 +88,7 @@ const NavBar = () => {
                         />
                         <div>Discover</div>
                       </div>
-                    </Link>
+                    </NavLink>
                     <div onClick={logout} className="dropdown-links" id="dropdown-links-business-navbar">
                       <img className='icon-img-asset' id="icon-img-business-navbar" alt='logout icon' src={menu} />
                       <div >Log Out</div>

@@ -42,7 +42,7 @@ const LoginForm = () => {
           <form onSubmit={onLogin}>
             <div className="errors-login">
               {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
+                <div id="loginerror" key={ind}>{error}</div>
               ))}
             </div>
             <div className="input-field-wrapper">
@@ -70,12 +70,21 @@ const LoginForm = () => {
                 <button type='submit'
                   id="login-input">Log in</button>
               </div>
+              <div>
+                <button
+                  id="login-input"
+                  type='submit'
+                  onClick={() => {
+                    dispatch(login('keke@demo.io', 'password'))
+                  }}
+                >Login as Demo User</button>
+              </div>
 
             </div>
 
           </form>
           <NavLink id="new-to-la-te-div" to="/signup">
-          <div className="signup-title">New to La-Te? Sign up here</div></NavLink>
+            <div className="signup-title">New to La-Te? Sign up here</div></NavLink>
         </div>
       </div>
     </>

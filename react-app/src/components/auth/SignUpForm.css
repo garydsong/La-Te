@@ -12,7 +12,12 @@
 .signup-form-errors {
     color: #FF5F5F;
     overflow-y: scroll;
-    height: 70px;
+    height: 65px;
+    width: 400px;
+}
+
+#signuperror {
+    margin-bottom: 10px;
 }
 
 .signup-form-errors::-webkit-scrollbar {

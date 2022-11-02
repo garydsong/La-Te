@@ -11,56 +11,56 @@ function Footer() {
                         <img id="top-footer-icon" src={cup} />
                         <div className="top-footer-links">
                             <div className="top-footer-title-link">
-                            Features
+                            Contacts
                             </div>
-                            <p>Donations</p>
-                            <p>Memberships</p>
-                            <p>La-Té Shop</p>
-                            <p>La-Té Commissions</p>
-                            <p>Discord Integration</p>
-                            <p>Gold</p>
-                            <p>Patreon Alternative</p>
+                            <p><a id="footer-link-dec" href="https://github.com/garydsong/La-Te">Project Repo</a></p>
+                            <p><a id="footer-link-dec" href="https://github.com/garydsong/">GitHub</a></p>
+                            <p><a id="footer-link-dec" href="https://www.linkedin.com/in/gary-song-96b071246/">LinkedIn</a></p>
                         </div>
 
                         <div className="top-footer-links">
                             <div className="top-footer-title-link">
-                            Use La-Té With
+                            My Other Projects
                             </div>
-                            <p>Nope</p>
-                            <p>GareBnB</p>
-                            <p>Twitch</p>
-                            <p>YouTube</p>
-                            <p>Medium</p>
-                            <p>Facebook</p>
-                            <p>GitHub</p>
-                            <p>Discord</p>
+                            <p><a id="footer-link-dec" href="https://nope-yelp.herokuapp.com/">Nope</a></p>
+                            <p><a id="footer-link-dec" href="https://xok3k3kob3llif3.netlify.app/">GareBnB</a></p>
+                            <p><a id="footer-link-dec" href="https://http://garebnb.herokuapp.com/">XOK3K3KOB3Llif3</a></p>
+                            <p><a id="footer-link-dec" href="https://lovealarm.netlify.app/">LOVE ALARM</a></p>
+                            <p><a id="footer-link-dec" href="https://gs-1.netlify.app/">GS-1</a></p>
+                            <p><a id="footer-link-dec" href="https://mod4soundboard.netlify.app/">a/A Mod4 Soundboard</a></p>
+
+
                         </div>
 
                         <div className="top-footer-links">
                             <div className="top-footer-title-link">
-                            Help & Support
+                            Technologies
                             </div>
-                            <p>Brand Assets</p>
-                            <p>La-Té Blog</p>
-                            <p>Help</p>
-                            <p>WordPress Plugin</p>
-                            <p>Creator Academy</p>
+                            <p>Python</p>
+                            <p>JavaScript</p>
+                            <p>Flask</p>
+                            <p>React</p>
+                            <p>Redux</p>
+                            <p>Postgres</p>
+                            <p>SQLite3</p>
+                            <p>CSS3</p>
+                            <p>Heroku</p>
                         </div>
 
                         <div className="top-footer-links">
                             <div className="top-footer-title-link">
                             S/O June Squad
                             </div>
-                            <p>Michael Jung  - <a href="https://escape-hatch.herokuapp.com/">Escape Hatch</a></p>
-                            <p>Amanda Vien - <a href="https://slate-canva.herokuapp.com/">Slate</a></p>
-                            <p>Jack Fisher - <a href="https://dancefam.herokuapp.com/">Dance Fam</a></p>
-                            <p>Brandon Tasaki - <a href="https://pearbnb-final.herokuapp.com/">PearBnB</a></p>
-                            <p>John Carerra - </p>
-                            <p>Sam Suh - </p>
-                            <p>Jae Hwang - </p>
-                            <p>Jake Matillano - <a href="https://tunenimbus.herokuapp.com/">Tunenimbus</a></p>
-                            <p>Alex Dam - </p>
-                            <p>Logan Seals - </p>
+                            <p>Michael Jung  - <a id="footer-link-dec" href="https://escape-hatch.herokuapp.com/">Escape Hatch</a></p>
+                            <p>Amanda Vien - <a id="footer-link-dec" href="https://slate-canva.herokuapp.com/">Slate</a></p>
+                            <p>Jack Fisher - <a id="footer-link-dec" href="https://dancefam.herokuapp.com/">Dance Fam</a></p>
+                            <p>Brandon Tasaki - <a id="footer-link-dec" href="https://pearbnb-final.herokuapp.com/">PearBnB</a></p>
+                            <p>John Carerra - <a id="footer-link-dec" href="https://cyber-trade.herokuapp.com">Cybertrade</a></p>
+                            <p>Sam Suh - Coindex</p>
+                            <p>Jae Hwang - <a id="footer-link-dec" href="https://drink-cawfee.herokuapp.com/">Drink Cawfee</a></p>
+                            <p>Jake Matillano - <a id="footer-link-dec" href="https://tunenimbus.herokuapp.com/">Tunenimbus</a></p>
+                            <p>Alex Dam - Sawdat</p>
+                            <p>Logan Seals - Large</p>
                         </div>
                     </div>
                 </div>
