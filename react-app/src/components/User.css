@@ -545,15 +545,16 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.dropdown-links:hover {
+.comment-send-links:hover {
     background-color: rgb(231, 231, 231);
     cursor: pointer;
 }
 
 
 
-.dropdown-links {
+.comment-send-links {
     display: flex;
+    flex-direction: row;
     align-items: center;
     padding: 10px 10px 10px 15px;
     /* display: block; */
@@ -618,7 +619,7 @@
     padding-top: 10px;
     padding-left: 20px;
     height: 30px;
-    width: 86%;
+    width: 250px;
     border-radius: 10px;
     border: transparent;
     font-size: 18px;
@@ -855,4 +856,34 @@
 .lattes-cost-center {
     display: flex;
     align-items: center;
+}
+
+#send-comment-button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+    border: transparent;
+    background-color: #FF5F5F;
+    border-radius: 999px;
+    transition: .5s;
+    left: 350px;
+    bottom: 30px;
+}
+
+#send-comment-button:hover {
+    cursor: pointer;
+    background-color: #ff5353;
+
+}
+
+#send-comment-icon {
+    padding-left: 3px;
+    height: 15px;
+    width: 15px;
+    object-fit: cover;
+    filter: invert(98%) sepia(6%) saturate(930%) hue-rotate(254deg) brightness(117%) contrast(100%);
 }

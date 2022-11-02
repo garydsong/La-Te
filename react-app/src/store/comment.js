@@ -178,24 +178,29 @@ const commentReducer = (state = initialState, action) => {
                 ...state,
                 user
             }
+            
         case LOAD_ONE:
             newState = { ...state, post: { ...state.post }, user: { ...state.user } }
             newState.post[action.commentId.id] = action.commentId
             return newState
+
         case CREATE:
             console.log("GOT TO CREATE REDUCE STEP")
             newState = { post: { ...state.post }, user: { ...state.user } }
             newState.post[action.comment.id] = action.comment
             return newState
+
         case UPDATE:
-            newState = { post: { ...state.post } }
+            newState = { post: { ...state.post }, ...state }
             newState.post[action.comment.id] = action.comment
             return newState
+
         case REMOVE:
             newState = { ...state, post: { ...state.post }, user: { ...state.user } }
             delete newState.post[action.commentId]
             delete newState.user[action.commentId]
             return newState
+
         case RESET:
             return initialState
         default:
