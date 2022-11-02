@@ -89,6 +89,7 @@ const SignUpForm = () => {
     if (!city || city.length > 20) err.push('Please enter a valid city between 1 and 20 characters')
     if (!state || state.length > 15) err.push('Please enter a valid state between 1 and 15 characters')
     if (!bio || bio.length < 2) err.push('Please tell us a little about yourself')
+    if (!avatar || !coverImg) err.push('If you do not choose a valid avatar or cover image one will be provided for you')
 
     setErrors(err)
   }, [firstName, lastName, username, email, city, state, bio])
@@ -106,7 +107,7 @@ const SignUpForm = () => {
           <form id="signup-form-spacing" onSubmit={onSignUp}>
             <div className="signup-form-errors">
               {errors.map((error, ind) => (
-                <div key={ind}>{error}</div>
+                <div id="signuperror" key={ind}>{error}</div>
               ))}
             </div>
             <div>

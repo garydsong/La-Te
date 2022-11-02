@@ -202,7 +202,7 @@ function SplashPage() {
 
                                 </div>
                                 <div id="user-testimonial">
-                                    "FAFO"
+                                    "!Great site"
                                 </div>
                             </div>
                             <div className="testimonial-item" style={{ ...itemStyle }}>
@@ -322,7 +322,7 @@ function SplashPage() {
                                 <div className="bot-desc-button-2-content">
                                     <div className="pfp-desc-holder-1">
                                         <img id="pfp1" src={pfp2} />
-                                        <div className="pfp-desc-title-1"><b>TASKMAN</b> offers members task services. You got a task? He's on the case!</div>
+                                        <div className="pfp-desc-title-1"><b>Taskman</b> offers members task services. You got a task? He's on the case!</div>
                                     </div>
                                     <NavLink id="un-style-nav-link" to="/users/1">
                                         <div className="visit-button">
@@ -361,7 +361,7 @@ function SplashPage() {
                                 <div className="bot-desc-button-2-content">
                                     <div className="pfp-desc-holder-1">
                                         <img id="pfp1" src={pfp3} />
-                                        <div className="pfp-desc-title-1"><b>wittosamywamy</b> offers members eternal love and devotion!</div>
+                                        <div className="pfp-desc-title-1"><b>suhspect</b> offers members eternal love and devotion!</div>
                                     </div>
                                     <NavLink id="un-style-nav-link" to="/users/4">
                                         <div className="visit-button">

@@ -40,14 +40,13 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
-    margin-top: 120px;
+    margin-top: 101px;
 }
 
 .top-bottom-portion-about {
     color: #FF5F5F;
     font-weight: 700;
     font-size: 16px;
-
     border-bottom: #FF5F5F solid 3px;
 }
 
@@ -56,6 +55,11 @@
     align-items: center;
     margin-bottom: 6px;
     font-size: 18px;
+}
+
+.user-page-top-city-state {
+    color: gray;
+    font-size: 14px;
 }
 
 #received-lattes {

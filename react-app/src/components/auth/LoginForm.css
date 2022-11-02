@@ -31,7 +31,7 @@
 
 .input-field-wrapper {
     display: flex;
-    height: 180px;
+    height: 220px;
     width: 425px;
     justify-content: space-between;
     flex-direction: column;
@@ -100,4 +100,25 @@
 
 .errors-login {
     color: #FF5F5F;
+    font-weight: 700;
+    overflow-y: scroll;
+    height: 65px;
+    width: 400px;
+}
+
+.errors-login::-webkit-scrollbar {
+    width: 14px;
+}
+
+.errors-login::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.errors-login::-webkit-scrollbar-thumb {
+    background-color: #FF7F7F;
+    border-radius: 10px;
+}
+
+#loginerror {
+    margin-bottom: 10px;
 }

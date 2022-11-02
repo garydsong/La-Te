@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, NavLink, Link } from 'react-router-dom';
 import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
 import { Modal } from './context/Modal';
-import { createComment, getAllCommentsOfPost, getEveryComment, removeComment } from '../store/comment'
+import { createComment, getAllCommentsOfPost, getEveryComment, removeComment, updateComment } from '../store/comment'
 import { createLatte, getEveryLatte, getCurrentLattes, getAllLattes } from '../store/latte';
 import './User.css'
 import website from "../assets/icons/website-icon.svg"
@@ -25,6 +25,7 @@ function User() {
   const [user, setUser] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showCommentModal, setShowCommentModal] = useState(false)
   const [postImage, setPostImage] = useState('');
   const [postText, setPostText] = useState('');
   const [showMenu, setShowMenu] = useState(false);
@@ -35,6 +36,7 @@ function User() {
   const [latte, setLatte] = useState(1);
   const [editCommentText, setEditCommentText] = useState(0);
   const [thanks, setThanks] = useState(false);
+  const [editCommentModalText, setEditCommentModalText] = useState('')
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
@@ -43,6 +45,7 @@ function User() {
   const currUserLattes = useSelector(state => state.latteReducer.user)
   const lattes = useSelector(state => state.latteReducer.allLattes);
   const comments = useSelector(state => state.commentReducer)
+  const commentsUsers = useSelector(state => state.commentReducer.post)
   const posts = useSelector(state => state.postReducer.allPosts)
   const singlePost = useSelector(state => state.postReducer.singlePost)
   const allComments = useSelector(state => state.commentReducer.allComments)
@@ -114,6 +117,8 @@ function User() {
     // }
   }
 
+
+
   const handleLatteSubmit = async (e) => {
     e.preventDefault()
 
@@ -132,6 +137,7 @@ function User() {
     await dispatch(createLatte(newLatte, userId))
     history.push(`/users/${userId}`)
     setLatteComment('')
+    setCounter(1)
   }
 
   // console.log('try', Object.values(lattes)?.filter(latte =>
@@ -140,7 +146,7 @@ function User() {
   useEffect(() => {
     dispatch(getAllLattes(sessionUser.id))
 
-  }, [])
+  }, [commentsUsers])
 
 
   useEffect(() => {
@@ -171,11 +177,15 @@ function User() {
 
   const otherThang = (
     <div id="comment-fixed-container">
-      {useEffect(() => {
+
+      {useEffect(async () => {
         for (let i = 1; i < userPosts.length; i++) {
           dispatch(getAllCommentsOfPost(i))
         }
-      }, [comments])}
+        // await dispatch(getEveryComment())
+
+      }, [singlePost])}
+
       <div id="dont-look-at-this">
 
         {someThang ? postIdHolder = someThang.id : null}
@@ -200,9 +210,71 @@ function User() {
                 dispatch(getAllCommentsOfPost(someThang?.id))
               }}
 
-              {Object.values(comments.user).map(comment => {
+              {Object.values(comments?.user)?.map(comment => {
                 return (
                   <>
+      {showCommentModal && (
+        <Modal id='photo-modal' onClose={() => setShowCommentModal(false)}>
+          <div id="close-modal" onClick={() => setShowCommentModal(false)}><img id="close-modal-icon" src={x} alt='close icon' />
+          </div>
+          <div className="post-modal-wrapper">
+            {/* {function handleEditComment(e) {
+              e.preventDefault()
+
+              const newComment = {
+                comment: editCommentModalText,
+              }
+
+              dispatch(updateComment(newComment, comment?.id))
+              setEditCommentModalText('')
+            }} */}
+
+
+            <form id="post-modal-form" onSubmit={
+              async (e) => {
+                e.preventDefault()
+
+                const newComment = {
+                  comment: editCommentModalText
+                }
+
+                console.log('comment', comment?.id, 'content', comment, 'modaltxt', editCommentModalText)
+
+                let updatedComment = await dispatch(updateComment(newComment, comment?.id))
+
+                if (updatedComment) {
+                  setEditCommentModalText('')
+                  setShowCommentModal(false)
+                }
+              }}>
+              <div className="post-modal-ava-post-container">
+                <img
+                  id="modal-avatar"
+                  src={user.avatar}
+                  onError={imageOnErrorHandler}
+                />
+                <textarea
+                  id="post-text-input"
+                  type='text'
+                  name='post'
+                  placeholder='Edit your comment'
+                  onChange={((e) => setEditCommentModalText(e.target.value))}
+                  value={editCommentModalText}
+                ></textarea>
+              </div>
+              <div className="whitespace"></div>
+              <div className="post-modal-submit-container">
+                <button className="post-modal-submit-button"
+                  type='submit'>
+                  Post
+                </button>
+              </div>
+            </form>
+          </div>
+        </Modal>
+      )}
+
+
                     {comment?.post_id === someThang?.id &&
                       <div className="comment-content-username-wrapper">
                         <img
@@ -224,11 +296,11 @@ function User() {
 
                               <img id="delete-icons" onClick={deleteCommentHandler} src={deleted} />
 
-                              {editCommentHandler = () => {
+                              {/* {editCommentHandler = () => {
                                 history.push(`/comments/${comment?.id}/`)
-                              }}
+                              }} */}
 
-                              <img id="edit-icons" src={edit} onClick={editCommentHandler} />
+                              <img id="edit-icons" src={edit} onClick={() => setShowCommentModal(true)} />
 
                             </div>
                           )}
@@ -311,6 +383,7 @@ function User() {
   return isLoaded && (
     <>
 
+
       {showModal && (
         <Modal id='photo-modal' onClose={() => setShowModal(false)}>
           <div id="close-modal" onClick={() => setShowModal(false)}><img id="close-modal-icon" src={x} alt='close icon' />
@@ -373,6 +446,7 @@ function User() {
               <div className="user-page-top-name-container">
                 <div className="user-page-top-name">{user.first_name} {user.last_name}</div>
                 <div>la-te.com/{user.username}</div>
+                <div className="user-page-top-city-state">{user.city}, {user.state}</div>
               </div>
             </div>
 
@@ -576,6 +650,7 @@ function User() {
           </div>
         </div>
       </div>
+
     </>
   );
 }

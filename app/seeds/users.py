@@ -38,7 +38,7 @@ def seed_users():
         avatar='https://i.imgur.com/aqzuU9V.jpeg',
         bio="Boosted since June 2022",
         cover_img='https://i.imgur.com/UhL70iU.jpeg',
-        website='https://vien.com')
+        website='https://gary-song.com')
     sam = User(
         first_name='Sam',
         last_name='Suh',

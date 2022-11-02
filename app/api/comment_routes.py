@@ -52,10 +52,10 @@ def edit_comment(id):
 
   form = CommentForm()
   form['csrf_token'].data = request.cookies['csrf_token']
+  print('-----------------comment route-------------------', comment.comment)
   if form.validate_on_submit():
-    comment.nope = form.nope.data
     comment.comment = form.comment.data
-
+    
     db.session.commit()
 
     return comment.to_dict()
