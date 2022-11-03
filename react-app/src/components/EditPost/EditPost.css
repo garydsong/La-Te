@@ -51,3 +51,13 @@
     opacity: .1;
     background: linear-gradient(black, transparent);
 }
+
+#error-holder {
+    position: absolute;
+    bottom: 10px;
+}
+
+#post-edit-error {
+    color: #FF7F7F;
+    top: 0;
+}

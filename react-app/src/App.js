@@ -12,13 +12,14 @@ import { authenticate } from './store/session';
 import EditPost from './components/EditPost/EditPost';
 import Discover from './components/Discover/Discover';
 import UsersLattes from './components/UsersLattes/UsersLattes';
+import AboutMe from './components/AboutMe/AboutMe';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -30,9 +31,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+     <Route path="/about" exact={true}>
+      <AboutMe/>
+    </Route>
+
+<NavBar />
       <Switch>
-      <Route path='/' exact={true} >
+
+        <Route path='/' exact={true} >
           <SplashPage />
         </Route>
         <Route path='/login' exact={true}>
@@ -44,22 +50,18 @@ function App() {
         <Route path='/users/posts/:postId' exact={true}>
           <EditPost />
         </Route>
-        <Route path='/users/comments/:commentId' exact={true}>
-          <EditPost />
-        </Route>
         <Route path='/discover' exact={true}>
           <Discover />
         </Route>
         <Route path='/userslattes' exact={true} >
-          <UsersLattes/>
+          <UsersLattes />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-
       </Switch>
     </BrowserRouter>
   );
