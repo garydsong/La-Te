@@ -902,3 +902,24 @@
     object-fit: cover;
     filter: invert(98%) sepia(6%) saturate(930%) hue-rotate(254deg) brightness(117%) contrast(100%);
 }
+
+#error-holder {
+    position: absolute;
+    bottom: 70px;
+    left: 20px;
+}
+
+#post-edit-error {
+    color: #FF7F7F;
+}
+
+
+#error-latte-holder {
+    position: absolute;
+    bottom: 280px;
+    right: 560px;
+}
+
+#latte-comment-error {
+    color: #FF7F7F;
+}
