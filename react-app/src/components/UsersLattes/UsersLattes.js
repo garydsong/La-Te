@@ -65,7 +65,8 @@ function UsersLattes() {
                                             onError={imageOnErrorHandler}
                                             />
                                             <div className="donation-wrapper-donator-info">
-                                                <div className="donator-info-username">{latte?.owner?.username}</div>
+                                                <NavLink id="navlink-no-style" to={`/users/${latte?.owner?.id}`}>
+                                                <div className="donator-info-username">{latte?.owner?.username}</div></NavLink>
                                                 <div className="donator-info-firstlastname">{latte?.owner?.first_name} {latte?.owner?.last_name} </div>
                                                 <div className="donator-info-citystate">{latte?.owner?.city}, {latte?.owner?.state}</div>
                                             </div>
