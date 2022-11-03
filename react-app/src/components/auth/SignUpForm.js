@@ -90,9 +90,10 @@ const SignUpForm = () => {
     if (!state || state.length > 15) err.push('Please enter a valid state between 1 and 15 characters')
     if (!bio || bio.length < 2) err.push('Please tell us a little about yourself')
     if (!avatar || !coverImg) err.push('If you do not choose a valid avatar or cover image one will be provided for you')
+    if (password !== repeatPassword) err.push('Your passwords do not match')
 
     setErrors(err)
-  }, [firstName, lastName, username, email, city, state, bio])
+  }, [firstName, lastName, username, email, city, state, bio, password, repeatPassword])
 
 
   if (user) {
