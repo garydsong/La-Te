@@ -53,10 +53,17 @@ function UsersLattes() {
                             {Object.values(lattes).reverse().map(latte => {
                                 return (
                                     <div className="users-lattes-donation-wrapper">
-                                        <img id="donation-wrapper-user-cover-img" src={latte?.owner?.cover_img} />
+                                        <img id="donation-wrapper-user-cover-img"
+                                        src={latte?.owner?.cover_img}
+                                        onError={coverImageOnErrorHandler}
+                                        />
                                         <div className="donation-wrapper-cover-gradient"></div>
                                         <div className="donation-wrapper-top-half">
-                                            <img id="donation-wrapper-user-avatar" src={latte?.owner?.avatar} />
+                                            <img
+                                            id="donation-wrapper-user-avatar"
+                                            src={latte?.owner?.avatar}
+                                            onError={imageOnErrorHandler}
+                                            />
                                             <div className="donation-wrapper-donator-info">
                                                 <div className="donator-info-username">{latte?.owner?.username}</div>
                                                 <div className="donator-info-firstlastname">{latte?.owner?.first_name} {latte?.owner?.last_name} </div>
