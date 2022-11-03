@@ -627,6 +627,20 @@
     resize: none;
 }
 
+#comment-edit-text-input {
+    font-family: 'Nunito';
+    padding-top: 10px;
+    padding-left: 20px;
+    height: 30px;
+    width: 250px;
+    border-radius: 10px;
+    border: lightgray 2px solid;
+    background-color: #e9ffff;
+    font-size: 18px;
+    outline: none;
+    resize: none;
+}
+
 #post-text-input::placeholder {
     color: rgb(168, 199, 209);
 }
@@ -660,26 +674,26 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    background-color:rgba(255,255,255,0.9);
+    background-color: rgba(255, 255, 255, 0.9);
     width: 530px;
     height: 250px;
     border-radius: 20px;
     animation-name: animate-pop;
     animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
     animation-duration: 0.5s;
-  }
+}
 
 
 @keyframes animate-pop {
-  0% {
-    opacity: 0;
-    transform: scale(0.5, 0.5);
-  }
+    0% {
+        opacity: 0;
+        transform: scale(0.5, 0.5);
+    }
 
-  100% {
-    opacity: 1;
-    transform: scale(1, 1);
-  }
+    100% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 }
 
 #your-donation-cup {
@@ -851,6 +865,7 @@
 
 .comment-content-comment {
     margin-bottom: 30px;
+
 }
 
 .lattes-cost-center {

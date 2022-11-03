@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory, NavLink, Link } from 'react-router-dom';
 import { createPostThunk, getAllPostsThunk, deletePostThunk } from '../store/post';
 import { Modal } from './context/Modal';
-import { createComment, getAllCommentsOfPost, getEveryComment, removeComment, updateComment } from '../store/comment'
+import { createComment, getAllCommentsOfPost, getEveryComment, removeComment, updateComment, getCurrentComments } from '../store/comment'
 import { createLatte, getEveryLatte, getCurrentLattes, getAllLattes } from '../store/latte';
 import './User.css'
 import website from "../assets/icons/website-icon.svg"
@@ -30,26 +30,28 @@ function User() {
   const [postImage, setPostImage] = useState('');
   const [postText, setPostText] = useState('');
   const [showMenu, setShowMenu] = useState(false);
-  const [comment, setComment] = useState('');
+  const [postComment, setPostComment] = useState('');
   const [someThang, setSomeThang] = useState(undefined)
   const [counter, setCounter] = useState(1);
   const [latteComment, setLatteComment] = useState('');
   const [latte, setLatte] = useState(1);
   const [editCommentText, setEditCommentText] = useState(0);
+  const [editCommentId, setEditCommentId] = useState(null);
   const [thanks, setThanks] = useState(false);
-  const [editCommentModalText, setEditCommentModalText] = useState('')
+  const [editCommentModalText, setEditCommentModalText] = useState('');
+  const [editArea, setEditArea] = useState(false);
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
-  const currentUser = useSelector(state => state.session.user)
-  const sessionUser = useSelector(state => state.session.user)
-  const currUserLattes = useSelector(state => state.latteReducer.user)
+  const currentUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state.session.user);
+  const currUserLattes = useSelector(state => state.latteReducer.user);
   const lattes = useSelector(state => state.latteReducer.allLattes);
-  const comments = useSelector(state => state.commentReducer)
-  const commentsUsers = useSelector(state => state.commentReducer.post)
-  const posts = useSelector(state => state.postReducer.allPosts)
-  const singlePost = useSelector(state => state.postReducer.singlePost)
-  const allComments = useSelector(state => state.commentReducer.allComments)
+  const comments = useSelector(state => state.commentReducer);
+  const commentsUsers = useSelector(state => state.commentReducer.post);
+  const posts = useSelector(state => state.postReducer.allPosts);
+  const singlePost = useSelector(state => state.postReducer.singlePost);
+  const allComments = useSelector(state => state.commentReducer.allComments);
 
   const userPosts = Object.values(posts).filter(post => post.user_id === +userId)
 
@@ -105,14 +107,14 @@ function User() {
     e.preventDefault()
 
     const newComment = {
-      comment: comment
+      comment: postComment
     }
 
 
     console.log('new c', newComment, 'postholder', +postIdHolder, 'all comments', comments)
     // createComment(newComment, +postIdHolder)
     dispatch(createComment(newComment, +postIdHolder))
-    setComment('')
+    setPostComment('')
     // let createdComment =  dispatch(createComment(newComment, postIdHolder))
     // if (createdComment) {
     //   history.push(`/users/${userId}`)
@@ -148,7 +150,7 @@ function User() {
   useEffect(() => {
     dispatch(getAllLattes(sessionUser.id))
 
-  }, [commentsUsers, comments])
+  }, [commentsUsers])
 
 
   useEffect(() => {
@@ -169,9 +171,9 @@ function User() {
 
 
 
-    for (let i = 1; i < userPosts.length; i++) {
-      dispatch(getAllCommentsOfPost(i))
-    }
+    // for (let i = 1; i < userPosts.length; i++) {
+    //   dispatch(getAllCommentsOfPost(i))
+    // }
 
 
 
@@ -184,10 +186,11 @@ function User() {
 
       {useEffect(() => {
         // for (let i = 1; i < userPosts.length; i++) {
-        dispatch(getAllCommentsOfPost(someThang?.id))
+        // dispatch(getAllCommentsOfPost(someThang?.id))
         // }
-        // await dispatch(getEveryComment())
-      }, [singlePost, someThang, commentsUsers, comments])}
+        dispatch(getCurrentComments())
+        dispatch(getEveryComment())
+      }, [singlePost, someThang, commentsUsers, editCommentId])}
 
       <>
         <div id="dont-look-at-this">
@@ -212,14 +215,14 @@ function User() {
           <div className="whereisthis">
             <div id="comment-fixed-sections">
               <div className="dropdown-top-sections" id="profile-username">
-                {() => {
+                {/* {() => {
                   dispatch(getAllCommentsOfPost(someThang?.id))
-                }}
+                }} */}
                 {Object.values(comments?.user)?.map(comment => {
                   return (
                     <>
 
-                      {showCommentModal && (
+                      {/* {showCommentModal && (
                         <Modal id='photo-modal' onClose={() => setShowCommentModal(false)}>
                           <div id="close-modal" onClick={() => setShowCommentModal(false)}><img id="close-modal-icon" src={x} alt='close icon' />
                           </div>
@@ -232,8 +235,6 @@ function User() {
                                 const newComment = {
                                   comment: editCommentModalText
                                 }
-
-                                console.log('comment', comment?.id, 'content', comment, 'modaltxt', editCommentModalText)
 
                                 let updatedComment = await dispatch(updateComment(newComment, comment?.id))
 
@@ -272,7 +273,7 @@ function User() {
                             </form>
                           </div>
                         </Modal>
-                      )}
+                      )} */}
 
 
                       {comment?.post_id === someThang?.id &&
@@ -300,7 +301,13 @@ function User() {
                                 history.push(`/comments/${comment?.id}/`)
                               }} */}
 
-                                <img id="edit-icons" src={edit} onClick={() => setShowCommentModal(true)} />
+                                <img
+                                id="edit-icons"
+                                src={edit}
+                                // onClick={() => setShowCommentModal(true)}
+                                onClick={() => {editArea ? setEditArea(false) : setEditArea(true); setEditCommentId(comment?.id);}}
+                                />
+
 
                               </div>
                             )}
@@ -337,18 +344,49 @@ function User() {
                 src={sessionUser.avatar}
                 onError={imageOnErrorHandler}
               />
-              <form id="comment-side-form" onSubmit={handleCommentSubmit}>
+              { !editArea ?
+              (
+                <form id="comment-side-form" onSubmit={handleCommentSubmit}>
                 <textarea
                   id="comment-text-input"
                   type='text'
                   name='comment'
                   placeholder='Leave a comment'
-                  onChange={((e) => setComment(e.target.value))}
-                  value={comment}
+                  onChange={((e) => setPostComment(e.target.value))}
+                  value={postComment}
+                ></textarea>
+                <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon} /></button>
+
+              </form>) : (
+                <form id="comment-side-form" onSubmit={async (e) => {
+                  e.preventDefault()
+
+                  const newComment = {
+                    comment: postComment
+                  }
+
+                  let updatedComment = await dispatch(updateComment(newComment, editCommentId))
+
+                  if (updatedComment) {
+
+                    setPostComment('')
+                    setEditArea(false)
+                    setEditCommentId(null)
+
+                  }
+                }}>
+                <textarea
+                  id="comment-edit-text-input"
+                  type='text'
+                  name='comment'
+                  placeholder='Edit your comment'
+                  onChange={((e) => setPostComment(e.target.value))}
+                  value={postComment}
                 ></textarea>
                 <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon} /></button>
 
               </form>
+              )}
             </div>
 
           </div>

@@ -171,3 +171,26 @@ def create_post():
     return new_post
 
   return {"errors": validation_form_errors(form.errors), "statusCode":401}
+
+## GET COMMENTS BY POST ID
+@post_routes.route('/<int:id>/comments', methods=["GET"])
+def get_comment_by_post(id):
+
+  ##ERROR HANDLING NON-EXISTING BUSINESS
+  post = Post.query.get(id)
+  if not post:
+    return {"message": "Post couldn't be found.", "statusCode":404}
+
+  ## FILTERING REVIEWS BY BUSINESS ID
+  comments_lst = []
+  comments = Comment.query.filter(Comment.post_id == id).order_by(Comment.created_at.desc()).all()
+  print('\n\n\n\n\n\n ----comments----', comments)
+  for comment in comments:
+    comment_dict = comment.to_dict()
+
+    ## FINDING THE OWNER OF EACH comment BY USER ID
+    owner = (User.query.filter(User.id == comment.user_id).one()).to_dict()
+    comment_dict['Owner'] = owner
+
+    comments_lst.append(comment_dict)
+  return jsonify(comments_lst)
