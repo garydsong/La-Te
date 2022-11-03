@@ -11,6 +11,7 @@ import SplashPage from './components/SplashPage/SplashPage';
 import { authenticate } from './store/session';
 import EditPost from './components/EditPost/EditPost';
 import Discover from './components/Discover/Discover';
+import UsersLattes from './components/UsersLattes/UsersLattes';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -48,6 +49,9 @@ function App() {
         </Route>
         <Route path='/discover' exact={true}>
           <Discover />
+        </Route>
+        <Route path='/userslattes' exact={true} >
+          <UsersLattes/>
         </Route>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList/>

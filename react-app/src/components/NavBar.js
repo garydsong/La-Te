@@ -8,6 +8,7 @@ import './NavBar.css'
 import logo from '../assets/la-te.png'
 import menu from '../assets/icons/menu-icon.svg'
 import disc from '../assets/icons/earth-icon.svg'
+import inb from '../assets/icons/in-icon.svg'
 import defaultpfp from '../assets/pfp/nopicpfp.png'
 
 const NavBar = () => {
@@ -65,6 +66,8 @@ const NavBar = () => {
               </div>
             </NavLink>
           </div>
+
+
           <div>
             <img id="nav-bar-dropdown" src={menu} onClick={openMenu} />
             {/* <LogoutButton /> */}
@@ -89,6 +92,21 @@ const NavBar = () => {
                         <div>Discover</div>
                       </div>
                     </NavLink>
+
+                    <NavLink id="discover-link" to={`/userslattes`}>
+                      <div className="dropdown-links" id="dropdown-links-business-navbar">
+                        <img
+                        className='icon-img-asset'
+                        id="icon-img-business-navbar"
+                        alt='abt me'
+                        src={inb}
+                        onError={imageOnErrorHandler}
+                        />
+                        <div>Inbox</div>
+                      </div>
+                    </NavLink>
+
+
                     <div onClick={logout} className="dropdown-links" id="dropdown-links-business-navbar">
                       <img className='icon-img-asset' id="icon-img-business-navbar" alt='logout icon' src={menu} />
                       <div >Log Out</div>

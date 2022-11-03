@@ -31,8 +31,16 @@ def get_lattes():
 ## GET LATTES OF CURRENT USER
 @latte_routes.route("/current", methods=["GET"])
 def get_lattes_of_curr_user():
-  lattes = Latte.query.filter(current_user.id == Latte.user_id).all()
-  return {"latte": [latte.to_dict() for latte in lattes]}
+  latte_list = []
+  lattes = Latte.query.filter(current_user.id == Latte.donatee_id).all()
+  # lattes_dict = {"latte": [latte.to_dict() for latte in lattes]}
+  for latte in lattes:
+    owner = (User.query.filter(User.id == latte.donor_id).one()).to_dict()
+    lattes_dict = latte.to_dict()
+    lattes_dict['owner'] = owner
+    latte_list.append(lattes_dict)
+
+  return {"latte": [latte for latte in latte_list]}
 
 
 ## GET LATTE BY ID

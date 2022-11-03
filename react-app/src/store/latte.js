@@ -116,6 +116,7 @@ const latteReducer = (state = initialState, action) => {
                 user
             }
         case LOAD_EVERY_LATTE:
+
             action.lattes.lattes.forEach(latte => {
                 allLattes[latte.id] = latte
             })
@@ -124,7 +125,7 @@ const latteReducer = (state = initialState, action) => {
                 allLattes
             }
         case LOAD_CURRENT:
-            action.lattes.lattes.forEach(latte => {
+            action.lattes.latte.forEach(latte => {
                 user[latte.id] = latte
             })
             return {
