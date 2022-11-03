@@ -318,6 +318,7 @@
 .post-content-wrapper {
     width: 90%;
     height: 90%;
+
 }
 
 .post-image {
@@ -330,6 +331,7 @@
 .post-text {
     margin-top: 10px;
     color: #64686b;
+    word-wrap: break-word;
 }
 
 .post-comment-count {
@@ -865,7 +867,7 @@
 
 .comment-content-comment {
     margin-bottom: 30px;
-
+    word-wrap: break-word;
 }
 
 .lattes-cost-center {
@@ -921,5 +923,16 @@
 }
 
 #latte-comment-error {
+    color: #FF7F7F;
+}
+
+/* #error-holder-comment {
+
+} */
+
+#post-comment-error {
+    position: absolute;
+    left: 20px;
+    bottom: 70px;
     color: #FF7F7F;
 }
