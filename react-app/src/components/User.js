@@ -40,6 +40,10 @@ function User() {
   const [thanks, setThanks] = useState(false);
   const [editCommentModalText, setEditCommentModalText] = useState('');
   const [editArea, setEditArea] = useState(false);
+  const [validationErrors, setValidationErrors] = useState([])
+  const [latteValidationErrors, setLatteValidationErrors] = useState([])
+  const [showErrors, setShowErrors] = useState(false)
+  const [showLatteErrors, setShowLatteErrors] = useState(false)
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
@@ -85,19 +89,22 @@ function User() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setShowErrors(true)
 
-    const post = {
-      post: postText,
-      post_img: postImage
-    }
+    if (!validationErrors.length) {
+      const post = {
+        post: postText,
+        post_img: postImage
+      }
 
-    let createdPost = dispatch(createPostThunk(post))
+      let createdPost = dispatch(createPostThunk(post))
 
-    if (createdPost) {
-      setShowModal(false)
-      setPostText('')
-      setPostImage('')
-      history.push(`/users/${userId}`)
+      if (createdPost) {
+        setShowModal(false)
+        setPostText('')
+        setPostImage('')
+        history.push(`/users/${userId}`)
+      }
     }
 
 
@@ -125,23 +132,27 @@ function User() {
 
   const handleLatteSubmit = async (e) => {
     e.preventDefault()
+    setShowLatteErrors(true)
 
     const newLatte = {
       latte: counter,
       comment: latteComment
     }
 
-    if (newLatte) {
-      setThanks(true)
-      setTimeout(() => {
-        setThanks(false)
-      }, 5000)
-    }
+    if (!latteValidationErrors.length) {
+      let madeLatte = await dispatch(createLatte(newLatte, userId))
 
-    await dispatch(createLatte(newLatte, userId))
-    history.push(`/users/${userId}`)
-    setLatteComment('')
-    setCounter(1)
+      if (madeLatte) {
+      history.push(`/users/${userId}`)
+      setLatteComment('')
+      setCounter(1)
+      setThanks(true)
+      setShowLatteErrors(false)
+        setTimeout(() => {
+          setThanks(false)
+        }, 5000)
+      }
+    }
   }
 
   // console.log('try', Object.values(lattes)?.filter(latte =>
@@ -302,10 +313,10 @@ function User() {
                               }} */}
 
                                 <img
-                                id="edit-icons"
-                                src={edit}
-                                // onClick={() => setShowCommentModal(true)}
-                                onClick={() => {editArea ? setEditArea(false) : setEditArea(true); setEditCommentId(comment?.id);}}
+                                  id="edit-icons"
+                                  src={edit}
+                                  // onClick={() => setShowCommentModal(true)}
+                                  onClick={() => { editArea ? setEditArea(false) : setEditArea(true); setEditCommentId(comment?.id); }}
                                 />
 
 
@@ -344,49 +355,49 @@ function User() {
                 src={sessionUser.avatar}
                 onError={imageOnErrorHandler}
               />
-              { !editArea ?
-              (
-                <form id="comment-side-form" onSubmit={handleCommentSubmit}>
-                <textarea
-                  id="comment-text-input"
-                  type='text'
-                  name='comment'
-                  placeholder='Leave a comment'
-                  onChange={((e) => setPostComment(e.target.value))}
-                  value={postComment}
-                ></textarea>
-                <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon} /></button>
+              {!editArea ?
+                (
+                  <form id="comment-side-form" onSubmit={handleCommentSubmit}>
+                    <textarea
+                      id="comment-text-input"
+                      type='text'
+                      name='comment'
+                      placeholder='Leave a comment'
+                      onChange={((e) => setPostComment(e.target.value))}
+                      value={postComment}
+                    ></textarea>
+                    <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon} /></button>
 
-              </form>) : (
-                <form id="comment-side-form" onSubmit={async (e) => {
-                  e.preventDefault()
+                  </form>) : (
+                  <form id="comment-side-form" onSubmit={async (e) => {
+                    e.preventDefault()
 
-                  const newComment = {
-                    comment: postComment
-                  }
+                    const newComment = {
+                      comment: postComment
+                    }
 
-                  let updatedComment = await dispatch(updateComment(newComment, editCommentId))
+                    let updatedComment = await dispatch(updateComment(newComment, editCommentId))
 
-                  if (updatedComment) {
+                    if (updatedComment) {
 
-                    setPostComment('')
-                    setEditArea(false)
-                    setEditCommentId(null)
+                      setPostComment('')
+                      setEditArea(false)
+                      setEditCommentId(null)
 
-                  }
-                }}>
-                <textarea
-                  id="comment-edit-text-input"
-                  type='text'
-                  name='comment'
-                  placeholder='Edit your comment'
-                  onChange={((e) => setPostComment(e.target.value))}
-                  value={postComment}
-                ></textarea>
-                <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon} /></button>
+                    }
+                  }}>
+                    <textarea
+                      id="comment-edit-text-input"
+                      type='text'
+                      name='comment'
+                      placeholder='Edit your comment'
+                      onChange={((e) => setPostComment(e.target.value))}
+                      value={postComment}
+                    ></textarea>
+                    <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon} /></button>
 
-              </form>
-              )}
+                  </form>
+                )}
             </div>
 
           </div>
@@ -417,6 +428,21 @@ function User() {
 
   // }, [latteLength.length])
 
+  useEffect(() => {
+    const errors = []
+    if (postText?.length < 1 || postText?.length > 3000) errors.push("Post must be between 1 and 3000 characters")
+    if (!postImage?.match(/\.(jpg|jpeg|png|gif)$/)) errors.push('Please enter a valid image(jpg/jpeg/png).')
+    setValidationErrors(errors)
+
+  }, [postText, postImage])
+
+  useEffect(() => {
+    const errors = []
+    if (latteComment?.length < 1 || latteComment?.length > 3000) errors.push("Comment must be between 1 and 3000 characters")
+    setLatteValidationErrors(errors)
+
+  }, [latteComment])
+
 
   if (!user) {
     return null;
@@ -428,6 +454,7 @@ function User() {
 
       {showModal && (
         <Modal id='photo-modal' onClose={() => setShowModal(false)}>
+
           <div id="close-modal" onClick={() => setShowModal(false)}><img id="close-modal-icon" src={x} alt='close icon' />
           </div>
           <div className="post-modal-wrapper">
@@ -464,6 +491,13 @@ function User() {
                 </button>
               </div>
             </form>
+            {showErrors &&
+              <div id="error-holder">
+                {validationErrors.map((e, i) => {
+                  return <div id="post-edit-error" key={i}>{e}</div>
+                })}
+              </div>
+            }
           </div>
         </Modal>
       )}
@@ -558,6 +592,13 @@ function User() {
                           <div className="buy-latte-for-wrapper">
                             Buy a latte for {user.first_name}
                           </div>
+                          {showLatteErrors &&
+                            <div id="error-latte-holder">
+                              {latteValidationErrors.map((e, i) => {
+                                return <div id="latte-comment-error" key={i}>{e}</div>
+                              })}
+                            </div>
+                          }
                         </div>
                         <div className="buy-latte-counter">
                           <div className="lattes-cost-center">
