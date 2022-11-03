@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from 'react-router-dom';
 import cup from "../../assets/la-te-cup.png"
 import './Footer.css'
 
@@ -8,7 +9,9 @@ function Footer() {
             <div className="footer-wrapper">
                 <div className="top-footer-wrapper">
                     <div className="top-footer-content">
+                        <NavLink to="/about">
                         <img id="top-footer-icon" src={cup} />
+                        </NavLink>
                         <div className="top-footer-links">
                             <div className="top-footer-title-link">
                             Contacts
@@ -58,7 +61,7 @@ function Footer() {
                             <p>John Carerra - <a id="footer-link-dec" href="https://cyber-trade.herokuapp.com">Cybertrade</a></p>
                             <p>Sam Suh - Coindex</p>
                             <p>Jae Hwang - <a id="footer-link-dec" href="https://drink-cawfee.herokuapp.com/">Drink Cawfee</a></p>
-                            <p>Jake Matillano - <a id="footer-link-dec" href="https://tunenimbus.herokuapp.com/">Tunenimbus</a></p>
+                            <p>Jake Matillano - <a id="footer-link-dec" href="https://kalmado.herokuapp.com/">Kalmado</a></p>
                             <p>Alex Dam - Sawdat</p>
                             <p>Logan Seals - Large</p>
                         </div>
