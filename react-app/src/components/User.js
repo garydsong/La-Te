@@ -42,8 +42,10 @@ function User() {
   const [editArea, setEditArea] = useState(false);
   const [validationErrors, setValidationErrors] = useState([])
   const [latteValidationErrors, setLatteValidationErrors] = useState([])
+  const [commentValidationErrors, setCommentValidationErrors] = useState([])
   const [showErrors, setShowErrors] = useState(false)
   const [showLatteErrors, setShowLatteErrors] = useState(false)
+  const [showCommentErrors, setShowCommentErrors] = useState(false)
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
@@ -112,20 +114,25 @@ function User() {
 
   const handleCommentSubmit = (e) => {
     e.preventDefault()
+    setShowCommentErrors(true)
+    console.log('errors', commentValidationErrors)
 
-    const newComment = {
-      comment: postComment
+    if (!commentValidationErrors.length) {
+      const newComment = {
+        comment: postComment
+      }
+      setShowCommentErrors(false)
+
+
+      console.log('new c', newComment, 'postholder', +postIdHolder, 'all comments', comments)
+      // createComment(newComment, +postIdHolder)
+      dispatch(createComment(newComment, +postIdHolder))
+      setPostComment('')
+      // let createdComment =  dispatch(createComment(newComment, postIdHolder))
+      // if (createdComment) {
+      //   history.push(`/users/${userId}`)
+      // }
     }
-
-
-    console.log('new c', newComment, 'postholder', +postIdHolder, 'all comments', comments)
-    // createComment(newComment, +postIdHolder)
-    dispatch(createComment(newComment, +postIdHolder))
-    setPostComment('')
-    // let createdComment =  dispatch(createComment(newComment, postIdHolder))
-    // if (createdComment) {
-    //   history.push(`/users/${userId}`)
-    // }
   }
 
 
@@ -143,11 +150,11 @@ function User() {
       let madeLatte = await dispatch(createLatte(newLatte, userId))
 
       if (madeLatte) {
-      history.push(`/users/${userId}`)
-      setLatteComment('')
-      setCounter(1)
-      setThanks(true)
-      setShowLatteErrors(false)
+        history.push(`/users/${userId}`)
+        setLatteComment('')
+        setCounter(1)
+        setThanks(true)
+        setShowLatteErrors(false)
         setTimeout(() => {
           setThanks(false)
         }, 5000)
@@ -196,12 +203,16 @@ function User() {
     <div id="comment-fixed-container">
 
       {useEffect(() => {
+        const errors = []
+        if (postComment?.length < 1 || postComment?.length > 1000) errors.push("Comment must be between 1 and 1000 characters")
+        setCommentValidationErrors(errors)
         // for (let i = 1; i < userPosts.length; i++) {
         // dispatch(getAllCommentsOfPost(someThang?.id))
         // }
+
         dispatch(getCurrentComments())
         dispatch(getEveryComment())
-      }, [singlePost, someThang, commentsUsers, editCommentId])}
+      }, [singlePost, someThang, commentsUsers, editCommentId, postComment])}
 
       <>
         <div id="dont-look-at-this">
@@ -367,7 +378,13 @@ function User() {
                       value={postComment}
                     ></textarea>
                     <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon} /></button>
-
+                    {showCommentErrors &&
+                      <div id="error-holder-comment">
+                        {commentValidationErrors?.map((e, i) => {
+                          return <div id="post-comment-error" key={i}>{e}</div>
+                        })}
+                      </div>
+                    }
                   </form>) : (
                   <form id="comment-side-form" onSubmit={async (e) => {
                     e.preventDefault()
@@ -395,7 +412,13 @@ function User() {
                       value={postComment}
                     ></textarea>
                     <button id="send-comment-button" type='submit'><img id="send-comment-icon" src={submiticon} /></button>
-
+                    {showCommentErrors &&
+                      <div id="error-holder-comment">
+                        {commentValidationErrors?.map((e, i) => {
+                          return <div id="post-comment-error" key={i}>{e}</div>
+                        })}
+                      </div>
+                    }
                   </form>
                 )}
             </div>
@@ -439,9 +462,20 @@ function User() {
   useEffect(() => {
     const errors = []
     if (latteComment?.length < 1 || latteComment?.length > 3000) errors.push("Comment must be between 1 and 3000 characters")
+    if (postComment?.length < 1 || postComment?.length > 3000) errors.push("Comment must be between 1 and 1000 characters")
     setLatteValidationErrors(errors)
 
   }, [latteComment])
+
+
+  useEffect(() => {
+    const errors = []
+    if (postComment?.length < 1 || postComment?.length > 1000) errors.push("Comment must be between 1 and 1000 characters")
+    setCommentValidationErrors(errors)
+
+  }, [postComment])
+
+  //
 
 
   if (!user) {
