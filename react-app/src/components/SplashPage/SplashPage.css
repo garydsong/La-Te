@@ -23,6 +23,24 @@
     text-decoration: none;
 }
 
+
+
+#get-started-navlink:active {
+    text-decoration: none;
+}
+
+#get-started-navlink:focus {
+    text-decoration: none;
+}
+
+#get-started-navlink:visited {
+    text-decoration: none;
+}
+
+#get-started-navlink:link {
+    text-decoration: none;
+}
+
 #logo {
     width: 800px;
 }
@@ -721,6 +739,20 @@
 }
 
 .bot-desc-button-1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FF5F5F;
+    color: white;
+    height: 55px;
+    border-radius: 999px;
+    transition: .5s;
+    font-size: 20px;
+    font-weight: bold;
+    width: 100%;
+}
+
+#get-started-navlink {
     display: flex;
     align-items: center;
     justify-content: center;

@@ -256,8 +256,9 @@ function SplashPage() {
                                 Use it as a tip jar, let fans crowdfund a goal and even get donation alerts while you stream.
                             </div>
                             <div></div><div></div>
-
+                            <NavLink id="get-started-navlink" to="/sign-up">
                             <div className="bot-desc-button-1">Get Started</div>
+                            </NavLink>
                         </div>
                         <img src="https://storage.ko-fi.com/cdn/landing_assets/kofi_donation.png" />
                     </div>
