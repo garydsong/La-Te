@@ -462,7 +462,6 @@ function User() {
   useEffect(() => {
     const errors = []
     if (latteComment?.length < 1 || latteComment?.length > 3000) errors.push("Comment must be between 1 and 3000 characters")
-    if (postComment?.length < 1 || postComment?.length > 3000) errors.push("Comment must be between 1 and 1000 characters")
     setLatteValidationErrors(errors)
 
   }, [latteComment])
