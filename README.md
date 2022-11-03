@@ -1,5 +1,9 @@
 ![la-te](https://user-images.githubusercontent.com/105745865/197884351-964fc2f7-9c9a-46bc-8026-1978f7929c97.png)
 
+La-Té is a fullstack web application, inspired by [Ko-fi](https://ko-fi.com). La-Té is the original, fun and friendly way to receive donations and messages of support from fans of what you do! Use it as a tip jar, let fans crowdfund a goal and even get donation alerts while you stream. Unlike other platforms, La-Té doesn't take a fee on each donation. Keep more of your money with La-Té. 
+
+**Live site: [La-Te](http://la-te.herokuapp.com)**
+
 # 🖥️ Technologies
 ### Frameworks, Platforms, Libraries:
 [![My Skills](https://skillicons.dev/icons?i=py,flask,js,react)](http://nope-yelp.herokuapp.com)
