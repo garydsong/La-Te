@@ -50,7 +50,7 @@ function UsersLattes() {
                     </div>
                     {lattes ? (
                         <>
-                            {Object.values(lattes).map(latte => {
+                            {Object.values(lattes).reverse().map(latte => {
                                 return (
                                     <div className="users-lattes-donation-wrapper">
                                         <img id="donation-wrapper-user-cover-img" src={latte?.owner?.cover_img} />
