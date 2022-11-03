@@ -22,8 +22,12 @@
     font-weight: 800;
     font-size: 28px;
     margin-bottom: 20px;
-
 }
+
+#navlink-no-style:link {text-decoration: none;}
+#navlink-no-style:focus {text-decoration: none;}
+#navlink-no-style:visited {text-decoration: none;}
+
 
 #balance {
     font-weight: 700;
