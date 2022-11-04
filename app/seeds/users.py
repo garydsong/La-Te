@@ -159,6 +159,18 @@ def seed_users():
         bio="Only two definites in existence. One, hot pot, and two, hot pot.",
         cover_img='https://i.imgur.com/vrxg9Qg.png',
         website='https://pinkiwish.com')
+    kobe = User(
+        first_name='Kobe',
+        last_name='Pup',
+        username='kobe',
+        email='kobe@demo.io',
+        password='password',
+        city='San Diego',
+        state='CA',
+        avatar='https://i.imgur.com/VpFihH4.png',
+        bio="I like to move it move it.",
+        cover_img='https://i.imgur.com/LjXYD4X.jpeg',
+        website='https://kobegotadream.com')
 
     db.session.add(brandon)
     db.session.add(amanda)
@@ -173,6 +185,7 @@ def seed_users():
     db.session.add(david)
     db.session.add(keke)
     db.session.add(nina)
+    db.session.add(kobe)
 
     db.session.commit()
 
