@@ -121,13 +121,17 @@ function User() {
       const newComment = {
         comment: postComment
       }
-      setShowCommentErrors(false)
+
 
 
       console.log('new c', newComment, 'postholder', +postIdHolder, 'all comments', comments)
       // createComment(newComment, +postIdHolder)
-      dispatch(createComment(newComment, +postIdHolder))
-      setPostComment('')
+      let madeComment = dispatch(createComment(newComment, +postIdHolder))
+
+      if (madeComment) {
+        setShowCommentErrors(false)
+        setPostComment('')
+      }
       // let createdComment =  dispatch(createComment(newComment, postIdHolder))
       // if (createdComment) {
       //   history.push(`/users/${userId}`)
