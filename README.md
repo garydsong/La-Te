@@ -4,6 +4,13 @@ La-Té is a fullstack web application, inspired by [Ko-fi](https://ko-fi.com). L
 
 **Live site: [La-Te](http://la-te.herokuapp.com)**
 
+# 🔗 Wiki Links
+- [API Documentation](https://github.com/garydsong/La-Te/wiki/API-Documentation)
+- [Database Schema](https://github.com/garydsong/La-Te/wiki/Database-Schema)
+- [Feature List](https://github.com/garydsong/La-Te/wiki/Feature-List)
+- [Redux Store Shape](https://github.com/garydsong/La-Te/wiki/Redux-State)
+- [User Stories](https://github.com/garydsong/La-Te/wiki/User-Stories)
+
 # 🖥️ Technologies
 ### Frameworks, Platforms, Libraries:
 [![My Skills](https://skillicons.dev/icons?i=py,flask,js,react)](http://nope-yelp.herokuapp.com)
@@ -24,88 +31,142 @@ Assets utilized and/or created by:
 - SVG, Adobe Photoshop, Adobe Illustrator, CSS3
 
 
-# Flask React Project
+# 📃 Pages
 
-This is the starter for the Flask React project.
+## 💦 Splash Page
+![Screenshot_176](https://user-images.githubusercontent.com/105745865/199860901-eefc03d0-05d8-4638-b03e-ba53114a8725.png)
+### Sign-up triggered on "Claim"
 
-## Getting started
-1. Clone this repository (only this branch)
+![Screenshot_177](https://user-images.githubusercontent.com/105745865/199860967-ca6535f0-8dca-440d-b4a4-8442afa7bfb3.png)
+### Click and drag carousel with user testimonials
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+![Screenshot_178](https://user-images.githubusercontent.com/105745865/199861042-ad1dc122-f5e6-4b67-935f-40e61540eb10.png)
+### FAQ
 
-2. Install dependencies
+## 📝 Sign Up/Log In
+![Screenshot_179](https://user-images.githubusercontent.com/105745865/199861135-fa09bbd1-0c1a-4570-876b-5241a5648c27.png)
+### Sign up validation errors handled in scrollable box at top of the form
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+![Screenshot_180](https://user-images.githubusercontent.com/105745865/199861208-c424881c-28d6-4736-a30b-319f19e4da14.png)
+### Demo user and easy to access sign up on log in page
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+## ⛹️ User Profile
+![Screenshot_181](https://user-images.githubusercontent.com/105745865/199861292-cc5f95a4-0551-4163-bdce-ce541eb81943.png)
+### Owner of the page has Write a Post at top of the page
 
-5. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+![Screenshot_182](https://user-images.githubusercontent.com/105745865/199861359-c113dbba-977a-4165-b04d-597fefe9690a.png)
 
-   ```bash
-   pipenv shell
-   ```
+![Screenshot_184](https://user-images.githubusercontent.com/105745865/199861447-e4fc1390-37cc-4949-a714-e80a686208b0.png)
+### Manage your posts and leave comments on yours or other user's posts
 
-   ```bash
-   flask db upgrade
-   ```
+![Screenshot_185](https://user-images.githubusercontent.com/105745865/199861468-6fd4c05f-7650-44b2-9ecb-0fea02f48a42.png)
+### Edit your posts with auto filled information
 
-   ```bash
-   flask seed all
-   ```
+![Screenshot_186](https://user-images.githubusercontent.com/105745865/199861515-79a36dc7-6a42-43dd-9c4f-9d5fcd1df025.png)
+### Edit your comment with light blue indicator that now you are editing your comment
 
-   ```bash
-   flask run
-   ```
+## 🔍 Discover Page
+![Screenshot_187](https://user-images.githubusercontent.com/105745865/199861563-d7587fe9-8bea-4065-bc98-aa31bd82a33f.png)
+### Discover users page with all new users
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+## ☕ Lattes
+![Screenshot_188](https://user-images.githubusercontent.com/105745865/199861587-74c24bb9-f166-4e6f-9350-096d9d863174.png)
+### Leave a user a donation (latte) with a message
+
+![Screenshot_189](https://user-images.githubusercontent.com/105745865/199861743-f43099e8-85e5-431b-9bbc-4435f6c8f582.png)
+### Confirmation message that your donation has been sent
+
+## 📥 Inbox
+![Screenshot_190](https://user-images.githubusercontent.com/105745865/199861812-61e2a2c8-c12c-448a-9072-0025179a7f36.png)
+### Check your balance and your messages in your inbox
 
 
-<br>
+# ▶️ Get Started
 
-## Deploy to Heroku
-This repo comes configured with Github Actions. When you push to your main branch, Github will automatically pull your code, package and push it to Heroku, and then release the new image and run db migrations. 
+### Clone repository.
 
-1. Write your Dockerfile. In order for the Github action to work effectively, it must have a configured Dockerfile. Follow the comments found in this [Dockerfile](./Dockerfile) to write your own!
+- SSH:
 
-2. Create a new project on Heroku.
+```
+git@github.com:garydsong/La-Te.git
+```
 
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres".
+- HTTPS:
 
-4. Configure production environment variables. In your Heroku app settings -> config variables you should have two environment variables set:
+```
+https://github.com/garydsong/La-Te.git
+```
 
-   |    Key          |    Value    |
-   | -------------   | ----------- |
-   | `DATABASE_URL`  | Autogenerated when adding postgres to Heroku app |
-   | `SECRET_KEY`    | Random string full of entropy |
+- CLI:
+```
+gh repo clone garydsong/La-Te
+```
 
-5. Generate a Heroku OAuth token for your Github Action. To do so, log in to Heroku via your command line with `heroku login`. Once you are logged in, run `heroku authorizations:create`. Copy the GUID value for the Token key.
+### Install dependencies & Prep database.
+- In the project directory you will run:
 
-6. In your Github Actions Secrets you should have two environment variables set. You can set these variables via your Github repository settings -> secrets -> actions. Click "New respository secret" to create
-each of the following variables:
+```
+pipenv install
+```
 
-   |    Key            |    Value    |
-   | -------------     | ----------- |
-   | `HEROKU_API_KEY`  | Heroku Oauth Token (from step 6)|
-   | `HEROKU_APP_NAME` | Heroku app name    |
+This command will install packages into the pipenv virtual environment and update your Pipfile.
 
-7. Push to your `main` branch! This will trigger the Github Action to build your Docker image and deploy your application to the Heroku container registry. Please note that the Github Action will automatically upgrade your production database with `flask db upgrade`. However, it will *not* automatically seed your database. You must manually seed your production database if/when you so choose (see step 8).
+- Create a .env file in said current directory.
+- Paste in SECRET_KEY and DATABASE_URL configurations.
 
-8. *Attention!* Please run this command *only if you wish to seed your production database*: `heroku run -a HEROKU_APP_NAME flask seed all`
+```
+SECRET_KEY=<<SECRET_KEY>>
+DATABASE_URL=sqlite:///dev.db
+```
 
-## Helpful commands
-|    Command            |    Purpose    |
-| -------------         | ------------- |
-| `pipenv shell`        | Open your terminal in the virtual environment and be able to run flask commands without a prefix |
-| `pipenv run`          | Run a command from the context of the virtual environment without actually entering into it. You can use this as a prefix for flask commands  |
-| `flask db upgrade`    | Check in with the database and run any needed migrations  |
-| `flask db downgrade`  | Check in with the database and revert any needed migrations  |
-| `flask seed all`      | Just a helpful syntax to run queries against the db to seed data. See the **app/seeds** folder for reference and more details |
-| `heroku login -i`      | Authenticate your heroku-cli using the command line. Drop the -i to authenticate via the browser |
-| `heroku authorizations:create` | Once authenticated, use this to generate an Oauth token |
-| `heroku run -a <app name>` | Run a command from within the deployed container on Heroku |
+The .env file contains the individual user environment variables that override the variables set in the /etc/environment file. You can customize your environment variables as desired by modifying your .env file. In this case we are setting the SECRET_KEY and the DATABASE_URL.
+
+- While in your root directory run:
+
+```
+pipenv shell
+```
+
+This will create a new active pip environment for  you to run your backend.
+
+- Followed by:
+
+```
+flask db upgrade
+flask seed all
+pipenv run flask run
+```
+
+Because this application uses SQLite, the upgrade command will detect that a database does not exist and will create it. While now you are creating the database you are also seeding in our 105 businesses, 315 business images, 30 users, and all of their 270 grumbles/nopes.
+
+- Navigate to your /Nope-Yelp/react-app/ folder and create another .env file.
+- Paste in the REACT_APP_BASE_URL
+
+```
+REACT_APP_BASE_URL=http://localhost:5000
+```
+We'll be pasting in the path to server for frontend into this newly created environment file.
+
+- All there is to do is:
+
+```
+npm install
+```
+This command installs a package and any packages that it depends on. Since the package has a package-lock the installation of dependencies will be driven by that. If you take a peak into your package.json file you can see all the dependencies our project is installing.
+
+```
+npm start
+```
+This runs a predefined command specified in the "start" property of a package's "scripts" object in our case it is:
+
+```
+"start": "react-scripts start"
+```
+DO NOT paste this anywhere. The code above is already provided in our package.json file!
+
+*And voilà!*
+
+
+# 📱 Contacts
+<img src=https://i.imgur.com/2ffGJqj.png width=20> [LinkedIn](https://www.linkedin.com/in/gary-song-96b071246/)
+<img src=https://i.imgur.com/w9xwrCT.png width=20> [GitHub](https://github.com/garydsong)
