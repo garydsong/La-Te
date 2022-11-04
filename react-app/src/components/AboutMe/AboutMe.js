@@ -5,6 +5,7 @@ import lateicon from "../../assets/la-te-cup.png"
 import giticon from "../../assets/abouticon/git-icon.svg"
 import linkicon from "../../assets/abouticon/link-icon.svg"
 import wwwicon from "../../assets/abouticon/www-icon.svg"
+import thankyou from "../../assets/abouticon/thankyou.png"
 import music from "../../assets/sounds/aboutdreams.mp3"
 import play from "../../assets/sounds/play.svg"
 import pause from "../../assets/sounds/pause.svg"
@@ -177,6 +178,16 @@ function AboutMe() {
                                     <span class="jt__text">&LOVE DEEPLY</span>
                                 </span>
                             </h1>
+                        </div>
+
+                        <div
+                        className="light-about-me-continue4"
+                        style={{
+                            opacity: `${opacityChange6}`,
+                            zIndex: `${zindexSetter8}`
+                        }}
+                        >
+                            <img id="ty" src={thankyou}/>
                         </div>
                     </div>
 

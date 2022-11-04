@@ -258,6 +258,18 @@
 	transition: 5s;
 }
 
+.light-about-me-continue4 {
+	position: absolute;
+	opacity: 0;
+	transition: 5s;
+	top: 0px;
+	left: 240px;
+}
+
+#ty {
+	height: 99vh;
+}
+
 .words {
 	font-family: 'Nunito';
 	font-weight: 800;
@@ -987,6 +999,7 @@ h1 {
 
   #play-button {
 	height: 15px;
+	filter: invert(81%) sepia(48%) saturate(1%) hue-rotate(7deg) brightness(101%) contrast(90%);
   }
 
   #pause-button {
