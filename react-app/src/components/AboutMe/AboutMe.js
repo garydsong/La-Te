@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { useState } from "react";
 import mainpic from "../../assets/midpic.png"
 import lateicon from "../../assets/la-te-cup.png"
 import giticon from "../../assets/abouticon/git-icon.svg"
 import linkicon from "../../assets/abouticon/link-icon.svg"
 import wwwicon from "../../assets/abouticon/www-icon.svg"
+import music from "../../assets/sounds/aboutdreams.mp3"
+import play from "../../assets/sounds/play.svg"
+import pause from "../../assets/sounds/pause.svg"
 import './AboutMe.css'
 import { useHistory } from "react-router-dom";
+
 
 function AboutMe() {
     const history = useHistory();
@@ -30,14 +34,58 @@ function AboutMe() {
     const [zindexSetter7, setZIndexSetter7] = useState(0);
     const [zindexSetter8, setZIndexSetter8] = useState(0);
 
+    const [audioStatus, changeAudioStatus] = useState(false);
+    const myRef = useRef();
+
+    const startAudio = () => {
+        myRef.current.play();
+        // for play/pause buttons if i want to implement them
+        changeAudioStatus(true);
+    };
+
+    const pauseAudio = () => {
+        myRef.current.pause();
+        // for play/pause buttons if i want to implement them
+        changeAudioStatus(false);
+    };
+
+    useEffect(() => {
+
+    }, [audioStatus])
+
     return (
         <>
+            <audio
+                ref={myRef}
+                src={music}
+            />
+            {audioStatus ? (
+                <div className="play-pause-pos">
+                    <img
+                    id="pause-button"
+                    src={pause}
+                    onClick={pauseAudio}
+                    />
+                </div>
+            ) : (
+                <div className="play-pause-pos">
+                    <img
+                    id="play-button"
+                    src={play}
+                    onClick={startAudio}
+                    />
+                </div>
+            )}
             <div className="main-div-about-me-wrapper">
+
                 <div className="line-up-img">
                     <img
                         id="about-me-img"
                         src={mainpic}
-                        onClick={() => { setFirstOpacityChange(1) }}
+                        onClick={() => {
+                            setFirstOpacityChange(1);
+                            startAudio()
+                        }}
                     />
                     <div className="gradient-left">
                         {/* <div className="light-about-me">
@@ -183,10 +231,12 @@ function AboutMe() {
                                 opacity: `${opacityChange2}`,
                                 zIndex: `${zindexSetter4}`
                             }}>
-                            <h1>Do</h1>
-                            <h1>What</h1>
-                            <h1>You</h1>
-                            <h1>Love</h1>
+                            <div className="center">
+                                <div className="hm">DO</div>
+                                <div className="hm">WHAT</div>
+                                <div className="hm">YOU</div>
+                                <div className="hm">LOVE</div>
+                            </div>
                         </div>
 
 
@@ -219,23 +269,26 @@ function AboutMe() {
                                 opacity: `${opacityChange6}`,
                                 zIndex: `${zindexSetter8}`
                             }}>
-                                <a href="https://github.com/garydsong" target="_blank">
-                                <img id="aboutme-icons-a" src={giticon}/>
-                                </a>
+                            <a href="https://github.com/garydsong" target="_blank">
+                                <img id="aboutme-icons-a" src={giticon} />
+                            </a>
 
-                                <a href="https://www.linkedin.com/in/gary-song-96b071246/" target="_blank">
-                                <img id="aboutme-icons-b" src={linkicon}/>
-                                </a>
+                            <a href="https://www.linkedin.com/in/gary-song-96b071246/" target="_blank">
+                                <img id="aboutme-icons-b" src={linkicon} />
+                            </a>
 
-                                <a href="https://gary-song.com" target="_blank">
-                                <img id="aboutme-icons-c" src={wwwicon}/>
-                                </a>
+                            <a href="https://gary-song.com" target="_blank">
+                                <img id="aboutme-icons-c" src={wwwicon} />
+                            </a>
 
-                                <img
+                            <img
                                 id="aboutme-icons2"
                                 src={lateicon}
-                                onClick={() => history.push('/')}
-                                />
+                                onClick={() => {
+                                    pauseAudio();
+                                    history.push('/');
+                                }}
+                            />
 
                         </div>
                     </div>

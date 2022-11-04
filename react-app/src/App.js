@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import UserSettings from './components/UserSettings/UserSettings';
 import SplashPage from './components/SplashPage/SplashPage';
 import { authenticate } from './store/session';
 import EditPost from './components/EditPost/EditPost';
@@ -37,7 +38,6 @@ function App() {
 
 <NavBar />
       <Switch>
-
         <Route path='/' exact={true} >
           <SplashPage />
         </Route>
@@ -56,6 +56,9 @@ function App() {
         <Route path='/userslattes' exact={true} >
           <UsersLattes />
         </Route>
+        {/* <ProtectedRoute path='/users/settings' exact={true} >
+          <UserSettings />
+        </ProtectedRoute> */}
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
