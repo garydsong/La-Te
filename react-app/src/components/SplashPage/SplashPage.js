@@ -178,17 +178,17 @@ function SplashPage() {
                                 </div>
                             </div>
                             <div className="testimonial-item" style={{ ...itemStyle }}>
-                            <img id="testimonial-pfp-img" src="https://i.imgur.com/jO7Fugz.png" />
+                            <img id="testimonial-pfp-img" src="https://i.imgur.com/QN4kwOL.png" />
                                 <div className="testimonial-user-name">
-                                    Alex
+                                    Stuart
                                 </div>
                                 <div id="testimonial-category-wrapper">
-                                    <div id="testimonial-category">Developer</div>
-                                    <div id="testimonial-category">Streamer</div>
+                                    <div id="testimonial-category">Minion</div>
+                                    <div id="testimonial-category">Dancer</div>
 
                                 </div>
                                 <div id="user-testimonial">
-                                    "?Ayo"
+                                    "!Banana"
                                 </div>
                             </div>
                             <div className="testimonial-item" style={{ ...itemStyle }}>
@@ -207,17 +207,17 @@ function SplashPage() {
                             </div>
                             <div className="testimonial-item" style={{ ...itemStyle }}>
 
-                            <img id="testimonial-pfp-img" src="https://i.imgur.com/VpFihH4.png" />
+                            <img id="testimonial-pfp-img" src="https://i.imgur.com/BqrPQVs.png" />
                                 <div className="testimonial-user-name">
-                                    Kobe
+                                    Boosted B
                                 </div>
                                 <div id="testimonial-category-wrapper">
-                                    <div id="testimonial-category">Podcaster</div>
-                                    <div id="testimonial-category">Cosplayer</div>
+                                    <div id="testimonial-category">Developer</div>
+                                    <div id="testimonial-category">Streamer</div>
 
                                 </div>
                                 <div id="user-testimonial">
-                                    "!FWOOF"
+                                    "Finally I've been boosted"
                                 </div>
 
                             </div>
