@@ -200,7 +200,7 @@ function User() {
 
 
 
-  }, [dispatch, userPosts.length, currentUser, singlePost, allComments, currUserLattes, commentsUsers]);
+  }, [dispatch, userPosts.length, currentUser, singlePost, currUserLattes, userId]);
 
 
   const otherThang = (
@@ -216,7 +216,7 @@ function User() {
 
         dispatch(getCurrentComments())
         dispatch(getEveryComment())
-      }, [singlePost, someThang, commentsUsers, editCommentId, postComment])}
+      }, [singlePost, commentsUsers, editCommentId, postComment])}
 
       <>
         <div id="dont-look-at-this">
@@ -306,7 +306,8 @@ function User() {
                         <div className="comment-content-username-wrapper">
                           <img
                             id="comment-content-user-avatar"
-                            src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null}
+                            // src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null}
+                            src={comment?.owner?.avatar}
                             onError={imageOnErrorHandler}
                           />
 
