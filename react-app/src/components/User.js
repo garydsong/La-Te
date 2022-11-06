@@ -306,7 +306,8 @@ function User() {
                         <div className="comment-content-username-wrapper">
                           <img
                             id="comment-content-user-avatar"
-                            src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null}
+                            // src={comment?.post_id === someThang?.id ? comment?.owner?.avatar : null}
+                            src={comment?.owner?.avatar}
                             onError={imageOnErrorHandler}
                           />
 
