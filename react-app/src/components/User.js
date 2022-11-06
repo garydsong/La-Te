@@ -36,7 +36,7 @@ function User() {
   const [latteComment, setLatteComment] = useState('');
   const [latte, setLatte] = useState(1);
   const [editCommentText, setEditCommentText] = useState(0);
-  const [editCommentId, setEditCommentId] = useState(null);
+  const [editCommentId, setEditCommentId] = useState(0);
   const [thanks, setThanks] = useState(false);
   const [editCommentModalText, setEditCommentModalText] = useState('');
   const [editArea, setEditArea] = useState(false);
@@ -46,6 +46,7 @@ function User() {
   const [showErrors, setShowErrors] = useState(false)
   const [showLatteErrors, setShowLatteErrors] = useState(false)
   const [showCommentErrors, setShowCommentErrors] = useState(false)
+  const [isCommentLoaded, setIsCommentLoaded] = useState(false)
   const history = useHistory();
   const { userId } = useParams();
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ function User() {
   const posts = useSelector(state => state.postReducer.allPosts);
   const singlePost = useSelector(state => state.postReducer.singlePost);
   const allComments = useSelector(state => state.commentReducer.allComments);
+
 
   const userPosts = Object.values(posts).filter(post => post.user_id === +userId)
 
@@ -204,6 +206,7 @@ function User() {
 
 
   const otherThang = (
+
     <div id="comment-fixed-container">
 
       {useEffect(() => {
@@ -216,12 +219,16 @@ function User() {
 
         dispatch(getCurrentComments())
         dispatch(getEveryComment())
-      }, [singlePost, commentsUsers, editCommentId, postComment])}
+        .then(() => { setIsCommentLoaded(true)})
+      }, [singlePost, commentsUsers, editCommentId])}
+
+
+
+      {isCommentLoaded && (
 
       <>
         <div id="dont-look-at-this">
-
-          {someThang ? postIdHolder = someThang.id : null}
+          {someThang ? postIdHolder = someThang.id : postIdHolder}
           {/* {someThang ? postComments = Object.values(comments).filter(comment => comment.post_id === someThang.id) : null} */}
 
         </div>
@@ -232,7 +239,8 @@ function User() {
             </div>
             <img
               id="comment-post-img-id"
-              src={someThang ? someThang.post_img : null}
+              // src={someThang ? someThang.post_img : null}
+              src={someThang?.post_img}
               onError={postImageOnErrorHandler}
             />
           </div>
@@ -312,7 +320,8 @@ function User() {
                           />
 
                           <div className="comment-content-username">
-                            {comment?.post_id === someThang?.id ? comment?.owner?.username : null}
+                            {/* {comment?.post_id === someThang?.id ? comment?.owner?.username : null} */}
+                            {comment?.owner?.username}
                             {comment?.user_id === currentUser.id && (
                               <div className="d-e-align">
 
@@ -431,6 +440,7 @@ function User() {
           </div>
         </div>
       </>
+      )}
     </div>
 
   )
