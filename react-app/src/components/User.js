@@ -347,6 +347,7 @@ function User() {
                                   src={edit}
                                   // onClick={() => setShowCommentModal(true)}
                                   onClick={() => { editArea ? setEditArea(false) : setEditArea(true); setEditCommentId(comment?.id); dispatch(getAllCommentsOfPost(comment?.post_id)) }}
+                                  
                                 />
 
 
