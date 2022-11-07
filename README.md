@@ -81,6 +81,14 @@ Assets utilized and/or created by:
 ### Check your balance and your messages in your inbox
 
 
+# 🚧 Future Goals
+### User catagories (Streamer, Producer, Artist, etc)
+### Reactions to posts and comments
+### Followers/Following
+### Search feature
+### Direct Messaging
+
+
 # ▶️ Get Started
 
 ### Clone repository.
