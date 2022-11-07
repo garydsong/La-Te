@@ -177,6 +177,8 @@ function User() {
   }, [commentsUsers])
 
 
+
+
   useEffect(() => {
     if (!userId) {
       return;
@@ -204,7 +206,7 @@ function User() {
 
   }, [dispatch, userPosts.length, currentUser, singlePost, currUserLattes, userId]);
 
-
+  const editelement = document.getElementById("comment-edit-text-input")
   const otherThang = (
 
     <div id="comment-fixed-container">
@@ -217,10 +219,12 @@ function User() {
         // dispatch(getAllCommentsOfPost(someThang?.id))
         // }
 
-        dispatch(getCurrentComments())
+
+        // commented this out to test on heroku!
+        // dispatch(getCurrentComments())
         dispatch(getEveryComment())
         .then(() => { setIsCommentLoaded(true)})
-      }, [singlePost, commentsUsers, editCommentId])}
+      }, [singlePost, commentsUsers, editCommentId, editelement, allComments])}
 
 
 
@@ -309,8 +313,9 @@ function User() {
                         </Modal>
                       )} */}
 
-
+                      {console.log('somethang', someThang)}
                       {comment?.post_id === someThang?.id &&
+
                         <div className="comment-content-username-wrapper">
                           <img
                             id="comment-content-user-avatar"
@@ -341,7 +346,7 @@ function User() {
                                   id="edit-icons"
                                   src={edit}
                                   // onClick={() => setShowCommentModal(true)}
-                                  onClick={() => { editArea ? setEditArea(false) : setEditArea(true); setEditCommentId(comment?.id); }}
+                                  onClick={() => { editArea ? setEditArea(false) : setEditArea(true); setEditCommentId(comment?.id); dispatch(getAllCommentsOfPost(comment?.post_id)) }}
                                 />
 
 
