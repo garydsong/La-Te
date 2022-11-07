@@ -14,6 +14,7 @@ import EditPost from './components/EditPost/EditPost';
 import Discover from './components/Discover/Discover';
 import UsersLattes from './components/UsersLattes/UsersLattes';
 import AboutMe from './components/AboutMe/AboutMe';
+import NotFound from './components/NotFound/NotFound';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -65,6 +66,8 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+
+        <Route path="" component={NotFound} />
       </Switch>
     </BrowserRouter>
   );
