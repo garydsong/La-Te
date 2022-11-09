@@ -57,9 +57,9 @@ function App() {
         <Route path='/userslattes' exact={true} >
           <UsersLattes />
         </Route>
-        {/* <ProtectedRoute path='/users/settings' exact={true} >
+        <ProtectedRoute path='/users/settings' exact={true} >
           <UserSettings />
-        </ProtectedRoute> */}
+        </ProtectedRoute>
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
