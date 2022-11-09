@@ -59,11 +59,11 @@ function Footer() {
                             <p>Jack Fisher - <a id="footer-link-dec" href="https://dancefam.herokuapp.com/">Dance Fam</a></p>
                             <p>Brandon Tasaki - <a id="footer-link-dec" href="https://pearbnb-final.herokuapp.com/">PearBnB</a></p>
                             <p>John Carerra - <a id="footer-link-dec" href="https://cyber-trade.herokuapp.com">Cybertrade</a></p>
-                            <p>Sam Suh - Coindex</p>
+                            <p>Sam Suh - <a id="footer-link-dec" href="https://youtu.be/fPgf2meEX1w?t=50">Coindex</a></p>
                             <p>Jae Hwang - <a id="footer-link-dec" href="https://drink-cawfee.herokuapp.com/">Drink Cawfee</a></p>
                             <p>Jake Matillano - <a id="footer-link-dec" href="https://kalmado.herokuapp.com/">Kalmado</a></p>
-                            <p>Alex Dam - Sawdat</p>
-                            <p>Logan Seals - Large</p>
+                            <p>Alex Dam - <a id="footer-link-dec" href="https://sawdat.herokuapp.com/">Sawdat</a></p>
+                            <p>Logan Seals - <a id="footer-link-dec" href="https://large-logan.herokuapp.com/">Large</a></p>
                         </div>
                     </div>
                 </div>
