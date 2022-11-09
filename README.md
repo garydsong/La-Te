@@ -82,11 +82,11 @@ Assets utilized and/or created by:
 
 
 # 🚧 Future Goals
-### User catagories (Streamer, Producer, Artist, etc)
-### Reactions to posts and comments
-### Followers/Following
-### Search feature
-### Direct Messaging
+- User catagories (Streamer, Producer, Artist, etc)
+- Reactions to posts and comments
+- Followers/Following
+- Search feature
+- Direct Messaging
 
 
 # ▶️ Get Started
@@ -147,7 +147,7 @@ pipenv run flask run
 
 Because this application uses SQLite, the upgrade command will detect that a database does not exist and will create it. While now you are creating the database you are also seeding in our 105 businesses, 315 business images, 30 users, and all of their 270 grumbles/nopes.
 
-- Navigate to your /Nope-Yelp/react-app/ folder and create another .env file.
+- Navigate to your /La-Te/react-app/ folder and create another .env file.
 - Paste in the REACT_APP_BASE_URL
 
 ```
@@ -172,7 +172,7 @@ This runs a predefined command specified in the "start" property of a package's 
 ```
 DO NOT paste this anywhere. The code above is already provided in our package.json file!
 
-*And voilà!*
+*And voilàtté!*
 
 
 # 📱 Contacts
