@@ -9,6 +9,7 @@ import logo from '../assets/la-te.png'
 import menu from '../assets/icons/menu-icon.svg'
 import disc from '../assets/icons/earth-icon.svg'
 import inb from '../assets/icons/in-icon.svg'
+import set from '../assets/icons/setted-icon.svg'
 import defaultpfp from '../assets/pfp/nopicpfp.png'
 
 const NavBar = () => {
@@ -103,6 +104,19 @@ const NavBar = () => {
                         onError={imageOnErrorHandler}
                         />
                         <div>Inbox</div>
+                      </div>
+                    </NavLink>
+
+                    <NavLink id="discover-link" to={`/users/settings`}>
+                      <div className="dropdown-links" id="dropdown-links-business-navbar">
+                        <img
+                        className='icon-img-asset'
+                        id="icon-img-business-navbar"
+                        alt='abt me'
+                        src={set}
+                        onError={imageOnErrorHandler}
+                        />
+                        <div>Settings</div>
                       </div>
                     </NavLink>
 

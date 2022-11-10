@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 from app.models import User, db, Latte
 from ..forms.signup_form import SignUpForm
 from ..forms.latte_form import LatteForm
+from ..forms.update_user_form import UpdateUserForm
 
 def validation_form_errors(validation_errors):
   errors = []
@@ -39,9 +40,9 @@ def edit_a_user(id):
   if user.id != current_user.id:
     return {"message":"Forbidden", "statusCode":403}
 
-  form = SignUpForm()
+  form = UpdateUserForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  print('\n\n\n\n\n\n\n form data', form.data)
+  print('*********************user route hitting')
   if form.validate_on_submit():
 
     user.first_name = form.first_name.data
