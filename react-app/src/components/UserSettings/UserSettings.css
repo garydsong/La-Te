@@ -8,13 +8,24 @@
 .user-settings-container {
     width: 700px;
     height: 100%;
-    border: red 1px solid;
+}
+
+.user-settings-balance-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .user-settings-settings-title {
     font-weight: 800;
     font-size: 24px;
-    margin-bottom: 20px;
+}
+
+.user-settings-balance-title {
+    font-weight: 800;
+    font-size: 20px;
+    color: #FF5F5F;
 }
 
 .user-settings-cover-img-wrapper {
@@ -26,7 +37,7 @@
     height: 400px;
     border-radius: 20px;
     margin-bottom: 20px;
-    border: 1px purple solid;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
 }
 
 #cover-img-settings-page {
@@ -44,24 +55,27 @@
     width: 100%;
     /* height: 255px; */
     border-radius: 20px;
+    margin-bottom: 20px;
 }
 
 .user-settings-top-inner-container {
     display: flex;
     flex-direction: column;
-    /* height: 100%; */
+    align-items: center;
+    height: 600px;
     width: 100%;
-    border: blue 1px solid;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    border-radius: 20px;
 }
 
 .user-settings-name-ava {
-    height: 50%;
+    height: 200px;
     width: 100%;
     /* border: orangered 1px solid; */
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
-    border: red 1px solid;
+    margin-bottom: 40px;
+    border-bottom: lightgray 1px solid;
 }
 
 #user-ava-settings {
@@ -76,7 +90,6 @@
 .user-settings-about-website {
     height: 50%;
     width: 100%;
-    border: orangered 1px solid;
 }
 
 .settings-cover-img-edit {
@@ -106,3 +119,351 @@
     color: gray;
     font-size: 14px;
 }
+
+
+
+#whydoe {
+    width: 90%;
+    margin-left: 0px;
+}
+
+#username-input-settings-edit {
+    padding-left: 20px;
+    height: 45px;
+    width: 96%;
+    border: lightgray 2px solid;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#username-input-settings-edit::placeholder { /* Microsoft Edge */
+    color: rgb(168, 199, 209);
+}
+
+
+#settings-name-edit-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+}
+
+#settings-edit-first-name-input {
+    padding-left: 20px;
+    height: 45px;
+    width: 96%;
+    border: lightgray 2px solid;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#settings-edit-first-name-input::placeholder { /* Microsoft Edge */
+    color: rgb(168, 199, 209);
+}
+
+#settings-edit-last-name-input {
+    padding-left: 20px;
+    height: 45px;
+    width: 100%;
+    border: lightgray 2px solid;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#settings-edit-last-name-input::placeholder { /* Microsoft Edge */
+    color: rgb(168, 199, 209);
+}
+
+#settings-edit-city-input {
+    padding-left: 20px;
+    height: 45px;
+    width: 100%;
+    border: lightgray 2px solid;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#settings-edit-city-input::placeholder { /* Microsoft Edge */
+    color: rgb(168, 199, 209);
+}
+
+#settings-edit-state-input {
+    padding-left: 20px;
+    height: 45px;
+    width: 100%;
+    border: lightgray 2px solid;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#settings-edit-state-input::placeholder { /* Microsoft Edge */
+    color: rgb(168, 199, 209);
+}
+
+#input-settings-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 54%;
+}
+
+.user-settings-bio {
+    height: 200px;
+    width: 100%;
+    /* border: orangered 1px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: lightgray 1px solid;
+}
+
+.bio-preview-settings {
+    width: 86%;
+    height: 53%;
+    padding: 10px;
+    border: rgb(180, 180, 180) 1px solid;
+    border-radius: 5px;
+    color: rgb(180, 180, 180);
+    background-color: rgb(245, 245, 245);
+}
+
+.settings-about-edit {
+    padding-left: 20px;
+    height: 45px;
+    width: 86%;
+    border: lightgray 2px solid;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.settings-about-edit::placeholder { /* Microsoft Edge */
+    color: rgb(168, 199, 209);
+}
+
+.bio-settings-top-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* height: 255px; */
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.bio-settings-top-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 340px;
+    width: 100%;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    border-radius: 20px;
+}
+
+.website-settings-top-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* height: 255px; */
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.website-settings-top-inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    width: 100%;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+    border-radius: 20px;
+}
+
+.website-preview-settings {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 86%;
+    height: 45px;
+    border: rgb(180, 180, 180) 1px solid;
+    border-radius: 5px;
+}
+
+.user-settings-website {
+    height: 120px;
+    width: 100%;
+    /* border: orangered 1px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: lightgray 1px solid;
+}
+
+.gradient-top-settings {
+    z-index: -1;
+    position: fixed;
+    height: 90px;
+    width: 100%;
+    opacity: .1;
+    background: linear-gradient(black, transparent);
+}
+
+
+.submit-settings-top-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    /* height: 255px; */
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+#cancel-settings-button {
+    font-family: 'Nunito';
+    height: 40px;
+    width: 120px;
+    font-weight: bold;
+    background-color: lightgray;
+    border: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 8px;
+    margin-right: 10px;
+    transition: .5s;
+}
+
+#submit-settings-button {
+    font-family: 'Nunito';
+    height: 40px;
+    width: 120px;
+    font-weight: bold;
+    background-color: #FF5F5F;
+    border: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border-radius: 8px;
+    transition: .5s;
+}
+
+#submit-settings-button:hover {
+    cursor: pointer;
+    background-color: #ff4545;
+}
+
+#cancel-settings-button:hover {
+    cursor: pointer;
+    background-color: #e2e2e2;
+}
+
+.absoluted-cover-img {
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 660px;
+    top: 463px;
+    color: gray;
+}
+
+.absoluted-avatar {
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 660px;
+    top: 805px;
+    color: gray;
+}
+
+.absoluted-firstname {
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 660px;
+    top: 895px;
+    color: gray;
+}
+
+.absoluted-lastname {
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 969px;
+    top: 895px;
+    color: gray;
+}
+
+.absoluted-username {
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 660px;
+    top: 986px;
+    color: gray;
+}
+
+.absoluted-city {
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 660px;
+    top: 1077px;
+    color: gray;
+}
+
+.absoluted-state {
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 969px;
+    top: 1077px;
+    color: gray;
+}
+
+.absoluted-about {
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 660px;
+    top: 1425px;
+    color: gray;
+}
+
+.absoluted-website {
+    position: absolute;
+    background-color: white;
+    font-weight: 700;
+    padding-left: 5px;
+    padding-right: 5px;
+    left: 660px;
+    top: 1705px;
+    color: gray;
+}
+
+#nav-unlink:hover { text-decoration: none;}
+#nav-unlink:active { text-decoration: none;}
+#nav-unlink:link { text-decoration: none;}
+#nav-unlink:visited { text-decoration: none;}

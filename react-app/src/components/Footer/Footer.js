@@ -26,8 +26,8 @@ function Footer() {
                             My Other Projects
                             </div>
                             <p><a id="footer-link-dec" href="https://nope-yelp.herokuapp.com/">Nope</a></p>
-                            <p><a id="footer-link-dec" href="https://xok3k3kob3llif3.netlify.app/">GareBnB</a></p>
-                            <p><a id="footer-link-dec" href="https://http://garebnb.herokuapp.com/">XOK3K3KOB3Llif3</a></p>
+                            <p><a id="footer-link-dec" href="https://garebnb.herokuapp.com">GareBnB</a></p>
+                            <p><a id="footer-link-dec" href="https://xok3k3kob3llif3.netlify.app/">XOK3K3KOB3Llif3</a></p>
                             <p><a id="footer-link-dec" href="https://lovealarm.netlify.app/">LOVE ALARM</a></p>
                             <p><a id="footer-link-dec" href="https://gs-1.netlify.app/">GS-1</a></p>
                             <p><a id="footer-link-dec" href="https://mod4soundboard.netlify.app/">a/A Mod4 Soundboard</a></p>
