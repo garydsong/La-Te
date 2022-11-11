@@ -1,0 +1,112 @@
+.discord-container-page {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 70vh;
+}
+
+.discord-content-wrapper {
+    width: 700px;
+    height: 100%;
+    /* border: red 1px solid; */
+}
+
+.discord-top-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 160px;
+    margin-bottom: 30px;
+}
+
+.discord-title {
+    display: flex;
+    align-items: center;
+    color: #26272a;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+#disc-logo {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.discord-exp {
+    color: #26272a;
+}
+
+.discord-bul {
+    margin-left: 30px;
+    color: #8c9198;
+}
+
+.discord-connect-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 320px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+}
+
+.connect-to-discord {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.join-our-discord {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+    width: 88%;
+    height: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    color: #323842;
+    border: lightgray 2px solid;
+    border-radius: 999px;
+}
+
+.join-expl {
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.join-our-discord:hover {
+    cursor: pointer;
+    border: grey 2px solid;
+}
+
+.add-your-discord {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 16px;
+    width: 88%;
+    height: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    color: #323842;
+    border: lightgray 2px solid;
+    border-radius: 999px;
+    margin-bottom: 40px;
+}
+
+.add-your-discord:hover {
+    cursor: pointer;
+    border: grey 2px solid;
+}
+
+#no-style:link {text-decoration: none;}
+#no-style:visited {text-decoration: none;}
+#no-style:focus {text-decoration: none;}
+#no-style:active {text-decoration: none;}

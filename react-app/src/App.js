@@ -15,6 +15,7 @@ import Discover from './components/Discover/Discover';
 import UsersLattes from './components/UsersLattes/UsersLattes';
 import AboutMe from './components/AboutMe/AboutMe';
 import NotFound from './components/NotFound/NotFound';
+import Discord from './components/Discord/Discord';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,8 +55,11 @@ function App() {
         <Route path='/discover' exact={true}>
           <Discover />
         </Route>
-        <Route path='/userslattes' exact={true} >
+        <Route path='/userslattes' exact={true}>
           <UsersLattes />
+        </Route>
+        <Route path='/discord' exact={true}>
+          <Discord />
         </Route>
         <ProtectedRoute path='/users/settings' exact={true} >
           <UserSettings />
