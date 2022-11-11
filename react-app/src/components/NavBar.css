@@ -125,9 +125,31 @@
   .dropdown-links:hover {
     background-color: rgb(231, 231, 231);
     cursor: pointer;
+    border-radius: 999px;
   }
 
+  .dropdown-links:active {
+    background-color: #e9f9ff;
+    border-radius: 999px;
+  }
 
+  .dropdown-links:active .sliding-pane-category {
+    color: #00aef3;
+  }
+
+  .dropdown-links-second {
+    background-color: #e9f9ff;
+    color: #00aef3;
+    cursor: pointer;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    padding: 10px 10px 10px 15px;
+  }
+
+  .dropdown-links:active #icon-img-business-navbar {
+    filter: invert(58%) sepia(30%) saturate(6844%) hue-rotate(164deg) brightness(99%) contrast(103%);
+  }
 
   .dropdown-links {
     display: flex;
@@ -145,7 +167,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: left;
-    padding: 5px 10px;
+    /* padding: 5px 10px; */
     border-bottom: 1px lightgray solid;
   }
 
@@ -154,8 +176,17 @@
     overflow: ellipsis;
   }
   .dropdown-top-sections{
+    display: flex;
+    align-items: center;
     padding: 5px 5px;
+    margin-bottom: 15px;
   }
+
+.sliding-page-top-stack {
+  margin-left: 10px;
+  font-weight: 700;
+}
+
   .dropdown-email {
     padding-top: 10px;
   }
@@ -182,8 +213,14 @@
   }
 
   #icon-img-business-navbar {
-    height: 15px;
+    height: 20px;
     margin-right: 10px;
+  }
+
+  #icon-img-business-navbar-second {
+    height: 20px;
+    margin-right: 10px;
+    filter: invert(58%) sepia(30%) saturate(6844%) hue-rotate(164deg) brightness(99%) contrast(103%);
   }
 
   .your-page-button {
@@ -220,3 +257,46 @@
   #discover-link:link {text-decoration: none;}
   #discover-link:active {text-decoration: none;}
   #discover-link:focus {text-decoration: none;}
+
+.sliding-pane-category {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sliding-pane-category-top-ava {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 999px;
+}
+
+.icon-img-classname {
+  border-radius: 999px;
+}
+
+#dropdown-sections-split {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  /* padding: 5px 10px; */
+  border-bottom: 1px lightgray solid;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+#close-sliding-pane {
+  height: 30px;
+  margin-left: 260px;
+  filter: invert(56%) sepia(52%) saturate(4480%) hue-rotate(164deg) brightness(100%) contrast(103%);
+}
+
+#close-sliding-pane:hover {
+  cursor: pointer;
+  filter: invert(53%) sepia(91%) saturate(1201%) hue-rotate(320deg) brightness(98%) contrast(108%);
+}
+
+#session-user-un {
+  font-size: 20px;
+}
