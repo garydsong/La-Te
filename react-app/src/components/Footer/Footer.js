@@ -9,9 +9,9 @@ function Footer() {
             <div className="footer-wrapper">
                 <div className="top-footer-wrapper">
                     <div className="top-footer-content">
-                        <NavLink to="/about">
+                        <a href="https://gary-song.com">
                         <img id="top-footer-icon" src={cup} />
-                        </NavLink>
+                        </a>
                         <div className="top-footer-links">
                             <div className="top-footer-title-link">
                             Contacts
