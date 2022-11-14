@@ -581,7 +581,11 @@
 }
 
 .dropdown-top-sections {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     padding: 5px 5px;
+
 }
 
 .dropdown-email {
